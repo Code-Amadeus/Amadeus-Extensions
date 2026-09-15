@@ -1,67 +1,67 @@
 # Amadeus-Extensions
 
-Amadeus 扩展机制与规范的公开设计入口。
+Public design direction and discussion for the Amadeus extension system.
 
-> **状态：意向与探索阶段（Exploratory）**
+> **Status: Exploratory**
 >
-> 本仓库记录扩展机制的当前目标和设计方向。尚未发布可依赖的扩展规范、公共 API 或 SDK；本文不构成接口、兼容性或发布时间的承诺。
+> This repository describes our current goals and design direction. No stable extension specification, public API, or SDK has been released. Interfaces, compatibility guarantees, and release dates are not yet committed.
 
-## 为什么建立这个仓库
+## Why this repository exists
 
-我们希望让开发者能够在不修改 Amadeus 核心代码的情况下扩展功能，并让用户方便地安装、配置、启用、禁用和卸载这些扩展。
+We want developers to extend Amadeus without modifying its core code, and users to install, configure, enable, disable, and uninstall extensions easily.
 
-当前重点是明确扩展如何融入 Amadeus 的能力发现、路由和运行时管理。具体包格式与接口将通过实际接入场景逐步验证。
+Our current focus is how extensions fit into Amadeus capability discovery, routing, and runtime management. Package formats and interfaces will be developed and validated through real integrations.
 
-## 当前设计意向
+## Current design direction
 
-### 有预算的能力发现
+### Capability discovery within a prompt budget
 
-- 控制扩展带来的 prompt 开销，避免每轮对话加载所有扩展的完整说明和工具定义。
-- 路由阶段使用简洁的能力描述，在需要执行时加载相关协议、说明和上下文。
-- 同时考虑单个扩展与全部候选的预算，保持已安装能力可发现、可选择。
+- Limit the prompt overhead introduced by extensions, without loading every extension's full instructions and tool definitions on every conversation turn.
+- Use concise capability descriptions for routing, then load relevant contracts, instructions, and context when execution requires them.
+- Account for both individual extension budgets and the total candidate budget while keeping installed capabilities discoverable and selectable.
 
-### 接入现有路由
+### Integration with existing routing
 
-- 在现有路由与执行边界上扩展，使扩展能够一致地注册、停用和注销。
-- 让路由可见的能力与当前入口实际能够执行的能力保持一致。
-- 不要求每个扩展修改主程序的路由逻辑或追加专属系统提示词。
+- Build on existing routing and execution boundaries so extensions can register, deactivate, and unregister consistently.
+- Keep routing-visible capabilities aligned with what the current execution entry point can actually run.
+- Allow integrations without requiring each extension to modify core routing logic or append its own system prompt instructions.
 
-### 可管理的生命周期
+### A manageable lifecycle
 
-- 明确安装、配置、启用、禁用、升级和卸载的行为。
-- 停用后停止接受新调用，并明确已有任务、连接和后台资源如何处理。
-- 保留必要的历史记录，对用户数据的处理采用明确的规则。
+- Define the behavior of installation, configuration, enablement, disablement, upgrades, and removal.
+- Stop accepting new calls after deactivation, with explicit handling for existing tasks, connections, and background resources.
+- Preserve necessary history and define clear rules for handling user data.
 
-### 可控的运行时影响
+### Controlled runtime impact
 
-- 控制扩展依赖、状态和故障对主运行时及其他扩展的影响。
-- 保持 Host 对身份、权限、执行授权和持久事实的管理责任。
-- 安装或启用扩展本身不授予具体操作权限。
+- Contain the effects of extension dependencies, state, and failures on the core runtime and other extensions.
+- Keep the Host responsible for identity, permissions, execution authority, and durable facts.
+- Installing or enabling an extension does not itself authorize a specific action.
 
-以上内容是设计目标，实际保障范围将随运行时实现和验证结果明确。
+These are design goals. The guarantees provided will be documented as runtime mechanisms are implemented and validated.
 
-## 与现有 Amadeus 的关系
+## Relationship to Amadeus
 
-[Amadeus 主项目](https://github.com/Code-Amadeus/Amadeus) 已有 Provider、MCP、Skill、AUIP 和 CapabilityCatalog 等基础。
+The [Amadeus project](https://github.com/Code-Amadeus/Amadeus) already includes foundations such as Providers, MCP, Skills, AUIP, and CapabilityCatalog.
 
-这些机制分别涉及执行能力、外部工具、工作方法、应用协作以及能力管理与发现。后续扩展设计将以这些既有边界为基础，探索统一的分发与管理方式，并保持各自原生协议的职责。
+These mechanisms cover execution capabilities, external tools, workflows, application collaboration, and capability management and discovery. Future extension work will build on these boundaries, exploring shared distribution and management while preserving the responsibilities of each native protocol.
 
-现有内部实现不等同于稳定的第三方扩展接口。本仓库当前不提供加载器、可安装扩展或接入教程。
+Existing internal implementations are not stable third-party extension interfaces. This repository does not currently provide a loader, installable extensions, or integration tutorials.
 
-## 尚未确定的内容
+## Open questions
 
-- 扩展包格式与 manifest 字段。
-- 公共 API、SDK 和支持的接入类型。
-- Prompt 预算分配与能力候选选择的具体策略。
-- 安装、更新、兼容性及隔离机制的实现。
-- 发布节奏与稳定性承诺。
+- Extension package formats and manifest fields.
+- Public APIs, SDKs, and supported integration types.
+- Prompt budget allocation and capability candidate selection.
+- Installation, updates, compatibility, and isolation mechanisms.
+- Release schedules and stability commitments.
 
-## 参与讨论
+## Join the discussion
 
-欢迎在 [Discussions](https://github.com/Code-Amadeus/Amadeus-Extensions/discussions) 分享扩展需求、实际接入场景和设计建议，尤其是：
+Use [Discussions](https://github.com/Code-Amadeus/Amadeus-Extensions/discussions) to share extension needs, real integration scenarios, and design feedback. We are especially interested in:
 
-- 希望为 Amadeus 增加哪些能力，以及需要哪些运行时支持。
-- 能力描述与执行上下文如何在有限的 prompt 预算下组织。
-- 注册、停用和注销时应该满足哪些用户可观察的行为。
+- Capabilities you want to add to Amadeus and the runtime support they require.
+- How capability descriptions and execution context should fit within a limited prompt budget.
+- User-visible behavior that registration, deactivation, and unregistration should guarantee.
 
-目前优先讨论目标和真实需求；具体规范、示例和开发工具将在方向得到验证后逐步补充。
+For now, the priority is understanding goals and real needs. Specifications, examples, and developer tools will follow as the direction is validated.
