@@ -1,67 +1,51 @@
 # Amadeus-Extensions
 
-Public design direction and discussion for the Amadeus extension system.
+An open design space for extending [Amadeus](https://github.com/Code-Amadeus/Amadeus) with new capabilities, workflows, applications, and experiences.
 
-> **Status: Exploratory**
->
-> This repository describes our current goals and design direction. No stable extension specification, public API, or SDK has been released. Interfaces, compatibility guarantees, and release dates are not yet committed.
+> **Exploratory:** This repository shares our intentions. A public extension specification, API, and SDK have not yet been released.
 
-## Why this repository exists
+## Integration direction
 
-We want developers to extend Amadeus without modifying its core code, and users to install, configure, enable, disable, and uninstall extensions easily.
+Amadeus already has several integration building blocks. We want to bring them into a consistent extension experience, with a small prompt footprint and predictable registration and removal.
 
-Our current focus is how extensions fit into Amadeus capability discovery, routing, and runtime management. Package formats and interfaces will be developed and validated through real integrations.
+```mermaid
+block-beta
+    columns 5
+    MCP["MCP<br/>Tools and services"] SKILL["Skill<br/>Methods and workflows"] AUIP["AUIP<br/>Interactive apps"] PROVIDER["Provider<br/>Agents and executors"] ASSETS["Character packs<br/>Appearance and assets"]
+    SHARED["Shared extension experience · Design direction<br/>Bounded prompt context · Routing · Registration and removal"]:5
+    CORE["Amadeus core<br/>Conversation and interaction · Permissions and state · Execution and presentation"]:5
 
-## Current design direction
+    classDef integration fill:#e9f5ef,stroke:#3d8060,color:#193c2a
+    classDef direction fill:#fff5df,stroke:#a47a29,color:#4b3510
+    classDef core fill:#eaf2ff,stroke:#416da6,color:#192d49
+    class MCP,SKILL,AUIP,PROVIDER,ASSETS integration
+    class SHARED direction
+    class CORE core
+```
 
-### Capability discovery within a prompt budget
+The top row shows existing integration families. The shared middle layer is our intended direction, not a completed extension manager. Each family keeps its own role; a single extension may combine several of them.
 
-- Limit the prompt overhead introduced by extensions, without loading every extension's full instructions and tool definitions on every conversation turn.
-- Use concise capability descriptions for routing, then load relevant contracts, instructions, and context when execution requires them.
-- Account for both individual extension budgets and the total candidate budget while keeping installed capabilities discoverable and selectable.
+## Where extensions fit
 
-### Integration with existing routing
+| Developer goal | Suggested integration | Initial opening direction |
+| --- | --- | --- |
+| Connect services, query data, or expose tools | MCP | First wave |
+| Provide specialist methods, workflows, or templates | Skill | First wave |
+| Build apps that collaborate with the character | AUIP | Application distribution to follow |
+| Connect agents, execution engines, or dedicated executors | Provider adapter | Limited developer preview |
+| Customize character appearance, scenes, or assets | Character-pack system, where supported | Separate asset specification |
 
-- Build on existing routing and execution boundaries so extensions can register, deactivate, and unregister consistently.
-- Keep routing-visible capabilities aligned with what the current execution entry point can actually run.
-- Allow integrations without requiring each extension to modify core routing logic or append its own system prompt instructions.
+This is an initial direction, not a release schedule or a statement that third-party access is available today.
 
-### A manageable lifecycle
+## What matters most
 
-- Define the behavior of installation, configuration, enablement, disablement, upgrades, and removal.
-- Stop accepting new calls after deactivation, with explicit handling for existing tasks, connections, and background resources.
-- Preserve necessary history and define clear rules for handling user data.
+- **Small prompt footprint.** Keep capability discovery concise and load detailed instructions only when needed.
+- **Consistent routing.** Register capabilities through the existing routing system and withdraw them cleanly when disabled or removed.
+- **Simple lifecycle.** Make installation, configuration, updates, and removal predictable, including what happens to active tasks and user data.
+- **Controlled impact.** Keep extension failures and dependencies from disrupting the core experience, with explicit permissions and ownership.
 
-### Controlled runtime impact
-
-- Contain the effects of extension dependencies, state, and failures on the core runtime and other extensions.
-- Keep the Host responsible for identity, permissions, execution authority, and durable facts.
-- Installing or enabling an extension does not itself authorize a specific action.
-
-These are design goals. The guarantees provided will be documented as runtime mechanisms are implemented and validated.
-
-## Relationship to Amadeus
-
-The [Amadeus project](https://github.com/Code-Amadeus/Amadeus) already includes foundations such as Providers, MCP, Skills, AUIP, and CapabilityCatalog.
-
-These mechanisms cover execution capabilities, external tools, workflows, application collaboration, and capability management and discovery. Future extension work will build on these boundaries, exploring shared distribution and management while preserving the responsibilities of each native protocol.
-
-Existing internal implementations are not stable third-party extension interfaces. This repository does not currently provide a loader, installable extensions, or integration tutorials.
-
-## Open questions
-
-- Extension package formats and manifest fields.
-- Public APIs, SDKs, and supported integration types.
-- Prompt budget allocation and capability candidate selection.
-- Installation, updates, compatibility, and isolation mechanisms.
-- Release schedules and stability commitments.
+Package formats, public interfaces, compatibility rules, and isolation mechanisms remain open. These goals will be refined through real integrations before becoming specification commitments.
 
 ## Join the discussion
 
-Use [Discussions](https://github.com/Code-Amadeus/Amadeus-Extensions/discussions) to share extension needs, real integration scenarios, and design feedback. We are especially interested in:
-
-- Capabilities you want to add to Amadeus and the runtime support they require.
-- How capability descriptions and execution context should fit within a limited prompt budget.
-- User-visible behavior that registration, deactivation, and unregistration should guarantee.
-
-For now, the priority is understanding goals and real needs. Specifications, examples, and developer tools will follow as the direction is validated.
+Share use cases and feedback in [Discussions](https://github.com/Code-Amadeus/Amadeus-Extensions/discussions). We are especially interested in what you want to extend, what context it needs, and how it should behave when enabled or removed.
