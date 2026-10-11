@@ -1,0 +1,39 @@
+{
+  "schema": "amadeus.extension/v0",
+  "id": "com.example.notes-mcp",
+  "version": "0.2.0",
+  "display_name": { "en": "Notes MCP server", "zh-CN": "笔记 MCP 服务" },
+  "description": {
+    "en": "Lets Work Providers search and append to a local notes folder through MCP. The server runs from the package's own Python environment.",
+    "zh-CN": "通过 MCP 让 Work Provider 检索和追加本地笔记。服务运行在扩展自己的 Python 环境中。"
+  },
+  "author": { "name": "Example Author" },
+  "license": "MIT",
+  "engines": { "amadeus_host_api": ">=0.1,<0.2" },
+  "runtime": { "kind": "python", "requires_python": ">=3.11" },
+  "contributes": {
+    "mcp_server": [
+      {
+        "id": "notes",
+        "contract": "amadeus.mcp-server/v0",
+        "transport": "stdio",
+        "command": "${python}",
+        "args": ["-m", "example_notes_mcp"],
+        "env": {
+          "NOTES_DIR": "${data}/notes",
+          "NOTES_MAX_RESULTS": "${config.max_results}"
+        },
+        "title": { "en": "Local notes", "zh-CN": "本地笔记" }
+      }
+    ]
+  },
+  "config": {
+    "max_results": {
+      "type": "integer",
+      "title": { "en": "Maximum search results", "zh-CN": "最大检索结果数" },
+      "default": 20,
+      "min": 1,
+      "max": 100
+    }
+  }
+}

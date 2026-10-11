@@ -1,0 +1,56 @@
+{
+  "schema": "amadeus.extension/v0",
+  "id": "com.example.task-notifier",
+  "version": "0.1.0",
+  "display_name": { "en": "Task notifier", "zh-CN": "任务提醒" },
+  "description": {
+    "en": "Asks Amadeus to mention Work items that need you or have finished. Illustrates the provisional observer contract and presentation requests.",
+    "zh-CN": "在任务需要你处理或已经完成时，请 Amadeus 告诉你。用于演示 provisional 的观察者契约和表现请求。"
+  },
+  "author": { "name": "Example Author" },
+  "license": "MIT",
+  "engines": { "amadeus_host_api": ">=0.1,<0.2" },
+  "runtime": {
+    "kind": "python",
+    "entry": "example_task_notifier:extension",
+    "requires_python": ">=3.12"
+  },
+  "contributes": {
+    "observer": [
+      {
+        "id": "work",
+        "contract": "amadeus.events.observer/v0",
+        "topics": ["work.item.updated"]
+      }
+    ]
+  },
+  "config": {
+    "notify_on": {
+      "type": "enum",
+      "title": { "en": "Notify when", "zh-CN": "提醒时机" },
+      "default": "needs_attention",
+      "options": [
+        { "value": "needs_attention", "label": { "en": "A task needs me", "zh-CN": "任务需要我处理" } },
+        { "value": "needs_attention_or_finished", "label": { "en": "A task needs me or finishes", "zh-CN": "任务需要我处理或已完成" } }
+      ]
+    }
+  },
+  "permissions": {
+    "host": [
+      {
+        "capability": "events.work:read",
+        "reason": {
+          "en": "See when a Work item needs you or finishes.",
+          "zh-CN": "知道任务何时需要你处理或已经完成。"
+        }
+      },
+      {
+        "capability": "presentation:notify",
+        "reason": {
+          "en": "Ask Amadeus to mention it to you.",
+          "zh-CN": "请 Amadeus 告诉你。"
+        }
+      }
+    ]
+  }
+}

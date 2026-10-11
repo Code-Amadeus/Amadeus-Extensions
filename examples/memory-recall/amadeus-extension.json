@@ -1,0 +1,64 @@
+{
+  "schema": "amadeus.extension/v0",
+  "id": "com.example.memory-recall",
+  "version": "0.1.0",
+  "display_name": { "en": "Memory recall", "zh-CN": "记忆召回" },
+  "description": {
+    "en": "Forms memories from finished conversations and offers relevant ones as reference for later replies. Uses provisional contracts.",
+    "zh-CN": "从已完成的对话中形成记忆，并在之后的回复中提供相关记忆作为参考。使用 provisional 契约。"
+  },
+  "author": { "name": "Example Author" },
+  "license": "MIT",
+  "engines": { "amadeus_host_api": ">=0.1,<0.2" },
+  "runtime": {
+    "kind": "python",
+    "entry": "example_memory_recall:extension",
+    "requires_python": ">=3.12"
+  },
+  "contributes": {
+    "context_source": [
+      {
+        "id": "recall",
+        "contract": "amadeus.context.source/v0",
+        "category": "memory",
+        "max_tokens": 400,
+        "deadline_ms": 120,
+        "title": { "en": "Recalled memories", "zh-CN": "召回的记忆" }
+      }
+    ],
+    "observer": [
+      {
+        "id": "learn",
+        "contract": "amadeus.events.observer/v0",
+        "topics": ["conversation.turn.completed"]
+      }
+    ]
+  },
+  "config": {
+    "max_items": {
+      "type": "integer",
+      "title": { "en": "Memories per reply", "zh-CN": "每次回复最多参考的记忆数" },
+      "default": 5,
+      "min": 1,
+      "max": 16
+    }
+  },
+  "permissions": {
+    "host": [
+      {
+        "capability": "conversation.current:read",
+        "reason": {
+          "en": "Find memories related to what you just said.",
+          "zh-CN": "根据你刚说的话查找相关记忆。"
+        }
+      },
+      {
+        "capability": "conversation.history:read",
+        "reason": {
+          "en": "Form memories from finished conversations.",
+          "zh-CN": "从已完成的对话中形成记忆。"
+        }
+      }
+    ]
+  }
+}
