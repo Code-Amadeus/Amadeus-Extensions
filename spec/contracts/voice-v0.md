@@ -66,8 +66,8 @@ Host → Runner request.
 | `contribution_id` | Local TTS contribution id; required when a Runner has multiple TTS contributions |
 | `utterance_id` | Host correlation id, at most 128 characters |
 | `text` | Plain text without markup, 1 to 2000 characters |
-| `language` | One of the declared languages |
-| `speed` | Advisory pace hint, 0.5 to 2.0, default 1.0; a backend MAY ignore it. It is not a GPT-SoVITS rhythm parameter. |
+| `language` | Requested speech language; match declared tags by case-insensitive primary subtag (`ja` matches `ja-JP`, `en` matches `en-US`) |
+| `speed` | Advisory pace hint, 0.5 to 2.0, default 1.0. The Amadeus restart profile always sends 1.0; packages may expose an explicit speed setting. GPT-SoVITS first-sentence pacing is not forwarded. |
 | `deadline_ms` | Optional relative deadline |
 
 While it works, the Runner sends `tts.chunk` notifications:
@@ -90,8 +90,13 @@ Rules:
   an utterance silently.
 - A gap in `seq` or a change of `sample_rate` makes the Host treat the utterance
   as failed.
-- On `$/cancel` the Runner stops sending chunks promptly and responds with
-  `cancelled`.
+- On `$/cancel` the Runner signals cancellation promptly, stops emitting audio
+  and responds with `cancelled` after cleanup. Blocking network setup may finish
+  later and MUST use bounded timeouts. The Host immediately stops delivering
+  cancelled audio and discards late chunks. Unacknowledged cancellations count
+  against the two-request admission bound until a terminal response or process
+  exit. There is no two-second crash rule: cancellation latency alone MUST NOT
+  consume the Runner crash-restart budget or terminate unrelated synthesis.
 - The Host MAY send up to two concurrent requests to one backend so it can
   synthesize ahead. A backend MAY process them one after the other but answers
   each.

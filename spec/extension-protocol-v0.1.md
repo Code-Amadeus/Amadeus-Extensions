@@ -71,7 +71,7 @@ uses them and passes the acceptance checks listed with each pilot:
 
 | Pilot | Exercises | Acceptance (both the success and the failure side) |
 | --- | --- | --- |
-| A remote TTS backend (MiMo) moved out of the Amadeus source tree | Runner, `voice_backend` TTS, config and secrets, generations | Installing it changes no Amadeus source file. The API key never appears in the package directory, logs, or manifest. Disabling it closes new admission; admitted utterances finish within the drain bound or are cancelled. Later requests retain text with a visible voice-unavailable reason in the first pilot. Killing its Runner marks it degraded without interrupting Main Chat or leaving orphan processes. |
+| External TTS backends: Fish Audio (Japanese/English), MiMo (English only) | Runner, `voice_backend` TTS, config/secrets, restart-based lifecycle | Installing changes no Amadeus source file. Review identity, commands and OS disclosures before preparation or enablement. Keys never appear in package files or logs. Saving disable/configuration/selection leaves the current process unchanged and is visibly pending restart. Backend shutdown cancels or bounds admitted work and removes owned children; the next start applies the saved selection. Interrupting slow first-audio requests drops late audio without exhausting the crash budget. Actual Runner crashes recover without replaying synthesis. Fish provides Japanese pilot coverage; MiMo English live acceptance remains pending. No configuration-generation handover is required. |
 | A memory recall extension | `context_source`, scoped source access and memory governance; `observer` only when needed | A late result never delays a turn and is recorded as dropped. Forgotten items never return. Uninstalling handles data as the user chose, and earlier provenance shows the source as removed. |
 | A task companion | `observer`, `presentation:notify` | A revoked capability stops the next delivery or call, reports the capability name, and affects no other extension. |
 
@@ -117,11 +117,14 @@ for integrity labels. Neither condition is resolved by weakening Host parsing
 or execution policy. Keep this combination experimental pending clean-wire and
 sandbox-environment qualification.
 
-Skill native sessions carry a Host-owned revision of selected packages, versions,
-digests and installation paths. Unchanged revisions resume across restart.
-Updates, removal, unbinding or reinstallation require a new native session;
-old contexts are rejected before submission, never silently resumed with removed
-instructions. Changes to another Agent's bindings do not invalidate this one.
+Skill native sessions carry the Host-owned set of selected package/contribution
+revisions (version, digest and installation path). Adding Skills does not
+invalidate existing sessions; updating, removing, unbinding or relocating a
+previously recorded Skill requires a new native session. Changes to another
+Agent do not invalidate this one. Older experimental opaque-digest handles can
+upgrade after an unchanged resume; a changed opaque digest cannot identify its
+old set and requires an explicit new session. Native name conflicts are shown
+as an unavailable Skill and do not disable unrelated Agent work.
 
 The versioned implementation map is Amadeus `docs/extension_host_profile_v0.1.md`.
 Work outputs do not register extensions: ordinary files and verified AUIP apps
