@@ -76,21 +76,29 @@ uses them and passes the acceptance checks listed with each pilot:
 | A memory recall extension | `context_source`, scoped source access and memory governance; `observer` only when needed | A late result never delays a turn and is recorded as dropped. Forgotten items never return. Uninstalling handles data as the user chose, and earlier provenance shows the source as removed. |
 | A task companion | `observer`, `presentation:notify` | A revoked capability stops the next delivery or call, reports the capability name, and affects no other extension. |
 
-### 1.3.1 Amadeus experimental restart profile (informative)
+### 1.3.1 Amadeus experimental Host profile (informative)
 
-The 2026-10-11 experimental branch implements a local-wheel subset with three
-native owners: TTS (MiMo English and Fish Audio Japanese/English) and declarative
+The 2026-10-12 local pilot implements a local-wheel subset with backend
+owners: TTS (MiMo English and Fish Audio Japanese/English) and declarative
 MCP (a package-owned Notes service bound to compatible Work Providers), and
 Agent Skills (one installed package bound to selected Codex, ACP or Pi Agents).
+A data-only theme owner applies literal palettes and bounded package images in
+the desktop. The theme contract remains provisional pending pilot acceptance.
 MiMo does not support Japanese, confirmed by the project owner; no Japanese
 MiMo audition is pending. Real MiMo English acceptance awaits a configured key.
 
-All install, configuration, enable/disable, selection and removal changes apply
-after backend restart, including built-in/extension transitions. A stable TTS
+Backend install, configuration, enable/disable, selection and removal changes
+apply after backend restart, including built-in/extension TTS transitions. A stable TTS
 proxy lives for the backend process. Runner crash recovery occurs inside it and
 never replays a failed synthesis. The pipeline does not hot-swap runtimes.
-For this profile, manifest live/reactivate labels do not override restart
-semantics: saved values are delivered in the next initialize snapshot.
+Manifest live/reactivate labels do not override backend restart semantics:
+saved values are delivered in the next initialize snapshot. Pure frontend theme
+packages apply without restarting the backend. A version switch involving an
+old or new backend contribution uses the backend boundary for the whole package;
+frontend contributions keep the actual loaded snapshot until then. Disabling
+or removing immediately closes frontend admission; a still-running backend is
+shown separately. Re-enabling a mixed package requires restart before reopening
+its frontend contributions.
 General live configuration/generation handover below remains future design,
 not a requirement of this experimental subset.
 
