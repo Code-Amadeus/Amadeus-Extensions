@@ -70,7 +70,7 @@ def test_examples_cover_every_contribution_kind():
     kinds = set()
     for package in EXAMPLES:
         kinds.update(example(package.name)["contributes"])
-    assert kinds == {"voice_backend", "skill", "mcp_server", "context_source", "observer"}
+    assert kinds == set(json.loads(vm.SCHEMA_PATH.read_text(encoding='utf-8'))['$defs']['contributes']['properties'])
 
 
 SCHEMA_REJECTIONS = {
@@ -271,3 +271,25 @@ def test_command_line_exit_status(tmp_path, capsys):
     broken.write_text(json.dumps({"schema": "amadeus.extension/v0"}), encoding="utf-8")
     assert vm.main([str(broken)]) == 1
     assert "invalid" in capsys.readouterr().out
+
+
+@pytest.mark.parametrize('name,value,code', [
+    ('--danger', '#111111', 'T1.reserved_token'),
+    ('--bg', 'url(https://example.invalid)', 'T2.css_input'),
+    ('--font', 'Arial; color:red', 'T2.css_input'),
+])
+def test_theme_cannot_override_status_or_inject_css(name, value, code):
+    manifest = example('desktop-theme')
+    manifest['contributes']['theme'][0]['tokens'][name] = value
+    assert code in codes(manifest)
+
+
+def test_theme_background_requires_a_contained_package_file(tmp_path):
+    manifest = example('desktop-theme')
+    manifest['contributes']['theme'][0]['background'] = {'image': 'bg.png', 'fit': 'cover', 'dim': .4}
+    assert not codes(manifest)
+    assert {issue.code for issue in vm.package_issues(manifest, tmp_path)} == {'P3.missing_file'}
+    (tmp_path / 'bg.png').write_bytes(b'Host separately validates image encoding and decoded dimensions')
+    assert not vm.package_issues(manifest, tmp_path)
+    manifest['contributes']['theme'][0]['background']['image'] = '../bg.png'
+    assert 'schema' in codes(manifest)

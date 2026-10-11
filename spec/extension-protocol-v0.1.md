@@ -19,6 +19,7 @@ Companion documents:
 | [Voice backend contracts](contracts/voice-v0.md) (`amadeus.voice.tts/v0`, `amadeus.voice.asr/v0`) | TTS and ASR provisional |
 | [Context source contract](contracts/context-source-v0.md) (`amadeus.context.source/v0`) | Provisional |
 | [Observer contract](contracts/observer-v0.md) (`amadeus.events.observer/v0`) | Provisional |
+| [Theme contract](contracts/theme-v0.md) (`amadeus.ui.theme/v0`) | Provisional; local P1/P2 implementation under review |
 | [Manifest JSON Schema](../schemas/amadeus-extension.v0.schema.json) | Normative |
 | [Reference manifest validator](../tools/validate_manifest.py) | Informative |
 | [Example packages](../examples/) | Informative |
@@ -322,6 +323,7 @@ Kinds in v0.1:
 | `voice_backend` | TTS and ASR provisional | yes | `amadeus.voice.tts/v0`, `amadeus.voice.asr/v0` | TTS and ASR registries | [voice-v0](contracts/voice-v0.md) |
 | `skill` | provisional | no | `amadeus.skill/v0` | Work Provider skill projection | [§3.6.1](#361-skill) |
 | `mcp_server` | provisional | no | `amadeus.mcp-server/v0` | MCP connection registry | [§3.6.2](#362-mcp_server) |
+| `theme` | provisional | no | `amadeus.ui.theme/v0` | Desktop theme owner; not projected into Work execution | [Theme contract](contracts/theme-v0.md) |
 | `context_source` | provisional | yes | `amadeus.context.source/v0` | Main Chat context assembly | [context-source-v0](contracts/context-source-v0.md) |
 | `observer` | provisional | yes | `amadeus.events.observer/v0` | Host event projection | [observer-v0](contracts/observer-v0.md) |
 
@@ -497,6 +499,7 @@ When a Host or validator has the package contents, it also checks:
 | --- | --- |
 | P1 | The manifest exists, is at most 256 KiB, and parses as JSON. |
 | P2 | Each skill `path` is a directory inside the package that contains `SKILL.md`, contains and passes through no links, and is at most 16 MiB. |
+| P4 | Theme background resources are contained, unlinked PNG/JPEG/WebP files of at most 8 MiB. The Host also validates decoded size, token literals and rendered contrast before activation. |
 | P3 | Each `${package}/…` command exists inside the package without passing through links. |
 
 ## 4. Lifecycle
