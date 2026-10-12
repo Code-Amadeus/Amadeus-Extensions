@@ -1094,3 +1094,14 @@ experience before release. MiMo English live acceptance is deferred; Japanese
 is unsupported, not an outstanding audition. Broader existing Provider/MCP
 credential inheritance needs separate treatment; Runner filtering is not an OS
 sandbox or a complete remediation of all Provider subprocess environments.
+
+## License decision (2026-10-13)
+
+Protocol/schema/reference validator and SDK are Apache-2.0; authored examples
+are MIT-0. The standalone SDK is canonical in `sdk/python/`. These grants do
+not license the AGPL Host or third-party media. Independent process/protocol
+boundaries are an engineering design, not an unconditional legal guarantee.
+Host distribution records the exact SDK source revision and wheel digest.
+Public package publication and main-branch acceptance remain separate review
+steps. Development directories, diagnostic logs and new contribution kinds are
+not introduced by this decision.

@@ -83,7 +83,7 @@ The [Amadeus project](https://github.com/Code-Amadeus/Amadeus) already includes 
 
 These mechanisms cover execution capabilities, external tools, workflows, application collaboration, and capability management and discovery. Future extension work will build on these boundaries, exploring shared distribution and management while preserving the responsibilities of each native protocol.
 
-Existing internal implementations are not stable third-party extension interfaces. This repository does not yet provide a loader, an SDK, or installable extensions.
+Existing internal implementations are not stable third-party extension interfaces. This repository provides the experimental [standalone TTS SDK](sdk/python/README.md); installation and authority remain in the Host. No stable SDK release is claimed.
 
 ## Extension paths
 
@@ -132,3 +132,9 @@ Use [Discussions](https://github.com/Code-Amadeus/Amadeus-Extensions/discussions
 - User-visible behavior that registration, deactivation, and unregistration should guarantee.
 
 Feedback on the v0.1 draft is especially welcome: which contribution kinds you need, and where the contracts are too strict or too loose.
+
+## License
+
+Protocol, schema, reference validator and SDK: [Apache-2.0](LICENSE).
+Authored examples: [MIT-0](examples/LICENSE). Host remains AGPL-3.0.
+See [contribution rules](CONTRIBUTING.md) and [SDK origin](sdk/ORIGIN.md).
