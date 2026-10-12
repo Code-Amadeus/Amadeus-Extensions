@@ -8,14 +8,43 @@ permissions:
 jobs:
   offline-contracts:
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-24.04, windows-2025]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.12'
-      - run: python -m pip install -r requirements-dev.txt
+          python-version: '3.12.10'
+      - run: python -m pip install --require-hashes -r requirements-dev.txt
       - run: python -m pytest -q
       - run: python tools/build_sdk.py --output-dir dist
+      - uses: actions/upload-artifact@v7
+        with:
+          name: sdk-${{ matrix.os }}
+          path: dist/*.whl
+          if-no-files-found: error
+          retention-days: 7
+  compare-wheels:
+    needs: offline-contracts
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12.10'
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: sdk-*
+          path: wheels
+      - name: Compare independently built Windows and Linux wheels
+        shell: python
+        run: |
+          import hashlib
+          from pathlib import Path
+          wheels = sorted(Path('wheels').glob('*/*.whl'))
+          assert len(wheels) == 2, f'Expected two platform wheels, got {wheels}'
+          assert wheels[0].name == wheels[1].name, 'Wheel filenames differ'
+          first, second = (path.read_bytes() for path in wheels)
+          assert first == second, 'Windows and Linux SDK wheels differ'
+          print(f'{wheels[0].name} sha256={hashlib.sha256(first).hexdigest()}')
