@@ -15,6 +15,10 @@ its token names from a pinned copy of this file; adding an internal CSS variable
 does not automatically expose it to packages. Status
 colors (`--danger*`, `--warning*`, `--success*`) are reserved. Colors accept hex,
 rgb/rgba or hsl/hsla literals; fonts reference installed system families only.
+Functional literals use either comma-separated components (optional fourth alpha)
+or three space-separated components followed by optional `/ alpha`. The forms
+cannot be mixed; legacy comma RGB components are all numbers or all percentages.
+Shared accepted/rejected cases live in `tests/fixtures/theme-color-literals.json`.
 URLs, variables, declarations, comments and executable CSS are rejected. The
 reference validator checks the allowlist, literal syntax/ranges, single-family
 font syntax, contained image paths, size and file signatures. Installed fonts,
@@ -27,8 +31,9 @@ colors are opaque to bound nested compositing. The Host provides a native or
 otherwise theme-independent way to restore a built-in theme, even if a selected
 font renders unreadable glyphs.
 
-An optional `background` supplies a package-relative PNG, JPEG or WebP image,
-`fit` (`cover` or `contain`) and black-overlay `dim` from 0 to 1. The Host checks
+An optional `background` supplies a package-relative PNG or JPEG image,
+WebP is excluded from v0 because the current native Host decoder cannot validate
+it. Renaming a WebP file does not make it a PNG/JPEG. `fit` (`cover` or `contain`) and black-overlay `dim` from 0 to 1. The Host checks
 decoded dimensions (each at most 4096), size (8 MiB), path containment and absence
 of links. Image contrast is evaluated over the entire possible luminance range
 after dim/surface compositing, including interior minima. Looking only at a

@@ -322,3 +322,17 @@ def test_single_quoted_or_unicode_font_family_syntax(font):
     manifest = example('desktop-theme')
     manifest['contributes']['theme'][0]['tokens']['--font'] = font
     assert not codes(manifest)
+
+@pytest.mark.parametrize('group', ['accepted', 'rejected'])
+def test_shared_css_literal_cases(group):
+    cases = json.loads((ROOT / 'tests/fixtures/theme-color-literals.json').read_text(encoding='utf-8-sig'))
+    for color in cases[group]:
+        assert vm._theme_color_literal(color) is (group == 'accepted'), color
+
+
+def test_theme_v0_rejects_webp_declaration_and_bytes(tmp_path):
+    manifest = example('desktop-theme')
+    manifest['contributes']['theme'][0]['background'] = {'image': 'bg.webp', 'fit': 'cover', 'dim': .4}
+    (tmp_path / 'bg.webp').write_bytes(b'RIFF' + b'\0' * 4 + b'WEBP' + b'fixture')
+    assert codes(manifest)
+    assert 'P4.theme_image' in {issue.code for issue in vm.package_issues(manifest, tmp_path)}
