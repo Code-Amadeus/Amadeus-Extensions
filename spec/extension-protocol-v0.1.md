@@ -507,7 +507,7 @@ When a Host or validator has the package contents, it also checks:
 | --- | --- |
 | P1 | The manifest exists, is at most 256 KiB, and parses as JSON. |
 | P2 | Each skill `path` is a directory inside the package that contains `SKILL.md`, contains and passes through no links, and is at most 16 MiB. |
-| P4 | Theme background resources are contained, unlinked PNG/JPEG/WebP files of at most 8 MiB. The Host also validates decoded size, token literals and rendered contrast before activation. |
+| P4 | Theme background resources are contained, unlinked PNG/JPEG files of at most 8 MiB. The Host also validates decoded size, token literals and rendered contrast before activation. |
 | P3 | Each `${package}/…` command exists inside the package without passing through links. |
 
 ## 4. Lifecycle

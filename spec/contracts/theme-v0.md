@@ -32,9 +32,10 @@ otherwise theme-independent way to restore a built-in theme, even if a selected
 font renders unreadable glyphs.
 
 An optional `background` supplies a package-relative PNG or JPEG image,
-WebP is excluded from v0 because the current native Host decoder cannot validate
-it. Renaming a WebP file does not make it a PNG/JPEG. `fit` (`cover` or `contain`) and black-overlay `dim` from 0 to 1. The Host checks
-decoded dimensions (each at most 4096), size (8 MiB), path containment and absence
+`fit` (`cover` or `contain`) and black-overlay `dim` from 0 to 1. WebP is excluded
+from v0 because the current native Host decoder cannot validate it. Renaming a
+WebP file does not make it a PNG/JPEG. The Host checks decoded dimensions
+(each at most 4096), size (8 MiB), path containment and absence
 of links. Image contrast is evaluated over the entire possible luminance range
 after dim/surface compositing, including interior minima. Looking only at a
 black and white endpoint is insufficient when text lies between them.
