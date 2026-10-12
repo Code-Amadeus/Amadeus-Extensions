@@ -70,7 +70,7 @@ def test_examples_cover_every_contribution_kind():
     kinds = set()
     for package in EXAMPLES:
         kinds.update(example(package.name)["contributes"])
-    assert kinds == {"voice_backend", "skill", "mcp_server", "context_source", "observer"}
+    assert kinds == set(json.loads(vm.SCHEMA_PATH.read_text(encoding='utf-8'))['$defs']['contributes']['properties'])
 
 
 SCHEMA_REJECTIONS = {
@@ -271,3 +271,68 @@ def test_command_line_exit_status(tmp_path, capsys):
     broken.write_text(json.dumps({"schema": "amadeus.extension/v0"}), encoding="utf-8")
     assert vm.main([str(broken)]) == 1
     assert "invalid" in capsys.readouterr().out
+
+
+@pytest.mark.parametrize('name,value,code', [
+    ('--danger', '#111111', 'T1.reserved_token'),
+    ('--bg', 'url(https://example.invalid)', 'T2.css_input'),
+    ('--font', 'Arial; color:red', 'T2.css_input'),
+])
+def test_theme_cannot_override_status_or_inject_css(name, value, code):
+    manifest = example('desktop-theme')
+    manifest['contributes']['theme'][0]['tokens'][name] = value
+    assert code in codes(manifest)
+
+
+def test_theme_background_requires_a_contained_package_file(tmp_path):
+    manifest = example('desktop-theme')
+    manifest['contributes']['theme'][0]['background'] = {'image': 'bg.png', 'fit': 'cover', 'dim': .4}
+    assert not codes(manifest)
+    assert {issue.code for issue in vm.package_issues(manifest, tmp_path)} == {'P3.missing_file'}
+    (tmp_path / 'bg.png').write_bytes(b'Host separately validates image encoding and decoded dimensions')
+    assert 'P4.theme_image' in {issue.code for issue in vm.package_issues(manifest, tmp_path)}
+    (tmp_path / 'bg.png').write_bytes(b'\x89PNG\r\n\x1a\n' + b'header-only fixture; full decoding remains Host-owned')
+    assert not vm.package_issues(manifest, tmp_path)
+    manifest['contributes']['theme'][0]['background']['image'] = '../bg.png'
+    assert 'schema' in codes(manifest)
+
+
+@pytest.mark.parametrize('name,value', [
+    ('--unknown', '#123456'), ('--bg', 'image-set("x.png" 1x)'),
+    ('--bg', 'expression(alert(1))'), ('--bg', 'red'), ('--bg', 'rgb(256 0 0)'),
+    ('--bg', 'hsl(10 101% 20%)'), ('--bg', '#12345'), ('--bg', 'rgba(1,2,3,1.1)'),
+    ('--font', 'Arial, serif'), ('--font', '</style>'),
+])
+def test_theme_rejects_unknown_tokens_and_non_literal_values(name, value):
+    manifest = example('desktop-theme')
+    manifest['contributes']['theme'][0]['tokens'][name] = value
+    assert codes(manifest)
+
+
+@pytest.mark.parametrize('color', ['#123', '#1234', '#123456', '#12345678',
+    'rgb(10 20 30 / 50%)', 'rgba(10, 20, 30, .5)', 'hsl(-30deg 80% 20%)'])
+def test_theme_color_literals_match_host_grammar(color):
+    manifest=example('desktop-theme')
+    manifest['contributes']['theme'][0]['tokens']['--bg']=color
+    assert not codes(manifest)
+
+
+@pytest.mark.parametrize('font', ['"Segoe UI"', "'Noto Sans'", '微软雅黑'])
+def test_single_quoted_or_unicode_font_family_syntax(font):
+    manifest = example('desktop-theme')
+    manifest['contributes']['theme'][0]['tokens']['--font'] = font
+    assert not codes(manifest)
+
+@pytest.mark.parametrize('group', ['accepted', 'rejected'])
+def test_shared_css_literal_cases(group):
+    cases = json.loads((ROOT / 'tests/fixtures/theme-color-literals.json').read_text(encoding='utf-8-sig'))
+    for color in cases[group]:
+        assert vm._theme_color_literal(color) is (group == 'accepted'), color
+
+
+def test_theme_v0_rejects_webp_declaration_and_bytes(tmp_path):
+    manifest = example('desktop-theme')
+    manifest['contributes']['theme'][0]['background'] = {'image': 'bg.webp', 'fit': 'cover', 'dim': .4}
+    (tmp_path / 'bg.webp').write_bytes(b'RIFF' + b'\0' * 4 + b'WEBP' + b'fixture')
+    assert codes(manifest)
+    assert 'P4.theme_image' in {issue.code for issue in vm.package_issues(manifest, tmp_path)}
