@@ -1,4 +1,5 @@
 {
+  "license": "MIT-0",
   "schema": "amadeus.extension/v0",
   "id": "org.example.desktop-theme",
   "version": "0.1.0",
