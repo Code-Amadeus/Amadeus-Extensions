@@ -9,12 +9,23 @@ stylesheets or alter the Host's base component identity. `base` selects the
 Host's `classic` or `wallpaper-slice` styling; the qualified extension selection
 is recorded separately. Title-bar style and `colorScheme` follow that base.
 
-`tokens` override only the Host's published CSS-variable allowlist. Status
+`tokens` override only the 25 names in the canonical
+[theme token allowlist](../../schemas/theme-tokens.v0.json). Host tooling generates
+its token names from a pinned copy of this file; adding an internal CSS variable
+does not automatically expose it to packages. Status
 colors (`--danger*`, `--warning*`, `--success*`) are reserved. Colors accept hex,
 rgb/rgba or hsl/hsla literals; fonts reference installed system families only.
 URLs, variables, declarations, comments and executable CSS are rejected. The
-Host validates and renders the same final palette. Normal text must retain
-contrast of at least 4.5 and muted text at least 3 on its actual surfaces.
+reference validator checks the allowlist, literal syntax/ranges, single-family
+font syntax, contained image paths, size and file signatures. Installed fonts,
+full native image decoding and rendered palette validation remain Host checks.
+The Host validates and renders the same final palette. Normal text must retain
+contrast of at least 4.5 and muted/faint text at least 3 on its actual surfaces.
+Status and accent foreground text must also be checked on the surfaces where
+it is displayed. Palettes keep the light/dark identity of their base; surface
+colors are opaque to bound nested compositing. The Host provides a native or
+otherwise theme-independent way to restore a built-in theme, even if a selected
+font renders unreadable glyphs.
 
 An optional `background` supplies a package-relative PNG, JPEG or WebP image,
 `fit` (`cover` or `contain`) and black-overlay `dim` from 0 to 1. The Host checks

@@ -290,6 +290,35 @@ def test_theme_background_requires_a_contained_package_file(tmp_path):
     assert not codes(manifest)
     assert {issue.code for issue in vm.package_issues(manifest, tmp_path)} == {'P3.missing_file'}
     (tmp_path / 'bg.png').write_bytes(b'Host separately validates image encoding and decoded dimensions')
+    assert 'P4.theme_image' in {issue.code for issue in vm.package_issues(manifest, tmp_path)}
+    (tmp_path / 'bg.png').write_bytes(b'\x89PNG\r\n\x1a\n' + b'header-only fixture; full decoding remains Host-owned')
     assert not vm.package_issues(manifest, tmp_path)
     manifest['contributes']['theme'][0]['background']['image'] = '../bg.png'
     assert 'schema' in codes(manifest)
+
+
+@pytest.mark.parametrize('name,value', [
+    ('--unknown', '#123456'), ('--bg', 'image-set("x.png" 1x)'),
+    ('--bg', 'expression(alert(1))'), ('--bg', 'red'), ('--bg', 'rgb(256 0 0)'),
+    ('--bg', 'hsl(10 101% 20%)'), ('--bg', '#12345'), ('--bg', 'rgba(1,2,3,1.1)'),
+    ('--font', 'Arial, serif'), ('--font', '</style>'),
+])
+def test_theme_rejects_unknown_tokens_and_non_literal_values(name, value):
+    manifest = example('desktop-theme')
+    manifest['contributes']['theme'][0]['tokens'][name] = value
+    assert codes(manifest)
+
+
+@pytest.mark.parametrize('color', ['#123', '#1234', '#123456', '#12345678',
+    'rgb(10 20 30 / 50%)', 'rgba(10, 20, 30, .5)', 'hsl(-30deg 80% 20%)'])
+def test_theme_color_literals_match_host_grammar(color):
+    manifest=example('desktop-theme')
+    manifest['contributes']['theme'][0]['tokens']['--bg']=color
+    assert not codes(manifest)
+
+
+@pytest.mark.parametrize('font', ['"Segoe UI"', "'Noto Sans'", '微软雅黑'])
+def test_single_quoted_or_unicode_font_family_syntax(font):
+    manifest = example('desktop-theme')
+    manifest['contributes']['theme'][0]['tokens']['--font'] = font
+    assert not codes(manifest)
