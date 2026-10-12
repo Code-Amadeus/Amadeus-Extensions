@@ -33,8 +33,10 @@ cleanup in `finally`. Bound all network timeouts. The Host never repeats failed
 synthesis requests. Backend-specific voice and credentials belong in manifest
 config; v0 has no reference-audio or emotion input.
 Cancellation suppresses audio immediately. A cancelled request retains an
-admission slot until its terminal reply or process exit; slow cleanup does not
-count as a Runner crash. Use bounded I/O to release those slots.
+admission slot until its terminal reply or process exit. Cleanup within the
+Host profile's 10-second grace preserves the process and recovery budget;
+overdue cleanup uses bounded Runner recovery without replaying speech.
+Use bounded I/O to release those slots.
 
 Optional `@extension.initialize` receives the context before ready; optional
 `@extension.shutdown` releases package resources. Run with

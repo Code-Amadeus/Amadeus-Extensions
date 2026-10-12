@@ -973,9 +973,9 @@ contract.
 
 ## 12. Open questions
 
-1. The license for the SDK, schemas, and this specification. A permissive
-   license (MIT or Apache-2.0) would keep the protocol boundary a licensing
-   boundary for extension authors.
+1. Resolved 2026-10-13: SDK, schemas and specification are Apache-2.0;
+   authored examples are MIT-0. Independent protocol boundaries do not
+   establish an unconditional legal exemption for arbitrary combinations.
 2. Audio over the Runner protocol: Base64 inside JSON lines, or a binary data
    channel. To be measured in the TTS pilot.
 3. Whether packages without third-party dependencies may share one Runner
@@ -1088,7 +1088,7 @@ was published by this experiment.
 
 ### B.5 Release gates
 
-Keep TTS/MCP/Skill provisional. Resolve SDK packaging/licensing/distribution,
+Keep TTS/MCP/Skill provisional. Complete public SDK distribution and main-source acceptance,
 supported platforms, broader real-model Work behavior and manual Chat/Wallpaper/VN
 experience before release. MiMo English live acceptance is deferred; Japanese
 is unsupported, not an outstanding audition. Broader existing Provider/MCP
