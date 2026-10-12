@@ -4,7 +4,7 @@ Public design direction and discussion for the Amadeus extension system.
 
 > **Status: Draft specification v0.1**
 >
-> A first draft of the extension protocol is available for discussion. An unmerged Amadeus experimental branch implements a restart-based TTS/MCP/Skill subset; no stable SDK has been released. Interfaces and compatibility guarantees may change until 1.0.
+> A first draft of the extension protocol is available for discussion. Unmerged Amadeus experiments implement TTS/MCP/Skill lifecycle and data-only desktop themes; no stable SDK has been released. Interfaces and compatibility guarantees may change until 1.0.
 
 ## Why this repository exists
 
@@ -18,17 +18,18 @@ Our current focus is how extensions fit into Amadeus capability discovery, routi
 | --- | --- |
 | [Extension Protocol v0.1](spec/extension-protocol-v0.1.md) | Manifest, lifecycle, permissions, Runner protocol, packaging |
 | [Voice backends](spec/contracts/voice-v0.md) | TTS backends (provisional) and ASR backends (provisional) |
+| [Desktop themes](spec/contracts/theme-v0.md) | Data-only palettes, installed fonts, bounded images and package lifecycle (provisional) |
 | [Context sources](spec/contracts/context-source-v0.md) | Reference material such as memories for Main Chat turns (provisional) |
 | [Observers](spec/contracts/observer-v0.md) | Projected Host events (provisional) |
 | [Manifest schema](schemas/amadeus-extension.v0.schema.json) | JSON Schema for `amadeus-extension.json` |
-| [Examples](examples/) | Five example packages covering every contribution kind |
+| [Examples](examples/) | Six manifest examples; the experimental Host supports only its documented subset |
 
 In short:
 
 - An extension is a package with one `amadeus-extension.json`. It never imports Amadeus internals.
-- Extension code runs in its own process and Python environment and reaches Amadeus only through the protocol.
+- Process contributions run in their own process and Python environment and reach Amadeus only through the protocol. Resource-only packages do not execute code during preparation.
 - The first experimental profile rejects all Host capability requests and stores no Grants; broader permission design is provisional.
-- In the Amadeus experiment, installation, configuration, explicit version updates, enable/disable, selection and removal take effect after restarting the backend, consistently with built-in settings. Runner crash recovery stays inside the proxy.
+- Pure frontend packages apply immediately. Packages with backend contributions retain one loaded version until backend restart. Disabling or removing a mixed package closes its frontend contributions immediately while clearly reporting the old backend awaiting shutdown. Runner crash recovery stays inside the proxy.
 
 Agent Skills can be installed once and bound to selected Codex, ACP and Pi
 Agents in the experimental Host. Unchanged native sessions resume; changing
