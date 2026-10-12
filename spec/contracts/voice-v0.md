@@ -95,8 +95,12 @@ Rules:
   later and MUST use bounded timeouts. The Host immediately stops delivering
   cancelled audio and discards late chunks. Unacknowledged cancellations count
   against the two-request admission bound until a terminal response or process
-  exit. There is no two-second crash rule: cancellation latency alone MUST NOT
-  consume the Runner crash-restart budget or terminate unrelated synthesis.
+  exit. Cancellation completing within a documented cleanup grace period MUST
+  NOT restart the Runner or consume its restart budget. The Host MUST bound that
+  grace period: an overdue cancellation may terminate the process to reclaim
+  capacity, using the same bounded recovery budget as other Runner failures.
+  It MUST NOT replay any admitted utterance. The experimental Host uses ten
+  seconds; exhausted recovery reports an error rather than an active full voice.
 - The Host MAY send up to two concurrent requests to one backend so it can
   synthesize ahead. A backend MAY process them one after the other but answers
   each.
