@@ -6,14 +6,57 @@ wheel-only installation; neither this command nor the installer fetches an SDK.
 from __future__ import annotations
 
 import argparse
+import base64
+import csv
+import hashlib
+import io
 import os
 from pathlib import Path
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def _canonicalize_wheel(source: Path, target: Path) -> None:
+    """Remove backend OS differences; rebuild RECORD from the delivered bytes.
+
+    This is the small stdlib SDK's build output, not an extension installer.
+    Stored ZIP entries avoid a dependency on the host's zlib implementation.
+    """
+    with zipfile.ZipFile(source) as archive:
+        records = [name for name in archive.namelist() if name.endswith('.dist-info/RECORD')]
+        if len(records) != 1:
+            raise ValueError('SDK wheel must have exactly one RECORD')
+        record = records[0]
+        contents = {}
+        for member in archive.infolist():
+            if member.is_dir() or member.filename == record:
+                continue
+            payload = archive.read(member)
+            if (member.filename.endswith(('.py', '.txt'))
+                    or Path(member.filename).name in {'METADATA', 'WHEEL', 'LICENSE'}):
+                payload = payload.replace(b'\r\n', b'\n')
+            contents[member.filename] = payload
+    rows = io.StringIO(newline='')
+    writer = csv.writer(rows, lineterminator='\n')
+    for name in sorted(contents):
+        payload = contents[name]
+        digest = base64.urlsafe_b64encode(hashlib.sha256(payload).digest()).rstrip(b'=').decode('ascii')
+        writer.writerow((name, 'sha256=' + digest, len(payload)))
+    writer.writerow((record, '', ''))
+    contents[record] = rows.getvalue().encode('utf-8')
+    with zipfile.ZipFile(target, 'w', compression=zipfile.ZIP_STORED) as archive:
+        for name in [*sorted(name for name in contents if name != record), record]:
+            info = zipfile.ZipInfo(name, date_time=(2023, 11, 14, 22, 13, 20))
+            info.create_system = 3
+            info.external_attr = (stat.S_IFREG | 0o644) << 16
+            info.compress_type = zipfile.ZIP_STORED
+            archive.writestr(info, contents[name])
 
 
 def build_sdk(source: Path, output: Path) -> Path:
@@ -44,9 +87,8 @@ def build_sdk(source: Path, output: Path) -> Path:
         # complete wheel, without removing the existing one on build failure.
         with tempfile.NamedTemporaryFile(dir=output, prefix='.sdk-', suffix='.tmp', delete=False) as staging:
             staging_path = Path(staging.name)
-            with built[0].open('rb') as stream:
-                shutil.copyfileobj(stream, staging)
         try:
+            _canonicalize_wheel(built[0], staging_path)
             os.replace(staging_path, target)
         finally:
             staging_path.unlink(missing_ok=True)

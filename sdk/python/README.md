@@ -1,6 +1,6 @@
 # Standalone Python extension SDK
 
-Implemented subset: [experimental Host profile 0.1](https://github.com/Code-Amadeus/Amadeus/blob/codex/extension-pilot/docs/extension_host_profile_v0.1.md).
+Implemented subset: [experimental Host profile 0.1 snapshot](https://github.com/Code-Amadeus/Amadeus/blob/55e62ab64846cf169bdb0c5e71ed0c31a29f76a5/docs/extension_host_profile_v0.1.md).
 This SDK provides the TTS Runner API. MCP and Skill packages share installation
 and lifecycle, but use their own native interfaces and do not call this API.
 
@@ -68,11 +68,22 @@ No public PyPI release is implied by this draft. Both compatible version ranges
 and exact requirements are supported. SDK licensing does not license external
 voices/assets or guarantee the legal status of an arbitrary combined program.
 
-Build offline after installing the pinned developer requirements:
+Build with CPython 3.12.10. Install the hash-locked developer requirements from
+the repository root, then build offline:
 
 ```sh
+python -m pip install --require-hashes -r requirements-dev.txt
 python tools/build_sdk.py --output-dir dist
 ```
 
-The build uses a fixed timestamp for reproducible wheel bytes and includes
-PEP 639 license metadata. Backend tooling is build-only; runtime is stdlib-only.
+The build normalizes SDK text/metadata to LF, fixes ZIP timestamps and Unix
+regular-file permissions, sorts entries and regenerates every RECORD hash/size.
+Entries use stored (uncompressed) ZIP data so zlib versions cannot alter the
+artifact. The small size increase keeps the output byte-identical across the
+qualified Windows and Linux builders. CI builds on both and compares the actual
+wheel bytes; same-machine repetition alone is insufficient evidence.
+
+The wheel includes PEP 639 license metadata. Backend tooling is build-only;
+runtime remains stdlib-only with Python >=3.11. The pinned build interpreter
+does not narrow that runtime requirement. The profile link above names a fixed
+Host commit, so deleting a development branch does not change the link.

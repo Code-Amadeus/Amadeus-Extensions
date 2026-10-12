@@ -44,7 +44,7 @@ claims of production qualification.
 To validate a manifest or a package directory:
 
 ```bash
-python -m pip install -r requirements-dev.txt
+python -m pip install --require-hashes -r requirements-dev.txt
 python tools/validate_manifest.py examples/mimo-tts
 python -m pytest
 ```
