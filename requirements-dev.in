@@ -1,0 +1,5 @@
+# Direct development dependencies; compile with uv 0.12.8 for CPython 3.12.10.
+jsonschema==4.26.0
+pytest==9.0.3
+setuptools==83.0.0
+wheel==0.47.0

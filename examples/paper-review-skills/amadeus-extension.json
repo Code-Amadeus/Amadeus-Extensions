@@ -1,0 +1,28 @@
+{
+  "license": "MIT-0",
+  "schema": "amadeus.extension/v0",
+  "id": "com.example.paper-review-skills",
+  "version": "1.0.0",
+  "display_name": { "en": "Paper review skills", "zh-CN": "论文审阅技能" },
+  "description": {
+    "en": "A methodical paper-review workflow for Work Providers that support Agent Skills.",
+    "zh-CN": "为支持 Agent Skills 的 Work Provider 提供一套系统的论文审阅流程。"
+  },
+  "author": { "name": "Example Author" },
+  "license": "Apache-2.0",
+  "engines": { "amadeus_host_api": ">=0.1,<0.2" },
+  "runtime": { "kind": "none" },
+  "contributes": {
+    "skill": [
+      {
+        "id": "paper-review",
+        "contract": "amadeus.skill/v0",
+        "path": "skills/paper-review",
+        "summary": {
+          "en": "Summarize claims, check evidence and methods, and list questions for the authors.",
+          "zh-CN": "梳理论文主张，检查证据与方法，并列出给作者的问题。"
+        }
+      }
+    ]
+  }
+}

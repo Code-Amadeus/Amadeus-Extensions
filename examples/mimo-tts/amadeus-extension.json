@@ -1,0 +1,63 @@
+{
+  "license": "MIT-0",
+  "schema": "amadeus.extension/v0",
+  "id": "com.example.mimo-tts",
+  "version": "0.1.0",
+  "display_name": { "en": "MiMo TTS", "zh-CN": "MiMo 语音合成" },
+  "description": {
+    "en": "Speaks Amadeus replies through the Xiaomi MiMo speech API. Illustrative example; field values are not a statement about the service.",
+    "zh-CN": "通过小米 MiMo 语音 API 朗读 Amadeus 的回复。仅为示例，字段取值不代表该服务的实际能力。"
+  },
+  "author": { "name": "Example Author" },
+  "license": "MIT",
+  "engines": {
+    "amadeus_host_api": ">=0.1,<0.2",
+    "platforms": ["win32", "darwin", "linux"]
+  },
+  "runtime": {
+    "kind": "python",
+    "entry": "amadeus_ext_mimo_tts:extension",
+    "requires_python": ">=3.12"
+  },
+  "contributes": {
+    "voice_backend": [
+      {
+        "id": "mimo",
+        "contract": "amadeus.voice.tts/v0",
+        "role": "tts",
+        "deployment": "remote",
+        "languages": ["en"],
+        "streaming": true,
+        "title": { "en": "MiMo speech API", "zh-CN": "MiMo 语音 API" }
+      }
+    ]
+  },
+  "config": {
+    "base_url": {
+      "type": "url",
+      "title": { "en": "API base URL", "zh-CN": "API 地址" },
+      "default": "https://api.xiaomimimo.com/v1",
+      "required": true
+    },
+    "api_key": {
+      "type": "string",
+      "title": { "en": "API key", "zh-CN": "API 密钥" },
+      "secret": true,
+      "required": true
+    },
+    "model": {
+      "type": "string",
+      "title": { "en": "Model", "zh-CN": "模型" },
+      "default": "mimo-v2.5-tts"
+    },
+    "voice": {
+      "type": "enum",
+      "title": { "en": "Voice", "zh-CN": "音色" },
+      "default": "Mia",
+      "options": ["冰糖", "茉莉", "苏打", "白桦", "Mia", "Chloe", "Milo", "Dean"]
+    }
+  },
+  "permissions": {
+    "os": { "network": ["api.xiaomimimo.com"] }
+  }
+}
