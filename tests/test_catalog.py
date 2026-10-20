@@ -508,3 +508,30 @@ def test_github_reviewer_identity_is_case_insensitive():
     data["entries"][0]["review"]["reviewer"] = "FIXTURE-AUTHOR"
     with pytest.raises(ValueError, match="independent reviewer"):
         validate_index(data)
+
+
+def test_display_is_derived_without_config_defaults_or_environment_values():
+    from catalog import artifact_display
+
+    manifest = {
+        "display_name": "Fixture",
+        "description": "<script>plain text</script>",
+        "config": {"credential": {"default": "synthetic-private-value"}},
+        "permissions": {"os": {"network": ["example.test"]}},
+        "contributes": {
+            "mcp_server": [
+                {
+                    "id": "notes",
+                    "transport": "stdio",
+                    "command": "${python}",
+                    "args": ["-m", "notes"],
+                    "env": {"TOKEN": "synthetic-private-value"},
+                }
+            ]
+        },
+    }
+    result = artifact_display(manifest)
+    assert result["access"]["services"][0]["command"] == "${python}"
+    assert result["access"]["os"] == manifest["permissions"]["os"]
+    assert "synthetic-private-value" not in json.dumps(result)
+    assert result["description"] == manifest["description"]

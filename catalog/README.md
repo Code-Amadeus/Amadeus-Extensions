@@ -112,3 +112,5 @@ installation rechecks remain S1 obligations.
 Display strings are untrusted plain text. S2 must render no remote images and
 must validate HTTPS homepage links in main before opening an external browser.
 The current bootstrap and tests do not certify an old Electron client parser.
+
+S2 detail views consume generated `display.access`: declared OS access and TTS/MCP deployment, command/arguments or endpoint templates. Configuration defaults, bearer tokens and environment values are excluded. Older entries without this optional display fact remain readable and must show that access details are unavailable until wheel inspection. This does not change catalog format or runtime contracts.
