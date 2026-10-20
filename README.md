@@ -53,6 +53,11 @@ python tools/validate_manifest.py examples/mimo-tts
 python -m pytest
 ```
 
+## Curated catalog experiment
+
+See [catalog tooling and review policy](catalog/README.md). The empty bootstrap
+contains no reviewed packages; the Host store/download UI is not implemented.
+
 ## Current design direction
 
 ### Capability discovery within a prompt budget
