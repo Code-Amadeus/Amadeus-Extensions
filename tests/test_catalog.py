@@ -501,3 +501,10 @@ def test_committed_generator_is_reproducible_and_checks_actual_digest(
             python,
             previous=previous,
         )
+
+
+def test_github_reviewer_identity_is_case_insensitive():
+    data = index()
+    data["entries"][0]["review"]["reviewer"] = "FIXTURE-AUTHOR"
+    with pytest.raises(ValueError, match="independent reviewer"):
+        validate_index(data)

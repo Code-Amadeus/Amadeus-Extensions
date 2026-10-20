@@ -1,8 +1,9 @@
 # Curated catalog v1 (experimental, no public store yet)
 
 This directory defines distribution facts, not new extension execution rights.
-The official index will be the HTTPS raw `catalog/index.json` on protected main
-of Code-Amadeus/Amadeus-Extensions. There is no signature in v1: repository access,
+The sole official index URL will be
+`https://raw.githubusercontent.com/Code-Amadeus/Amadeus-Extensions/main/catalog/index.json`
+on protected main. There is no signature in v1: repository access,
 branch protection, independent review, maintainer 2FA and least-privilege Actions
 are the trust root. These publication controls must be verified before S3.
 No real package is reviewed or published by the empty sequence-0 bootstrap.
@@ -21,7 +22,7 @@ Put one JSON file per artifact below `packages/`. Hand-maintained keys are exact
 ```
 
 A reviewer must verify the ownership evidence and independently inspect the
-actual wheel using [the public checklist](REVIEW_CHECKLIST.md). These JSON strings
+actual wheel using [the public checklist](REVIEW_CHECKLIST.md). Reviewer/maintainer identities are GitHub logins, compared without case. These JSON strings
 are review records, not authentication; protected-branch PR approval establishes
 their authority. Maintainer examples follow the same independent-review rule.
 Every new version is reviewed, including when the source repository appears unchanged.

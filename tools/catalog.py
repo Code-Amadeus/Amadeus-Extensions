@@ -176,10 +176,9 @@ def validate_review(source, package_id, digest):
         fail("publisher ownership does not cover this package ID")
     if review["sha256"] != digest or review["policy"] != POLICY["version"]:
         fail("this artifact needs its own current-policy review")
-    if (
-        review["reviewer"] in publisher["maintainers"]
-        or review["reviewer"] == publisher["id"]
-    ):
+    if review["reviewer"].casefold() in {
+        person.casefold() for person in [*publisher["maintainers"], publisher["id"]]
+    }:
         fail("independent reviewer is required, including reference packages")
     https_url(publisher["evidence"])
     https_url(review["evidence"])
