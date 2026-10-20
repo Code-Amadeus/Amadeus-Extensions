@@ -4,7 +4,10 @@ Public design direction and discussion for the Amadeus extension system.
 
 > **Status: Draft specification v0.1**
 >
-> A first draft of the extension protocol is available for discussion. Unmerged Amadeus experiments implement TTS/MCP/Skill lifecycle and data-only desktop themes; no stable SDK has been released. Interfaces and compatibility guarantees may change until 1.0.
+> A first draft of the extension protocol is available for discussion. Amadeus main implements an experimental subset with TTS/MCP/Skill lifecycle and data-only desktop themes; no stable SDK has been released. Interfaces and compatibility guarantees may change until 1.0.
+
+The implemented Host subset is documented in the [Host profile](https://github.com/Code-Amadeus/Amadeus/blob/fd17e707d8793480003f929bc8c78a8d134e41b5/docs/extension_host_profile_v0.1.md).
+Manifest validation here is not a claim that every draft contribution can run.
 
 ## Why this repository exists
 
