@@ -56,3 +56,21 @@ Not implemented here: Host network fetch or mirrors, durable safety settings,
 activation bans, store UI, user-triggered update flows, real public review approvals,
 repository governance changes, or external-author qualification. No stable SDK or
 new runtime contribution is introduced.
+
+
+## S2 display follow-up (2026-10-21, local experiment)
+
+Commit `58d3892d55c6a7ec6f8626153f503291bb10ab9a` adds optional generated
+`display.access` for the Host detail view. It excludes configuration defaults,
+environment values and bearer tokens; publication and runtime contracts are unchanged.
+Local `tests/test_catalog.py`: 18 passed, 11 skipped because no explicit historical
+1840c8e Host checkout was supplied for those cases. Ruff passed. Those skipped fixed
+Host checks are not claimed as requalified here.
+
+Host experiment `24d410e47b920d69445a3ced5163df676180321f` pins this generator separately
+from its SDK/manifest source and runs the real renderer/IPC/net/installer journey.
+Its `docs/verification/extensions/community-preview-batch4-2026-10-21.md` records the
+27-check UI qualification with actual reference wheels. Catalog ownership/review data
+in that journey is fixture authority, not real approvals. No index publication or main
+merge occurred; the bootstrap remains empty. This section supplements the S0 baseline
+above, rather than claiming its historical fixed-checker CI has rerun.
