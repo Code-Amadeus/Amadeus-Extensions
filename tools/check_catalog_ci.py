@@ -33,6 +33,12 @@ def main():
     args.evidence.mkdir(parents=True, exist_ok=True)
     profile = verify_host(args.host, args.python)
     previous = read_json(ROOT / "catalog/index.json")
+    candidate_safety = {
+        **previous,
+        "sequence": previous["sequence"] + 1,
+        "security": read_json(args.proposal / "catalog/security.json"),
+    }
+    validate_transition(previous, candidate_safety)
     # Input PR: check actual wheels and emit diffs. The PR does not grant publication authority.
     for path in sorted((args.proposal / "catalog/packages").rglob("*.json")):
         source = read_json(path)
