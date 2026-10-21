@@ -74,3 +74,26 @@ Its `docs/verification/extensions/community-preview-batch4-2026-10-21.md` record
 in that journey is fixture authority, not real approvals. No index publication or main
 merge occurred; the bootstrap remains empty. This section supplements the S0 baseline
 above, rather than claiming its historical fixed-checker CI has rerun.
+
+
+## S3 local review preparation (2026-10-21)
+
+`e09f431` adds unreviewed reference dossiers and current client status links.
+The eight candidate wheels pass the fixed `1840c8e` exported static checker and
+curated-v1 policy; full inventories/candidate-version diffs are recorded under
+`review-candidates/`. No catalog approval, ownership claim, artifact URL or safety
+publication was added. The bootstrap remains empty.
+
+Host code `ee45e337428de4ccd21d9f0252497a5c49a32270` packages the checker closure and
+qualifies actual source and packaged shells with 15 existing shell checks plus
+14 plugin checks: theme, mirror update, offline state, Tone Runner and Notes MCP.
+Confirmations and index authority are fixtures. Fixed unmodified S1/S2 readers
+accept compatible neighbors and understood safety beside future entries. The Host's
+`docs/verification/extensions/community-preview-batch5-2026-10-21.md` records hashes,
+exact dirty/commit boundaries and limitations. Catalog tests here remain 18 passed,
+11 explicitly skipped fixed-checkout cases; exported checker evidence is separate.
+
+Read-only GitHub configuration checks found no main protection/applicable rules,
+read-only default workflow tokens with no PR approval permission, and no enforced
+organization 2FA. Individual maintainer 2FA is unverified. No settings were changed;
+these remain release gates, alongside independent review and public reachable pins.
