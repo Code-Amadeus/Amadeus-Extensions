@@ -96,8 +96,9 @@ It stops catalog installation/recommendation, not execution of existing local co
 `status` is `blocked` or `allowed`, `reason` is `security` or `security-resolved`,
 with evidence and the publication sequence that changed the decision. A known
 fact cannot disappear; explicit unban requires a higher publication sequence.
-Safety applies to both local and catalog installations. S1 owns durable settings,
-backup recovery and activation enforcement; none of that client behavior exists yet.
+Safety applies to both local and catalog installations. The Host experiment now implements durable settings,
+backup recovery and activation enforcement; see its `docs/extension_catalog.md`.
+These local changes still require Host integration and release qualification.
 
 Stable index structure is validated without running the full manifest validator.
 Unknown contribution kind, role, contract, runtime or delivery makes that entire
@@ -107,10 +108,20 @@ Unknown format major, invalid safety structure or identity conflicts reject the
 new snapshot, retaining prior safety/high-water facts in S1. Shared examples are
 in `fixtures/compatibility.json`; the Python compatibility function specifies the
 capability part only. Host API/Python/platform/dependency checks and main-process
-installation rechecks remain S1 obligations.
+installation rechecks are implemented by the Host experiment, separately from this publisher.
 
-Display strings are untrusted plain text. S2 must render no remote images and
-must validate HTTPS homepage links in main before opening an external browser.
-The current bootstrap and tests do not certify an old Electron client parser.
+Display strings are untrusted plain text. The experimental S2 client renders no remote images and
+validates HTTPS homepage links in main before opening an external browser.
+Host S3 preparation records fixed old-reader cross-checks; this repository alone
+does not certify a released Electron client.
 
 S2 detail views consume generated `display.access`: declared OS access and TTS/MCP deployment, command/arguments or endpoint templates. Configuration defaults, bearer tokens and environment values are excluded. Older entries without this optional display fact remain readable and must show that access details are unavailable until wheel inspection. This does not change catalog format or runtime contracts.
+
+
+## First catalog review preparation
+
+[Candidate review materials](review-candidates/README.md) inventory exact reference
+wheel bytes and static checks. They are not catalog entries or approvals. Keep the
+bootstrap empty until independent review, public artifacts, protected publication
+and final release qualification are complete. The Host experimental S3 checklist
+is `docs/verification/extensions/store-v1.md`; no release is implied by this material.

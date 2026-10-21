@@ -1,0 +1,2441 @@
+{
+  "review_status": "not_reviewed",
+  "source_host_commit": "1840c8e4f646992ddaebea3139c8895f29743a8f",
+  "generator_commit": "58d3892d55c6a7ec6f8626153f503291bb10ab9a",
+  "platform": "win32",
+  "python": "3.12.10",
+  "requirements_sha256": "eca122787362dc7d39b309b931c5e17ce7fb0507f79524589f2978bb018c17e7",
+  "checker_files": {
+    "agent_host/__init__.py": "e0beb1b2027bc5484e2038279f543970ab06a7830394a510d4618df5d8450e04",
+    "agent_host/skills.py": "f7407f6d617b849354816470415ceb0c8985f5c300157845c40d1572bd2720be",
+    "pyproject.toml": "1bb4c7d83082bd76f4fbc079457c44eca944af7b5c0d1031493ed4d3365db18d",
+    "server/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "server/extensions/__init__.py": "4a8205c2b8537721b4a8dca066e5c3a2d96e1248d01fa6368ebcec4de5762f9f",
+    "server/extensions/amadeus-extension.v0.schema.json": "d8a47722fe2a154b5d92c0411f21f4e06bd29885c18d374ba934feb8dc9641f7",
+    "server/extensions/manifest.py": "966bc24d753e69f64f8898f5caaa9c86fab092b5a82d77da9a7c5dec9e84de97",
+    "server/extensions/package.py": "120ce9cbcb2ceb0797099906c6ef4d3139b801550d3883f7a417b88b70f169af",
+    "server/extensions/profile.json": "c62538270da9c82f6fe85303175a739ab35816863140a21e0a298515aaf48314",
+    "server/extensions/profile.py": "b5e6edfc0edc86f693af9e7a079db216d89685a44126ee55694b4f50ab821e90",
+    "server/extensions/protocol-source.json": "347906c1f8dc232b84ad0364aab7c14655ae9f0bcaea23dfe7072fe970529500",
+    "server/extensions/runner.py": "ff85336fb5b1c15b2ee3adb1533dede2116bb66b0f709485ba51d9845b9f3627",
+    "server/extensions/runtime.py": "3aa95347a01feaabb50aef6540210f825ebcf742ca030e061ac42830fddc92e3",
+    "server/extensions/sdk.py": "b4c2f17dc4acfc24ce9db0bdc64f03438a31d598c4f4680984c4de21b6be0663",
+    "server/extensions/snapshot.py": "7d26a0d2d6f2a2fb9ba217f1b15d20935c0d1b6ac9e733638f6c9248693143c5",
+    "server/extensions/theme-tokens.v0.json": "deffcdb549add19f09e49bdf5036b6d856c3f324f983947b3e9a7b83c611c9e1",
+    "server/extensions/tts.py": "673e26fa921bebca050f007ad3ccd890e8f3b6cce06e61b297f09b2cacd990e7",
+    "tools/extension_package.py": "071bef1fcaf9d766c9aaf6697fba223b46b8ac5f47090141de85671a7ea24f88",
+    "tools/requirements-extension-authoring.txt": "eca122787362dc7d39b309b931c5e17ce7fb0507f79524589f2978bb018c17e7"
+  },
+  "artifacts": [
+    {
+      "id": "com.example.handoff-skill",
+      "version": "0.1.0",
+      "filename": "amadeus_example_handoff_skill-0.1.0-py3-none-any.whl",
+      "sha256": "20571002ac5be0f90720d845af0c32c3168cda508ad83acf61ac0a71861c7fab",
+      "size": 4316,
+      "host_static_check": "passed",
+      "catalog_static_policy": "passed",
+      "license": "MIT-0",
+      "review_status": "not_reviewed",
+      "inventory": [
+        {
+          "path": "amadeus_example_handoff/__init__.py",
+          "status": "added",
+          "before": null,
+          "after": "f58538f7c6e81df7a22ca20f2896e825c9f0c2789196d9c610d11d0187df30cd",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+\"\"\"Declarative resources; the Host never imports this package.\"\"\""
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff/amadeus-extension.json",
+          "status": "added",
+          "before": null,
+          "after": "5898615d073b9c279ac161810230d430c2c30e365b075a4c0e61bd0d14a989d0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+{\"license\": \"MIT-0\", \"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.handoff-skill\", \"version\": \"0.1.0\", \"display_name\": {\"en\": \"Work handoff Skill\", \"zh-CN\": \"\\u5de5\\u4f5c\\u4ea4\\u63a5 Skill\"}, \"description\": {\"en\": \"Write a concise handoff using the supplied facts and a packaged report layout.\", \"zh-CN\": \"\\u6839\\u636e\\u63d0\\u4f9b\\u7684\\u4e8b\\u5b9e\\u53ca\\u968f\\u5305\\u6a21\\u677f\\u6574\\u7406\\u5de5\\u4f5c\\u4ea4\\u63a5\\u3002\"}, \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\", \"platforms\": [\"win32\", \"darwin\", \"linux\"]}, \"runtime\": {\"kind\": \"none\"}, \"contributes\": {\"skill\": [{\"id\": \"handoff\", \"contract\": \"amadeus.skill/v0\", \"path\": \"skills/handoff-brief\", \"title\": {\"en\": \"Work handoff\", \"zh-CN\": \"\\u5de5\\u4f5c\\u4ea4\\u63a5\"}}]}}"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff/skills/handoff-brief/SKILL.md",
+          "status": "added",
+          "before": null,
+          "after": "6a714e52fc79ebe16218a27c2c380fdb6e2218f134dbc836b3d345270167c3db",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,13 @@",
+            "+---",
+            "+name: handoff-brief",
+            "+description: Prepare a concise work handoff or completion report from supplied changes, verification results and remaining work.",
+            "+---",
+            "+",
+            "+Read `references/layout.json` before drafting. Use its heading and section names",
+            "+in order, and put its revision marker at the bottom. Do not infer that a test was",
+            "+run or an item completed unless the supplied evidence says so.",
+            "+",
+            "+Read the user's specified input file. Its JSON has `changes`, `verification` and",
+            "+`remaining` lists. Write the requested Markdown output in the authorized work",
+            "+directory, using one bullet per supplied item. If no output path was given,",
+            "+return the report in the response. Do not edit source code or contact services."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff/skills/handoff-brief/references/layout.json",
+          "status": "added",
+          "before": null,
+          "after": "a85d517e126db69aa6966507709d0bec5e11efe4592e9d1b57d6f61cc5c70032",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,5 @@",
+            "+{",
+            "+  \"heading\": \"Work handoff\",",
+            "+  \"sections\": [\"Changes\", \"Verification\", \"Remaining work\"],",
+            "+  \"revision_marker\": \"handoff-layout-v1\"",
+            "+}"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.1.0.dist-info/METADATA",
+          "status": "added",
+          "before": null,
+          "after": "b32735d5972090302c1ed60f7dacd6be4e8f61f026d1eb99a766cd9a2f2587c2",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+Metadata-Version: 2.4",
+            "+Name: amadeus-example-handoff-skill",
+            "+Version: 0.1.0",
+            "+Summary: Portable Work handoff Skill for selected Amadeus Agents",
+            "+License-Expression: MIT-0",
+            "+Requires-Python: >=3.12",
+            "+License-File: LICENSE",
+            "+Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.1.0.dist-info/RECORD",
+          "status": "added",
+          "before": null,
+          "after": "42041f5a4aa209f4371ffa074d8142688022e477be8d127e706624bdcf72c52a",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,10 @@",
+            "+amadeus_example_handoff/__init__.py,sha256=9YU498boHfeiLKIPKJboJcnwwniRltnGENEdAYffMM0,66",
+            "+amadeus_example_handoff/amadeus-extension.json,sha256=WJhhXQc7nCeawWGBAjDUMMLDDjZbB1pMDmG9DRSpidA,774",
+            "+amadeus_example_handoff/skills/handoff-brief/SKILL.md,sha256=anFOUvx56-FiGKJ8LDgP224iGPE028g2s9NFJwFnw9s,700",
+            "+amadeus_example_handoff/skills/handoff-brief/references/layout.json,sha256=qF1RfhJttpqmlmUHcJ0L7F4R7-RZLp0bV9b2HMXHADI,135",
+            "+amadeus_example_handoff_skill-0.1.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "+amadeus_example_handoff_skill-0.1.0.dist-info/METADATA,sha256=syc11ZcgkDAsHtYPfazWvk6PYfAm0euZp2bNmi8lh8I,240",
+            "+amadeus_example_handoff_skill-0.1.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "+amadeus_example_handoff_skill-0.1.0.dist-info/entry_points.txt,sha256=ktRh6xchLranST5PLcWhn3Melr1ZkOT1vXWkOjOYkrM,73",
+            "+amadeus_example_handoff_skill-0.1.0.dist-info/top_level.txt,sha256=gUkMLQe1uQhDx8u9MdKH9xeSSEmBCKdk45n1eaxbo0c,24",
+            "+amadeus_example_handoff_skill-0.1.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.1.0.dist-info/WHEEL",
+          "status": "added",
+          "before": null,
+          "after": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,5 @@",
+            "+Wheel-Version: 1.0",
+            "+Generator: setuptools (83.0.0)",
+            "+Root-Is-Purelib: true",
+            "+Tag: py3-none-any",
+            "+"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.1.0.dist-info/entry_points.txt",
+          "status": "added",
+          "before": null,
+          "after": "92d461eb17212eb6a7493e4f2dc5a19f731e96bd5990e4f5bd75a43a339892b3",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,2 @@",
+            "+[amadeus.extensions]",
+            "+com.example.handoff-skill = amadeus_example_handoff"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.1.0.dist-info/licenses/LICENSE",
+          "status": "added",
+          "before": null,
+          "after": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,7 @@",
+            "+MIT No Attribution",
+            "+",
+            "+Copyright (c) 2026 Amadeus contributors",
+            "+",
+            "+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "+",
+            "+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.1.0.dist-info/top_level.txt",
+          "status": "added",
+          "before": null,
+          "after": "81490c2d07b5b90843c7cbbd31d287f7179248498108a764e399f579ac5ba347",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+amadeus_example_handoff"
+          ],
+          "diff_truncated": false
+        }
+      ],
+      "previous_candidate_diff": null
+    },
+    {
+      "id": "com.example.handoff-skill",
+      "version": "0.2.0",
+      "filename": "amadeus_example_handoff_skill-0.2.0-py3-none-any.whl",
+      "sha256": "ac0c09ae15d842c6057312971ec0118ab3bf07643a68d0129519fea635b7fe87",
+      "size": 4318,
+      "host_static_check": "passed",
+      "catalog_static_policy": "passed",
+      "license": "MIT-0",
+      "review_status": "not_reviewed",
+      "inventory": [
+        {
+          "path": "amadeus_example_handoff/__init__.py",
+          "status": "added",
+          "before": null,
+          "after": "f58538f7c6e81df7a22ca20f2896e825c9f0c2789196d9c610d11d0187df30cd",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+\"\"\"Declarative resources; the Host never imports this package.\"\"\""
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff/amadeus-extension.json",
+          "status": "added",
+          "before": null,
+          "after": "e9e93ec64070f964e474adedc7bf3e157a17e5606cd811a4f60970e0e8ac223a",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+{\"license\": \"MIT-0\", \"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.handoff-skill\", \"version\": \"0.2.0\", \"display_name\": {\"en\": \"Work handoff Skill\", \"zh-CN\": \"\\u5de5\\u4f5c\\u4ea4\\u63a5 Skill\"}, \"description\": {\"en\": \"Write a concise handoff using the supplied facts and a packaged report layout.\", \"zh-CN\": \"\\u6839\\u636e\\u63d0\\u4f9b\\u7684\\u4e8b\\u5b9e\\u53ca\\u968f\\u5305\\u6a21\\u677f\\u6574\\u7406\\u5de5\\u4f5c\\u4ea4\\u63a5\\u3002\"}, \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\", \"platforms\": [\"win32\", \"darwin\", \"linux\"]}, \"runtime\": {\"kind\": \"none\"}, \"contributes\": {\"skill\": [{\"id\": \"handoff\", \"contract\": \"amadeus.skill/v0\", \"path\": \"skills/handoff-brief\", \"title\": {\"en\": \"Work handoff\", \"zh-CN\": \"\\u5de5\\u4f5c\\u4ea4\\u63a5\"}}]}}"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff/skills/handoff-brief/SKILL.md",
+          "status": "added",
+          "before": null,
+          "after": "6a714e52fc79ebe16218a27c2c380fdb6e2218f134dbc836b3d345270167c3db",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,13 @@",
+            "+---",
+            "+name: handoff-brief",
+            "+description: Prepare a concise work handoff or completion report from supplied changes, verification results and remaining work.",
+            "+---",
+            "+",
+            "+Read `references/layout.json` before drafting. Use its heading and section names",
+            "+in order, and put its revision marker at the bottom. Do not infer that a test was",
+            "+run or an item completed unless the supplied evidence says so.",
+            "+",
+            "+Read the user's specified input file. Its JSON has `changes`, `verification` and",
+            "+`remaining` lists. Write the requested Markdown output in the authorized work",
+            "+directory, using one bullet per supplied item. If no output path was given,",
+            "+return the report in the response. Do not edit source code or contact services."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff/skills/handoff-brief/references/layout.json",
+          "status": "added",
+          "before": null,
+          "after": "ac3dbdef43addd55851420525150b3ce6a217d5778d27bcdcfed26d6e41bc17f",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,5 @@",
+            "+{",
+            "+  \"heading\": \"Work handoff\",",
+            "+  \"sections\": [\"Changes\", \"Verification\", \"Remaining work\"],",
+            "+  \"revision_marker\": \"handoff-layout-v2\"",
+            "+}"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.2.0.dist-info/METADATA",
+          "status": "added",
+          "before": null,
+          "after": "8182ec867a5d21c44b062a14dc7674e536167a3a3310d88c8b19208a57dc5fc0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+Metadata-Version: 2.4",
+            "+Name: amadeus-example-handoff-skill",
+            "+Version: 0.2.0",
+            "+Summary: Portable Work handoff Skill for selected Amadeus Agents",
+            "+License-Expression: MIT-0",
+            "+Requires-Python: >=3.12",
+            "+License-File: LICENSE",
+            "+Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.2.0.dist-info/RECORD",
+          "status": "added",
+          "before": null,
+          "after": "86ee936cfbce04c6dc1631bf1186279081fb2cf55a85be747cd48dfa54c4bd3d",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,10 @@",
+            "+amadeus_example_handoff/__init__.py,sha256=9YU498boHfeiLKIPKJboJcnwwniRltnGENEdAYffMM0,66",
+            "+amadeus_example_handoff/amadeus-extension.json,sha256=6ek-xkBw-WTkdK3tx78-FXoX5WBs2BGk9glw4OisIjo,774",
+            "+amadeus_example_handoff/skills/handoff-brief/SKILL.md,sha256=anFOUvx56-FiGKJ8LDgP224iGPE028g2s9NFJwFnw9s,700",
+            "+amadeus_example_handoff/skills/handoff-brief/references/layout.json,sha256=rD2970Ot3VWFFCBSUVCzzmohfVd40nvNz-0m1uQbwX8,140",
+            "+amadeus_example_handoff_skill-0.2.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "+amadeus_example_handoff_skill-0.2.0.dist-info/METADATA,sha256=gYLshnpdIcRLBioU3HZ05TYWejozENiMixkgilfcX8A,240",
+            "+amadeus_example_handoff_skill-0.2.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "+amadeus_example_handoff_skill-0.2.0.dist-info/entry_points.txt,sha256=ktRh6xchLranST5PLcWhn3Melr1ZkOT1vXWkOjOYkrM,73",
+            "+amadeus_example_handoff_skill-0.2.0.dist-info/top_level.txt,sha256=gUkMLQe1uQhDx8u9MdKH9xeSSEmBCKdk45n1eaxbo0c,24",
+            "+amadeus_example_handoff_skill-0.2.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.2.0.dist-info/WHEEL",
+          "status": "added",
+          "before": null,
+          "after": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,5 @@",
+            "+Wheel-Version: 1.0",
+            "+Generator: setuptools (83.0.0)",
+            "+Root-Is-Purelib: true",
+            "+Tag: py3-none-any",
+            "+"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.2.0.dist-info/entry_points.txt",
+          "status": "added",
+          "before": null,
+          "after": "92d461eb17212eb6a7493e4f2dc5a19f731e96bd5990e4f5bd75a43a339892b3",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,2 @@",
+            "+[amadeus.extensions]",
+            "+com.example.handoff-skill = amadeus_example_handoff"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.2.0.dist-info/licenses/LICENSE",
+          "status": "added",
+          "before": null,
+          "after": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,7 @@",
+            "+MIT No Attribution",
+            "+",
+            "+Copyright (c) 2026 Amadeus contributors",
+            "+",
+            "+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "+",
+            "+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.2.0.dist-info/top_level.txt",
+          "status": "added",
+          "before": null,
+          "after": "81490c2d07b5b90843c7cbbd31d287f7179248498108a764e399f579ac5ba347",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+amadeus_example_handoff"
+          ],
+          "diff_truncated": false
+        }
+      ],
+      "previous_candidate_diff": [
+        {
+          "path": "amadeus_example_handoff/amadeus-extension.json",
+          "status": "modified",
+          "before": "5898615d073b9c279ac161810230d430c2c30e365b075a4c0e61bd0d14a989d0",
+          "after": "e9e93ec64070f964e474adedc7bf3e157a17e5606cd811a4f60970e0e8ac223a",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1 +1 @@",
+            "-{\"license\": \"MIT-0\", \"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.handoff-skill\", \"version\": \"0.1.0\", \"display_name\": {\"en\": \"Work handoff Skill\", \"zh-CN\": \"\\u5de5\\u4f5c\\u4ea4\\u63a5 Skill\"}, \"description\": {\"en\": \"Write a concise handoff using the supplied facts and a packaged report layout.\", \"zh-CN\": \"\\u6839\\u636e\\u63d0\\u4f9b\\u7684\\u4e8b\\u5b9e\\u53ca\\u968f\\u5305\\u6a21\\u677f\\u6574\\u7406\\u5de5\\u4f5c\\u4ea4\\u63a5\\u3002\"}, \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\", \"platforms\": [\"win32\", \"darwin\", \"linux\"]}, \"runtime\": {\"kind\": \"none\"}, \"contributes\": {\"skill\": [{\"id\": \"handoff\", \"contract\": \"amadeus.skill/v0\", \"path\": \"skills/handoff-brief\", \"title\": {\"en\": \"Work handoff\", \"zh-CN\": \"\\u5de5\\u4f5c\\u4ea4\\u63a5\"}}]}}",
+            "+{\"license\": \"MIT-0\", \"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.handoff-skill\", \"version\": \"0.2.0\", \"display_name\": {\"en\": \"Work handoff Skill\", \"zh-CN\": \"\\u5de5\\u4f5c\\u4ea4\\u63a5 Skill\"}, \"description\": {\"en\": \"Write a concise handoff using the supplied facts and a packaged report layout.\", \"zh-CN\": \"\\u6839\\u636e\\u63d0\\u4f9b\\u7684\\u4e8b\\u5b9e\\u53ca\\u968f\\u5305\\u6a21\\u677f\\u6574\\u7406\\u5de5\\u4f5c\\u4ea4\\u63a5\\u3002\"}, \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\", \"platforms\": [\"win32\", \"darwin\", \"linux\"]}, \"runtime\": {\"kind\": \"none\"}, \"contributes\": {\"skill\": [{\"id\": \"handoff\", \"contract\": \"amadeus.skill/v0\", \"path\": \"skills/handoff-brief\", \"title\": {\"en\": \"Work handoff\", \"zh-CN\": \"\\u5de5\\u4f5c\\u4ea4\\u63a5\"}}]}}"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff/skills/handoff-brief/references/layout.json",
+          "status": "modified",
+          "before": "a85d517e126db69aa6966507709d0bec5e11efe4592e9d1b57d6f61cc5c70032",
+          "after": "ac3dbdef43addd55851420525150b3ce6a217d5778d27bcdcfed26d6e41bc17f",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,5 +1,5 @@",
+            " {",
+            "   \"heading\": \"Work handoff\",",
+            "   \"sections\": [\"Changes\", \"Verification\", \"Remaining work\"],",
+            "-  \"revision_marker\": \"handoff-layout-v1\"",
+            "+  \"revision_marker\": \"handoff-layout-v2\"",
+            " }"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.1.0.dist-info/METADATA",
+          "status": "removed",
+          "before": "b32735d5972090302c1ed60f7dacd6be4e8f61f026d1eb99a766cd9a2f2587c2",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,8 +0,0 @@",
+            "-Metadata-Version: 2.4",
+            "-Name: amadeus-example-handoff-skill",
+            "-Version: 0.1.0",
+            "-Summary: Portable Work handoff Skill for selected Amadeus Agents",
+            "-License-Expression: MIT-0",
+            "-Requires-Python: >=3.12",
+            "-License-File: LICENSE",
+            "-Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.1.0.dist-info/RECORD",
+          "status": "removed",
+          "before": "42041f5a4aa209f4371ffa074d8142688022e477be8d127e706624bdcf72c52a",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,10 +0,0 @@",
+            "-amadeus_example_handoff/__init__.py,sha256=9YU498boHfeiLKIPKJboJcnwwniRltnGENEdAYffMM0,66",
+            "-amadeus_example_handoff/amadeus-extension.json,sha256=WJhhXQc7nCeawWGBAjDUMMLDDjZbB1pMDmG9DRSpidA,774",
+            "-amadeus_example_handoff/skills/handoff-brief/SKILL.md,sha256=anFOUvx56-FiGKJ8LDgP224iGPE028g2s9NFJwFnw9s,700",
+            "-amadeus_example_handoff/skills/handoff-brief/references/layout.json,sha256=qF1RfhJttpqmlmUHcJ0L7F4R7-RZLp0bV9b2HMXHADI,135",
+            "-amadeus_example_handoff_skill-0.1.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "-amadeus_example_handoff_skill-0.1.0.dist-info/METADATA,sha256=syc11ZcgkDAsHtYPfazWvk6PYfAm0euZp2bNmi8lh8I,240",
+            "-amadeus_example_handoff_skill-0.1.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "-amadeus_example_handoff_skill-0.1.0.dist-info/entry_points.txt,sha256=ktRh6xchLranST5PLcWhn3Melr1ZkOT1vXWkOjOYkrM,73",
+            "-amadeus_example_handoff_skill-0.1.0.dist-info/top_level.txt,sha256=gUkMLQe1uQhDx8u9MdKH9xeSSEmBCKdk45n1eaxbo0c,24",
+            "-amadeus_example_handoff_skill-0.1.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.1.0.dist-info/WHEEL",
+          "status": "removed",
+          "before": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,5 +0,0 @@",
+            "-Wheel-Version: 1.0",
+            "-Generator: setuptools (83.0.0)",
+            "-Root-Is-Purelib: true",
+            "-Tag: py3-none-any",
+            "-"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.1.0.dist-info/entry_points.txt",
+          "status": "removed",
+          "before": "92d461eb17212eb6a7493e4f2dc5a19f731e96bd5990e4f5bd75a43a339892b3",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,2 +0,0 @@",
+            "-[amadeus.extensions]",
+            "-com.example.handoff-skill = amadeus_example_handoff"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.1.0.dist-info/licenses/LICENSE",
+          "status": "removed",
+          "before": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,7 +0,0 @@",
+            "-MIT No Attribution",
+            "-",
+            "-Copyright (c) 2026 Amadeus contributors",
+            "-",
+            "-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "-",
+            "-THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.1.0.dist-info/top_level.txt",
+          "status": "removed",
+          "before": "81490c2d07b5b90843c7cbbd31d287f7179248498108a764e399f579ac5ba347",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1 +0,0 @@",
+            "-amadeus_example_handoff"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.2.0.dist-info/METADATA",
+          "status": "added",
+          "before": null,
+          "after": "8182ec867a5d21c44b062a14dc7674e536167a3a3310d88c8b19208a57dc5fc0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+Metadata-Version: 2.4",
+            "+Name: amadeus-example-handoff-skill",
+            "+Version: 0.2.0",
+            "+Summary: Portable Work handoff Skill for selected Amadeus Agents",
+            "+License-Expression: MIT-0",
+            "+Requires-Python: >=3.12",
+            "+License-File: LICENSE",
+            "+Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.2.0.dist-info/RECORD",
+          "status": "added",
+          "before": null,
+          "after": "86ee936cfbce04c6dc1631bf1186279081fb2cf55a85be747cd48dfa54c4bd3d",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,10 @@",
+            "+amadeus_example_handoff/__init__.py,sha256=9YU498boHfeiLKIPKJboJcnwwniRltnGENEdAYffMM0,66",
+            "+amadeus_example_handoff/amadeus-extension.json,sha256=6ek-xkBw-WTkdK3tx78-FXoX5WBs2BGk9glw4OisIjo,774",
+            "+amadeus_example_handoff/skills/handoff-brief/SKILL.md,sha256=anFOUvx56-FiGKJ8LDgP224iGPE028g2s9NFJwFnw9s,700",
+            "+amadeus_example_handoff/skills/handoff-brief/references/layout.json,sha256=rD2970Ot3VWFFCBSUVCzzmohfVd40nvNz-0m1uQbwX8,140",
+            "+amadeus_example_handoff_skill-0.2.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "+amadeus_example_handoff_skill-0.2.0.dist-info/METADATA,sha256=gYLshnpdIcRLBioU3HZ05TYWejozENiMixkgilfcX8A,240",
+            "+amadeus_example_handoff_skill-0.2.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "+amadeus_example_handoff_skill-0.2.0.dist-info/entry_points.txt,sha256=ktRh6xchLranST5PLcWhn3Melr1ZkOT1vXWkOjOYkrM,73",
+            "+amadeus_example_handoff_skill-0.2.0.dist-info/top_level.txt,sha256=gUkMLQe1uQhDx8u9MdKH9xeSSEmBCKdk45n1eaxbo0c,24",
+            "+amadeus_example_handoff_skill-0.2.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.2.0.dist-info/WHEEL",
+          "status": "added",
+          "before": null,
+          "after": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,5 @@",
+            "+Wheel-Version: 1.0",
+            "+Generator: setuptools (83.0.0)",
+            "+Root-Is-Purelib: true",
+            "+Tag: py3-none-any",
+            "+"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.2.0.dist-info/entry_points.txt",
+          "status": "added",
+          "before": null,
+          "after": "92d461eb17212eb6a7493e4f2dc5a19f731e96bd5990e4f5bd75a43a339892b3",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,2 @@",
+            "+[amadeus.extensions]",
+            "+com.example.handoff-skill = amadeus_example_handoff"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.2.0.dist-info/licenses/LICENSE",
+          "status": "added",
+          "before": null,
+          "after": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,7 @@",
+            "+MIT No Attribution",
+            "+",
+            "+Copyright (c) 2026 Amadeus contributors",
+            "+",
+            "+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "+",
+            "+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_handoff_skill-0.2.0.dist-info/top_level.txt",
+          "status": "added",
+          "before": null,
+          "after": "81490c2d07b5b90843c7cbbd31d287f7179248498108a764e399f579ac5ba347",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+amadeus_example_handoff"
+          ],
+          "diff_truncated": false
+        }
+      ]
+    },
+    {
+      "id": "com.example.notes-mcp",
+      "version": "0.1.0",
+      "filename": "amadeus_example_notes_mcp-0.1.0-py3-none-any.whl",
+      "sha256": "a249c1233ab259ead7d401619e5f898ce95dfff993fd0447b0a47d20c2869b5f",
+      "size": 5201,
+      "host_static_check": "passed",
+      "catalog_static_policy": "passed",
+      "license": "MIT-0",
+      "review_status": "not_reviewed",
+      "inventory": [
+        {
+          "path": "amadeus_example_notes/__init__.py",
+          "status": "added",
+          "before": null,
+          "after": "21ce9e48f50ffe58bbcffda4a37db8b7ead966b1500224165cb29febc90bd9ef",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+\"\"\"Local notes MCP example; independent from Amadeus and its execution authority.\"\"\""
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes/__main__.py",
+          "status": "added",
+          "before": null,
+          "after": "7db7e9920a2d07ed3dd369d7871d506dd63909fd8b310a3c2e2193f96328e161",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,96 @@",
+            "+\"\"\"A small stdio MCP service for package-owned notes; no Host imports.\"\"\"",
+            "+from __future__ import annotations",
+            "+",
+            "+import json",
+            "+import os",
+            "+import re",
+            "+import sys",
+            "+import tempfile",
+            "+from pathlib import Path",
+            "+",
+            "+",
+            "+_NAME = re.compile(r\"[a-zA-Z0-9_-]{1,64}\")",
+            "+_MAX_LINE = 128 * 1024",
+            "+_TOOLS = [",
+            "+    {\"name\": \"list_notes\", \"description\": \"List names of notes stored by this extension.\",",
+            "+     \"inputSchema\": {\"type\": \"object\", \"properties\": {}, \"additionalProperties\": False}},",
+            "+    {\"name\": \"read_note\", \"description\": \"Read one note from this extension's data directory.\",",
+            "+     \"inputSchema\": {\"type\": \"object\", \"properties\": {\"name\": {\"type\": \"string\"}}, \"required\": [\"name\"], \"additionalProperties\": False}},",
+            "+    {\"name\": \"save_note\", \"description\": \"Save a named note in this extension's data directory.\",",
+            "+     \"inputSchema\": {\"type\": \"object\", \"properties\": {\"name\": {\"type\": \"string\"}, \"text\": {\"type\": \"string\", \"maxLength\": 10000}}, \"required\": [\"name\", \"text\"], \"additionalProperties\": False}},",
+            "+]",
+            "+",
+            "+",
+            "+def _tool(name, arguments, root: Path):",
+            "+    if not isinstance(arguments, dict):",
+            "+        raise ValueError(\"Tool arguments must be an object\")",
+            "+    if root.is_symlink() or (hasattr(root, \"is_junction\") and root.is_junction()):",
+            "+        raise ValueError(\"Notes storage cannot be a link\")",
+            "+    root.mkdir(parents=True, exist_ok=True)",
+            "+    if name == \"list_notes\":",
+            "+        return json.dumps(sorted(item.stem for item in root.glob(\"*.txt\")",
+            "+                                 if item.is_file() and not item.is_symlink() and _NAME.fullmatch(item.stem)))",
+            "+    note = arguments.get(\"name\")",
+            "+    if not isinstance(note, str) or not _NAME.fullmatch(note):",
+            "+        raise ValueError(\"Note name must contain 1 to 64 letters, digits, underscores or hyphens\")",
+            "+    target = root / (note + \".txt\")",
+            "+    if target.is_symlink():",
+            "+        raise ValueError(\"Notes cannot be symbolic links\")",
+            "+    if name == \"read_note\":",
+            "+        if target.stat().st_size > 40000:",
+            "+            raise ValueError(\"Note exceeds the size limit\")",
+            "+        return target.read_text(encoding=\"utf-8\")",
+            "+    if name != \"save_note\":",
+            "+        raise ValueError(\"Unknown notes tool\")",
+            "+    text = arguments.get(\"text\")",
+            "+    if not isinstance(text, str) or len(text) > 10000:",
+            "+        raise ValueError(\"Note text must be at most 10000 characters\")",
+            "+    descriptor, temporary = tempfile.mkstemp(dir=root, prefix=\".note-\", suffix=\".tmp\")",
+            "+    try:",
+            "+        with os.fdopen(descriptor, \"w\", encoding=\"utf-8\") as output:",
+            "+            output.write(text)",
+            "+            output.flush()",
+            "+            os.fsync(output.fileno())",
+            "+        os.replace(temporary, target)",
+            "+    finally:",
+            "+        Path(temporary).unlink(missing_ok=True)",
+            "+    return \"Note saved.\"",
+            "+",
+            "+",
+            "+def serve(input_stream, output_stream, root: Path):",
+            "+    while raw := input_stream.readline(_MAX_LINE + 1):",
+            "+        if len(raw) > _MAX_LINE:",
+            "+            return",
+            "+        try:",
+            "+            request = json.loads(raw)",
+            "+        except (ValueError, UnicodeError):",
+            "+            continue",
+            "+        if not isinstance(request, dict) or \"id\" not in request:",
+            "+            continue",
+            "+        method, params = request.get(\"method\"), request.get(\"params\") or {}",
+            "+        response = {\"jsonrpc\": \"2.0\", \"id\": request[\"id\"]}",
+            "+        if method == \"initialize\":",
+            "+            response[\"result\"] = {\"protocolVersion\": params.get(\"protocolVersion\", \"2025-06-18\"),",
+            "+                                  \"capabilities\": {\"tools\": {\"listChanged\": False}},",
+            "+                                  \"serverInfo\": {\"name\": \"amadeus-example-notes\", \"version\": \"0.1.0\"}}",
+            "+        elif method == \"ping\":",
+            "+            response[\"result\"] = {}",
+            "+        elif method == \"tools/list\":",
+            "+            response[\"result\"] = {\"tools\": _TOOLS}",
+            "+        elif method == \"tools/call\":",
+            "+            try:",
+            "+                text = _tool(params.get(\"name\"), params.get(\"arguments\", {}), root)",
+            "+                response[\"result\"] = {\"content\": [{\"type\": \"text\", \"text\": text}], \"isError\": False}",
+            "+            except (ValueError, OSError):",
+            "+                response[\"result\"] = {\"content\": [{\"type\": \"text\", \"text\": \"The note operation failed; check its name and data directory.\"}], \"isError\": True}",
+            "+        else:",
+            "+            response[\"error\"] = {\"code\": -32601, \"message\": \"Method not found\"}",
+            "+        output_stream.write(json.dumps(response, ensure_ascii=True) + \"\\n\")",
+            "+        output_stream.flush()",
+            "+",
+            "+",
+            "+if __name__ == \"__main__\":",
+            "+    directory = os.environ.get(\"AMADEUS_NOTES_DIR\")",
+            "+    if not directory:",
+            "+        raise SystemExit(\"AMADEUS_NOTES_DIR is required\")",
+            "+    serve(sys.stdin, sys.stdout, Path(directory))"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes/amadeus-extension.json",
+          "status": "added",
+          "before": null,
+          "after": "f47482ba46558271b32f1e5a570db77439a16a3c3b3c51f899009a18c733af52",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+{\"license\": \"MIT-0\", \"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.notes-mcp\", \"version\": \"0.1.0\", \"display_name\": {\"en\": \"Local notes MCP\", \"zh-CN\": \"\\u672c\\u5730\\u7b14\\u8bb0 MCP\"}, \"description\": {\"en\": \"List, read and save notes in this package's own data directory through selected Work Providers.\", \"zh-CN\": \"\\u901a\\u8fc7\\u9009\\u5b9a\\u7684 Work Provider \\u5217\\u51fa\\u3001\\u8bfb\\u53d6\\u548c\\u4fdd\\u5b58\\u6b64\\u6269\\u5c55\\u6570\\u636e\\u76ee\\u5f55\\u4e2d\\u7684\\u7b14\\u8bb0\\u3002\"}, \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\", \"platforms\": [\"win32\"]}, \"runtime\": {\"kind\": \"python\", \"requires_python\": \">=3.12\"}, \"contributes\": {\"mcp_server\": [{\"id\": \"notes\", \"contract\": \"amadeus.mcp-server/v0\", \"transport\": \"stdio\", \"command\": \"${python}\", \"args\": [\"-I\", \"-m\", \"amadeus_example_notes\"], \"env\": {\"AMADEUS_NOTES_DIR\": \"${data}/notes\"}}]}}"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.1.0.dist-info/METADATA",
+          "status": "added",
+          "before": null,
+          "after": "0f4026b7c7603e2f64a976236a7b64cd85515111157601276f7590fa3c1979d7",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+Metadata-Version: 2.4",
+            "+Name: amadeus-example-notes-mcp",
+            "+Version: 0.1.0",
+            "+Summary: Independent local notes MCP package for Amadeus Work Providers",
+            "+License-Expression: MIT-0",
+            "+Requires-Python: >=3.12",
+            "+License-File: LICENSE",
+            "+Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.1.0.dist-info/RECORD",
+          "status": "added",
+          "before": null,
+          "after": "66a144c87ed61659ed85b310b2720236e9c5b29a894cc8a1b8c35a91f31ca9ca",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,9 @@",
+            "+amadeus_example_notes/__init__.py,sha256=Ic6eSPUP_li7z_2ko324t-rZZrFQAiQWXLKf68kL2e8,85",
+            "+amadeus_example_notes/__main__.py,sha256=fbfpkgotB-0902nXhx1QbdY5Cf2LMQo8LiGT-WMo4WE,4465",
+            "+amadeus_example_notes/amadeus-extension.json,sha256=9HSCukZVgnGzLx5aVw23dDmhajw7PFH4mQCaGMczr1I,891",
+            "+amadeus_example_notes_mcp-0.1.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "+amadeus_example_notes_mcp-0.1.0.dist-info/METADATA,sha256=D0Amt8dgPi9kqXYjantkzYVRUREVdgEnb3WQ-jwZedc,243",
+            "+amadeus_example_notes_mcp-0.1.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "+amadeus_example_notes_mcp-0.1.0.dist-info/entry_points.txt,sha256=CVYh8FjHbezFO-SnQAeqvbegwj-Hc43390-sH-yr5ZI,67",
+            "+amadeus_example_notes_mcp-0.1.0.dist-info/top_level.txt,sha256=3wwSxqp4Genc66JSRkb15-JAPKg5ua-XmSBJ9b4sYEs,22",
+            "+amadeus_example_notes_mcp-0.1.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.1.0.dist-info/WHEEL",
+          "status": "added",
+          "before": null,
+          "after": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,5 @@",
+            "+Wheel-Version: 1.0",
+            "+Generator: setuptools (83.0.0)",
+            "+Root-Is-Purelib: true",
+            "+Tag: py3-none-any",
+            "+"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.1.0.dist-info/entry_points.txt",
+          "status": "added",
+          "before": null,
+          "after": "095621f058c76decc53be4a74007aabdb7a0c23f87738df7f74fac1fecabe592",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,2 @@",
+            "+[amadeus.extensions]",
+            "+com.example.notes-mcp = amadeus_example_notes"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.1.0.dist-info/licenses/LICENSE",
+          "status": "added",
+          "before": null,
+          "after": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,7 @@",
+            "+MIT No Attribution",
+            "+",
+            "+Copyright (c) 2026 Amadeus contributors",
+            "+",
+            "+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "+",
+            "+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.1.0.dist-info/top_level.txt",
+          "status": "added",
+          "before": null,
+          "after": "df0c12c6aa7819e9dceba2524646f5e7e2403ca839b9af97992049f5be2c604b",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+amadeus_example_notes"
+          ],
+          "diff_truncated": false
+        }
+      ],
+      "previous_candidate_diff": null
+    },
+    {
+      "id": "com.example.notes-mcp",
+      "version": "0.2.0",
+      "filename": "amadeus_example_notes_mcp-0.2.0-py3-none-any.whl",
+      "sha256": "79ea4e1c513beaaef1292a9984f706a7ca0fd93899c7010c69c34d90624b8750",
+      "size": 5201,
+      "host_static_check": "passed",
+      "catalog_static_policy": "passed",
+      "license": "MIT-0",
+      "review_status": "not_reviewed",
+      "inventory": [
+        {
+          "path": "amadeus_example_notes/__init__.py",
+          "status": "added",
+          "before": null,
+          "after": "21ce9e48f50ffe58bbcffda4a37db8b7ead966b1500224165cb29febc90bd9ef",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+\"\"\"Local notes MCP example; independent from Amadeus and its execution authority.\"\"\""
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes/__main__.py",
+          "status": "added",
+          "before": null,
+          "after": "7db7e9920a2d07ed3dd369d7871d506dd63909fd8b310a3c2e2193f96328e161",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,96 @@",
+            "+\"\"\"A small stdio MCP service for package-owned notes; no Host imports.\"\"\"",
+            "+from __future__ import annotations",
+            "+",
+            "+import json",
+            "+import os",
+            "+import re",
+            "+import sys",
+            "+import tempfile",
+            "+from pathlib import Path",
+            "+",
+            "+",
+            "+_NAME = re.compile(r\"[a-zA-Z0-9_-]{1,64}\")",
+            "+_MAX_LINE = 128 * 1024",
+            "+_TOOLS = [",
+            "+    {\"name\": \"list_notes\", \"description\": \"List names of notes stored by this extension.\",",
+            "+     \"inputSchema\": {\"type\": \"object\", \"properties\": {}, \"additionalProperties\": False}},",
+            "+    {\"name\": \"read_note\", \"description\": \"Read one note from this extension's data directory.\",",
+            "+     \"inputSchema\": {\"type\": \"object\", \"properties\": {\"name\": {\"type\": \"string\"}}, \"required\": [\"name\"], \"additionalProperties\": False}},",
+            "+    {\"name\": \"save_note\", \"description\": \"Save a named note in this extension's data directory.\",",
+            "+     \"inputSchema\": {\"type\": \"object\", \"properties\": {\"name\": {\"type\": \"string\"}, \"text\": {\"type\": \"string\", \"maxLength\": 10000}}, \"required\": [\"name\", \"text\"], \"additionalProperties\": False}},",
+            "+]",
+            "+",
+            "+",
+            "+def _tool(name, arguments, root: Path):",
+            "+    if not isinstance(arguments, dict):",
+            "+        raise ValueError(\"Tool arguments must be an object\")",
+            "+    if root.is_symlink() or (hasattr(root, \"is_junction\") and root.is_junction()):",
+            "+        raise ValueError(\"Notes storage cannot be a link\")",
+            "+    root.mkdir(parents=True, exist_ok=True)",
+            "+    if name == \"list_notes\":",
+            "+        return json.dumps(sorted(item.stem for item in root.glob(\"*.txt\")",
+            "+                                 if item.is_file() and not item.is_symlink() and _NAME.fullmatch(item.stem)))",
+            "+    note = arguments.get(\"name\")",
+            "+    if not isinstance(note, str) or not _NAME.fullmatch(note):",
+            "+        raise ValueError(\"Note name must contain 1 to 64 letters, digits, underscores or hyphens\")",
+            "+    target = root / (note + \".txt\")",
+            "+    if target.is_symlink():",
+            "+        raise ValueError(\"Notes cannot be symbolic links\")",
+            "+    if name == \"read_note\":",
+            "+        if target.stat().st_size > 40000:",
+            "+            raise ValueError(\"Note exceeds the size limit\")",
+            "+        return target.read_text(encoding=\"utf-8\")",
+            "+    if name != \"save_note\":",
+            "+        raise ValueError(\"Unknown notes tool\")",
+            "+    text = arguments.get(\"text\")",
+            "+    if not isinstance(text, str) or len(text) > 10000:",
+            "+        raise ValueError(\"Note text must be at most 10000 characters\")",
+            "+    descriptor, temporary = tempfile.mkstemp(dir=root, prefix=\".note-\", suffix=\".tmp\")",
+            "+    try:",
+            "+        with os.fdopen(descriptor, \"w\", encoding=\"utf-8\") as output:",
+            "+            output.write(text)",
+            "+            output.flush()",
+            "+            os.fsync(output.fileno())",
+            "+        os.replace(temporary, target)",
+            "+    finally:",
+            "+        Path(temporary).unlink(missing_ok=True)",
+            "+    return \"Note saved.\"",
+            "+",
+            "+",
+            "+def serve(input_stream, output_stream, root: Path):",
+            "+    while raw := input_stream.readline(_MAX_LINE + 1):",
+            "+        if len(raw) > _MAX_LINE:",
+            "+            return",
+            "+        try:",
+            "+            request = json.loads(raw)",
+            "+        except (ValueError, UnicodeError):",
+            "+            continue",
+            "+        if not isinstance(request, dict) or \"id\" not in request:",
+            "+            continue",
+            "+        method, params = request.get(\"method\"), request.get(\"params\") or {}",
+            "+        response = {\"jsonrpc\": \"2.0\", \"id\": request[\"id\"]}",
+            "+        if method == \"initialize\":",
+            "+            response[\"result\"] = {\"protocolVersion\": params.get(\"protocolVersion\", \"2025-06-18\"),",
+            "+                                  \"capabilities\": {\"tools\": {\"listChanged\": False}},",
+            "+                                  \"serverInfo\": {\"name\": \"amadeus-example-notes\", \"version\": \"0.1.0\"}}",
+            "+        elif method == \"ping\":",
+            "+            response[\"result\"] = {}",
+            "+        elif method == \"tools/list\":",
+            "+            response[\"result\"] = {\"tools\": _TOOLS}",
+            "+        elif method == \"tools/call\":",
+            "+            try:",
+            "+                text = _tool(params.get(\"name\"), params.get(\"arguments\", {}), root)",
+            "+                response[\"result\"] = {\"content\": [{\"type\": \"text\", \"text\": text}], \"isError\": False}",
+            "+            except (ValueError, OSError):",
+            "+                response[\"result\"] = {\"content\": [{\"type\": \"text\", \"text\": \"The note operation failed; check its name and data directory.\"}], \"isError\": True}",
+            "+        else:",
+            "+            response[\"error\"] = {\"code\": -32601, \"message\": \"Method not found\"}",
+            "+        output_stream.write(json.dumps(response, ensure_ascii=True) + \"\\n\")",
+            "+        output_stream.flush()",
+            "+",
+            "+",
+            "+if __name__ == \"__main__\":",
+            "+    directory = os.environ.get(\"AMADEUS_NOTES_DIR\")",
+            "+    if not directory:",
+            "+        raise SystemExit(\"AMADEUS_NOTES_DIR is required\")",
+            "+    serve(sys.stdin, sys.stdout, Path(directory))"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes/amadeus-extension.json",
+          "status": "added",
+          "before": null,
+          "after": "43f481ef9e4a50c4091921d70ab68c0f7228c5803f3eedbf65b85cafcb29f77c",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+{\"license\": \"MIT-0\", \"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.notes-mcp\", \"version\": \"0.2.0\", \"display_name\": {\"en\": \"Local notes MCP\", \"zh-CN\": \"\\u672c\\u5730\\u7b14\\u8bb0 MCP\"}, \"description\": {\"en\": \"List, read and save notes in this package's own data directory through selected Work Providers.\", \"zh-CN\": \"\\u901a\\u8fc7\\u9009\\u5b9a\\u7684 Work Provider \\u5217\\u51fa\\u3001\\u8bfb\\u53d6\\u548c\\u4fdd\\u5b58\\u6b64\\u6269\\u5c55\\u6570\\u636e\\u76ee\\u5f55\\u4e2d\\u7684\\u7b14\\u8bb0\\u3002\"}, \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\", \"platforms\": [\"win32\"]}, \"runtime\": {\"kind\": \"python\", \"requires_python\": \">=3.12\"}, \"contributes\": {\"mcp_server\": [{\"id\": \"notes\", \"contract\": \"amadeus.mcp-server/v0\", \"transport\": \"stdio\", \"command\": \"${python}\", \"args\": [\"-I\", \"-m\", \"amadeus_example_notes\"], \"env\": {\"AMADEUS_NOTES_DIR\": \"${data}/notes\"}}]}}"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.2.0.dist-info/METADATA",
+          "status": "added",
+          "before": null,
+          "after": "9458579149fc0deebdaf70c951d5fb65f7db53bca57ded719dc242b0128313db",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+Metadata-Version: 2.4",
+            "+Name: amadeus-example-notes-mcp",
+            "+Version: 0.2.0",
+            "+Summary: Independent local notes MCP package for Amadeus Work Providers",
+            "+License-Expression: MIT-0",
+            "+Requires-Python: >=3.12",
+            "+License-File: LICENSE",
+            "+Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.2.0.dist-info/RECORD",
+          "status": "added",
+          "before": null,
+          "after": "b8f397bbe3eb5043197b59170b5c63f17e1800a603b7e18a40dc0e0b12270fa3",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,9 @@",
+            "+amadeus_example_notes/__init__.py,sha256=Ic6eSPUP_li7z_2ko324t-rZZrFQAiQWXLKf68kL2e8,85",
+            "+amadeus_example_notes/__main__.py,sha256=fbfpkgotB-0902nXhx1QbdY5Cf2LMQo8LiGT-WMo4WE,4465",
+            "+amadeus_example_notes/amadeus-extension.json,sha256=Q_SB755KUMQJGSHXCraMD3IoxYA_Pu2_Zbhcr8sp93w,891",
+            "+amadeus_example_notes_mcp-0.2.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "+amadeus_example_notes_mcp-0.2.0.dist-info/METADATA,sha256=lFhXkUn8De69r3DJUdX7ZffbU7ylfe1xncJCsBKDE9s,243",
+            "+amadeus_example_notes_mcp-0.2.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "+amadeus_example_notes_mcp-0.2.0.dist-info/entry_points.txt,sha256=CVYh8FjHbezFO-SnQAeqvbegwj-Hc43390-sH-yr5ZI,67",
+            "+amadeus_example_notes_mcp-0.2.0.dist-info/top_level.txt,sha256=3wwSxqp4Genc66JSRkb15-JAPKg5ua-XmSBJ9b4sYEs,22",
+            "+amadeus_example_notes_mcp-0.2.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.2.0.dist-info/WHEEL",
+          "status": "added",
+          "before": null,
+          "after": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,5 @@",
+            "+Wheel-Version: 1.0",
+            "+Generator: setuptools (83.0.0)",
+            "+Root-Is-Purelib: true",
+            "+Tag: py3-none-any",
+            "+"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.2.0.dist-info/entry_points.txt",
+          "status": "added",
+          "before": null,
+          "after": "095621f058c76decc53be4a74007aabdb7a0c23f87738df7f74fac1fecabe592",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,2 @@",
+            "+[amadeus.extensions]",
+            "+com.example.notes-mcp = amadeus_example_notes"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.2.0.dist-info/licenses/LICENSE",
+          "status": "added",
+          "before": null,
+          "after": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,7 @@",
+            "+MIT No Attribution",
+            "+",
+            "+Copyright (c) 2026 Amadeus contributors",
+            "+",
+            "+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "+",
+            "+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.2.0.dist-info/top_level.txt",
+          "status": "added",
+          "before": null,
+          "after": "df0c12c6aa7819e9dceba2524646f5e7e2403ca839b9af97992049f5be2c604b",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+amadeus_example_notes"
+          ],
+          "diff_truncated": false
+        }
+      ],
+      "previous_candidate_diff": [
+        {
+          "path": "amadeus_example_notes/amadeus-extension.json",
+          "status": "modified",
+          "before": "f47482ba46558271b32f1e5a570db77439a16a3c3b3c51f899009a18c733af52",
+          "after": "43f481ef9e4a50c4091921d70ab68c0f7228c5803f3eedbf65b85cafcb29f77c",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1 +1 @@",
+            "-{\"license\": \"MIT-0\", \"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.notes-mcp\", \"version\": \"0.1.0\", \"display_name\": {\"en\": \"Local notes MCP\", \"zh-CN\": \"\\u672c\\u5730\\u7b14\\u8bb0 MCP\"}, \"description\": {\"en\": \"List, read and save notes in this package's own data directory through selected Work Providers.\", \"zh-CN\": \"\\u901a\\u8fc7\\u9009\\u5b9a\\u7684 Work Provider \\u5217\\u51fa\\u3001\\u8bfb\\u53d6\\u548c\\u4fdd\\u5b58\\u6b64\\u6269\\u5c55\\u6570\\u636e\\u76ee\\u5f55\\u4e2d\\u7684\\u7b14\\u8bb0\\u3002\"}, \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\", \"platforms\": [\"win32\"]}, \"runtime\": {\"kind\": \"python\", \"requires_python\": \">=3.12\"}, \"contributes\": {\"mcp_server\": [{\"id\": \"notes\", \"contract\": \"amadeus.mcp-server/v0\", \"transport\": \"stdio\", \"command\": \"${python}\", \"args\": [\"-I\", \"-m\", \"amadeus_example_notes\"], \"env\": {\"AMADEUS_NOTES_DIR\": \"${data}/notes\"}}]}}",
+            "+{\"license\": \"MIT-0\", \"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.notes-mcp\", \"version\": \"0.2.0\", \"display_name\": {\"en\": \"Local notes MCP\", \"zh-CN\": \"\\u672c\\u5730\\u7b14\\u8bb0 MCP\"}, \"description\": {\"en\": \"List, read and save notes in this package's own data directory through selected Work Providers.\", \"zh-CN\": \"\\u901a\\u8fc7\\u9009\\u5b9a\\u7684 Work Provider \\u5217\\u51fa\\u3001\\u8bfb\\u53d6\\u548c\\u4fdd\\u5b58\\u6b64\\u6269\\u5c55\\u6570\\u636e\\u76ee\\u5f55\\u4e2d\\u7684\\u7b14\\u8bb0\\u3002\"}, \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\", \"platforms\": [\"win32\"]}, \"runtime\": {\"kind\": \"python\", \"requires_python\": \">=3.12\"}, \"contributes\": {\"mcp_server\": [{\"id\": \"notes\", \"contract\": \"amadeus.mcp-server/v0\", \"transport\": \"stdio\", \"command\": \"${python}\", \"args\": [\"-I\", \"-m\", \"amadeus_example_notes\"], \"env\": {\"AMADEUS_NOTES_DIR\": \"${data}/notes\"}}]}}"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.1.0.dist-info/METADATA",
+          "status": "removed",
+          "before": "0f4026b7c7603e2f64a976236a7b64cd85515111157601276f7590fa3c1979d7",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,8 +0,0 @@",
+            "-Metadata-Version: 2.4",
+            "-Name: amadeus-example-notes-mcp",
+            "-Version: 0.1.0",
+            "-Summary: Independent local notes MCP package for Amadeus Work Providers",
+            "-License-Expression: MIT-0",
+            "-Requires-Python: >=3.12",
+            "-License-File: LICENSE",
+            "-Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.1.0.dist-info/RECORD",
+          "status": "removed",
+          "before": "66a144c87ed61659ed85b310b2720236e9c5b29a894cc8a1b8c35a91f31ca9ca",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,9 +0,0 @@",
+            "-amadeus_example_notes/__init__.py,sha256=Ic6eSPUP_li7z_2ko324t-rZZrFQAiQWXLKf68kL2e8,85",
+            "-amadeus_example_notes/__main__.py,sha256=fbfpkgotB-0902nXhx1QbdY5Cf2LMQo8LiGT-WMo4WE,4465",
+            "-amadeus_example_notes/amadeus-extension.json,sha256=9HSCukZVgnGzLx5aVw23dDmhajw7PFH4mQCaGMczr1I,891",
+            "-amadeus_example_notes_mcp-0.1.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "-amadeus_example_notes_mcp-0.1.0.dist-info/METADATA,sha256=D0Amt8dgPi9kqXYjantkzYVRUREVdgEnb3WQ-jwZedc,243",
+            "-amadeus_example_notes_mcp-0.1.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "-amadeus_example_notes_mcp-0.1.0.dist-info/entry_points.txt,sha256=CVYh8FjHbezFO-SnQAeqvbegwj-Hc43390-sH-yr5ZI,67",
+            "-amadeus_example_notes_mcp-0.1.0.dist-info/top_level.txt,sha256=3wwSxqp4Genc66JSRkb15-JAPKg5ua-XmSBJ9b4sYEs,22",
+            "-amadeus_example_notes_mcp-0.1.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.1.0.dist-info/WHEEL",
+          "status": "removed",
+          "before": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,5 +0,0 @@",
+            "-Wheel-Version: 1.0",
+            "-Generator: setuptools (83.0.0)",
+            "-Root-Is-Purelib: true",
+            "-Tag: py3-none-any",
+            "-"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.1.0.dist-info/entry_points.txt",
+          "status": "removed",
+          "before": "095621f058c76decc53be4a74007aabdb7a0c23f87738df7f74fac1fecabe592",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,2 +0,0 @@",
+            "-[amadeus.extensions]",
+            "-com.example.notes-mcp = amadeus_example_notes"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.1.0.dist-info/licenses/LICENSE",
+          "status": "removed",
+          "before": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,7 +0,0 @@",
+            "-MIT No Attribution",
+            "-",
+            "-Copyright (c) 2026 Amadeus contributors",
+            "-",
+            "-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "-",
+            "-THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.1.0.dist-info/top_level.txt",
+          "status": "removed",
+          "before": "df0c12c6aa7819e9dceba2524646f5e7e2403ca839b9af97992049f5be2c604b",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1 +0,0 @@",
+            "-amadeus_example_notes"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.2.0.dist-info/METADATA",
+          "status": "added",
+          "before": null,
+          "after": "9458579149fc0deebdaf70c951d5fb65f7db53bca57ded719dc242b0128313db",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+Metadata-Version: 2.4",
+            "+Name: amadeus-example-notes-mcp",
+            "+Version: 0.2.0",
+            "+Summary: Independent local notes MCP package for Amadeus Work Providers",
+            "+License-Expression: MIT-0",
+            "+Requires-Python: >=3.12",
+            "+License-File: LICENSE",
+            "+Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.2.0.dist-info/RECORD",
+          "status": "added",
+          "before": null,
+          "after": "b8f397bbe3eb5043197b59170b5c63f17e1800a603b7e18a40dc0e0b12270fa3",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,9 @@",
+            "+amadeus_example_notes/__init__.py,sha256=Ic6eSPUP_li7z_2ko324t-rZZrFQAiQWXLKf68kL2e8,85",
+            "+amadeus_example_notes/__main__.py,sha256=fbfpkgotB-0902nXhx1QbdY5Cf2LMQo8LiGT-WMo4WE,4465",
+            "+amadeus_example_notes/amadeus-extension.json,sha256=Q_SB755KUMQJGSHXCraMD3IoxYA_Pu2_Zbhcr8sp93w,891",
+            "+amadeus_example_notes_mcp-0.2.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "+amadeus_example_notes_mcp-0.2.0.dist-info/METADATA,sha256=lFhXkUn8De69r3DJUdX7ZffbU7ylfe1xncJCsBKDE9s,243",
+            "+amadeus_example_notes_mcp-0.2.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "+amadeus_example_notes_mcp-0.2.0.dist-info/entry_points.txt,sha256=CVYh8FjHbezFO-SnQAeqvbegwj-Hc43390-sH-yr5ZI,67",
+            "+amadeus_example_notes_mcp-0.2.0.dist-info/top_level.txt,sha256=3wwSxqp4Genc66JSRkb15-JAPKg5ua-XmSBJ9b4sYEs,22",
+            "+amadeus_example_notes_mcp-0.2.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.2.0.dist-info/WHEEL",
+          "status": "added",
+          "before": null,
+          "after": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,5 @@",
+            "+Wheel-Version: 1.0",
+            "+Generator: setuptools (83.0.0)",
+            "+Root-Is-Purelib: true",
+            "+Tag: py3-none-any",
+            "+"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.2.0.dist-info/entry_points.txt",
+          "status": "added",
+          "before": null,
+          "after": "095621f058c76decc53be4a74007aabdb7a0c23f87738df7f74fac1fecabe592",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,2 @@",
+            "+[amadeus.extensions]",
+            "+com.example.notes-mcp = amadeus_example_notes"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.2.0.dist-info/licenses/LICENSE",
+          "status": "added",
+          "before": null,
+          "after": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,7 @@",
+            "+MIT No Attribution",
+            "+",
+            "+Copyright (c) 2026 Amadeus contributors",
+            "+",
+            "+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "+",
+            "+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_notes_mcp-0.2.0.dist-info/top_level.txt",
+          "status": "added",
+          "before": null,
+          "after": "df0c12c6aa7819e9dceba2524646f5e7e2403ca839b9af97992049f5be2c604b",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+amadeus_example_notes"
+          ],
+          "diff_truncated": false
+        }
+      ]
+    },
+    {
+      "id": "com.example.desktop-theme",
+      "version": "0.1.0",
+      "filename": "amadeus_example_theme-0.1.0-py3-none-any.whl",
+      "sha256": "d70397a19c8698f0352cfe57df385ab648a9d7e8f0b8f7facf514ee429cf852e",
+      "size": 5596,
+      "host_static_check": "passed",
+      "catalog_static_policy": "passed",
+      "license": "MIT-0",
+      "review_status": "not_reviewed",
+      "inventory": [
+        {
+          "path": "amadeus_example_theme-0.1.0.dist-info/METADATA",
+          "status": "added",
+          "before": null,
+          "after": "a9131fe7f0b6c1ff5f30da8d8a148dbb8e19cc480a020f9941fc42dcb7f0e51d",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+Metadata-Version: 2.4",
+            "+Name: amadeus-example-theme",
+            "+Version: 0.1.0",
+            "+Summary: Two declarative desktop palettes for the extension pilot",
+            "+License-Expression: MIT-0",
+            "+Requires-Python: >=3.11",
+            "+License-File: LICENSE",
+            "+Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.1.0.dist-info/RECORD",
+          "status": "added",
+          "before": null,
+          "after": "4f958fd6d55823abbce4bca1d9f07c436f59d285e96f630b9ad51b7182dad805",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,9 @@",
+            "+amadeus_example_theme/__init__.py,sha256=9YU498boHfeiLKIPKJboJcnwwniRltnGENEdAYffMM0,66",
+            "+amadeus_example_theme/amadeus-extension.json,sha256=nm4n1Ng1qfJMeMIt4rcUqFvewmXdfYtysJftxOxSI_E,1468",
+            "+amadeus_example_theme/background.png,sha256=oJ1eOa7qkgUgx6YDzHXzubA5uzB4i_-YQsBm9wmT6QA,2762",
+            "+amadeus_example_theme-0.1.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "+amadeus_example_theme-0.1.0.dist-info/METADATA,sha256=qRMf5_C2wf9fMNqNihSNu44ZzEgKAg-ZQfxC3Lfw5R0,233",
+            "+amadeus_example_theme-0.1.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "+amadeus_example_theme-0.1.0.dist-info/entry_points.txt,sha256=UvpUNu06rRUQGvKT2t0zzVX0_9wsbXuymSJX0EtmGLU,71",
+            "+amadeus_example_theme-0.1.0.dist-info/top_level.txt,sha256=4ffmZWk0eKXndFUZP5X6A-ZXwHD_4qavFgktjVZUSIE,22",
+            "+amadeus_example_theme-0.1.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.1.0.dist-info/WHEEL",
+          "status": "added",
+          "before": null,
+          "after": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,5 @@",
+            "+Wheel-Version: 1.0",
+            "+Generator: setuptools (83.0.0)",
+            "+Root-Is-Purelib: true",
+            "+Tag: py3-none-any",
+            "+"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.1.0.dist-info/entry_points.txt",
+          "status": "added",
+          "before": null,
+          "after": "52fa5436ed3aad15101af293dadd33cd55f4ffdc2c6d7bb2992257d04b6618b5",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,2 @@",
+            "+[amadeus.extensions]",
+            "+com.example.desktop-theme = amadeus_example_theme"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.1.0.dist-info/licenses/LICENSE",
+          "status": "added",
+          "before": null,
+          "after": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,7 @@",
+            "+MIT No Attribution",
+            "+",
+            "+Copyright (c) 2026 Amadeus contributors",
+            "+",
+            "+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "+",
+            "+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.1.0.dist-info/top_level.txt",
+          "status": "added",
+          "before": null,
+          "after": "e1f7e665693478a5e77455193f95fa03e657c070ffe2a6af16092d8d56544881",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+amadeus_example_theme"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme/__init__.py",
+          "status": "added",
+          "before": null,
+          "after": "f58538f7c6e81df7a22ca20f2896e825c9f0c2789196d9c610d11d0187df30cd",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+\"\"\"Declarative resources; the Host never imports this package.\"\"\""
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme/amadeus-extension.json",
+          "status": "added",
+          "before": null,
+          "after": "9e6e27d4d835a9f24c78c22de2b714a85bdec265dd7d8b72b097edc4ec5223f1",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+{\"license\": \"MIT-0\", \"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.desktop-theme\", \"version\": \"0.1.0\", \"display_name\": {\"en\": \"Quiet desktop\", \"zh-CN\": \"\\u9759\\u8c27\\u684c\\u9762\"}, \"description\": {\"en\": \"Two local palettes with no package code or network access.\", \"zh-CN\": \"\\u4e24\\u6b3e\\u672c\\u5730\\u914d\\u8272\\uff0c\\u4e0d\\u8fd0\\u884c\\u5305\\u4ee3\\u7801\\uff0c\\u4e5f\\u4e0d\\u8054\\u7f51\\u3002\"}, \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\"}, \"runtime\": {\"kind\": \"none\"}, \"contributes\": {\"theme\": [{\"id\": \"day\", \"contract\": \"amadeus.ui.theme/v0\", \"base\": \"classic\", \"title\": {\"en\": \"Quiet day\", \"zh-CN\": \"\\u9759\\u8c27\\u65e5\\u5149\"}, \"tokens\": {\"--bg\": \"#EAF1F7\", \"--surface\": \"#FFFFFF\", \"--surface-alt\": \"#F4F7FA\", \"--text\": \"#132B3D\", \"--muted\": \"#526B7F\", \"--accent\": \"#154A70\", \"--accent-hover\": \"#0C3957\", \"--faint\": \"#526B7F\", \"--selection-bg\": \"#F2F4F7\", \"--subtle-fill\": \"#F2F4F7\", \"--selected-fill\": \"#EAECF0\", \"--focus-fill\": \"#F2F4F7\"}}, {\"id\": \"night\", \"contract\": \"amadeus.ui.theme/v0\", \"base\": \"wallpaper-slice\", \"title\": {\"en\": \"Quiet night\", \"zh-CN\": \"\\u9759\\u8c27\\u591c\\u8272\"}, \"tokens\": {\"--bg\": \"rgba(6,17,22,.85)\", \"--surface\": \"#0A1D22\", \"--surface-alt\": \"#0D252A\", \"--text\": \"#E0F8F1\", \"--muted\": \"#A3CFC4\", \"--accent\": \"#7DE0CC\", \"--accent-hover\": \"#62BDA8\", \"--faint\": \"#A3CFC4\", \"--selection-bg\": \"rgba(84,255,221,.10)\"}, \"background\": {\"image\": \"background.png\", \"fit\": \"cover\", \"dim\": 0.8}}]}}"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme/background.png",
+          "status": "added",
+          "before": null,
+          "after": "a09d5e39aeea920520c7a603cc75f3b9b039bb30788bff9842c066f70993e900"
+        }
+      ],
+      "previous_candidate_diff": null
+    },
+    {
+      "id": "com.example.desktop-theme",
+      "version": "0.2.0",
+      "filename": "amadeus_example_theme-0.2.0-py3-none-any.whl",
+      "sha256": "da1201d51ade2a15843973c9aa0c12a1bc8bcd279906c63cac5582066bfe66c6",
+      "size": 5598,
+      "host_static_check": "passed",
+      "catalog_static_policy": "passed",
+      "license": "MIT-0",
+      "review_status": "not_reviewed",
+      "inventory": [
+        {
+          "path": "amadeus_example_theme-0.2.0.dist-info/METADATA",
+          "status": "added",
+          "before": null,
+          "after": "9efd055c3e90af01678321fa60aa2a9c45b2925c022e3dfd791cd7ebf6d0c4e5",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+Metadata-Version: 2.4",
+            "+Name: amadeus-example-theme",
+            "+Version: 0.2.0",
+            "+Summary: Two declarative desktop palettes for the extension pilot",
+            "+License-Expression: MIT-0",
+            "+Requires-Python: >=3.11",
+            "+License-File: LICENSE",
+            "+Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.2.0.dist-info/RECORD",
+          "status": "added",
+          "before": null,
+          "after": "bb7f4e5d11ff0a025d966b3347eb04125feba9b590ae8b218d4165146d3088bf",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,9 @@",
+            "+amadeus_example_theme/__init__.py,sha256=9YU498boHfeiLKIPKJboJcnwwniRltnGENEdAYffMM0,66",
+            "+amadeus_example_theme/amadeus-extension.json,sha256=QL-qROteoxb7JsVzk_Q9v-e5g8VLZcWShfI10M6w-UI,1468",
+            "+amadeus_example_theme/background.png,sha256=oJ1eOa7qkgUgx6YDzHXzubA5uzB4i_-YQsBm9wmT6QA,2762",
+            "+amadeus_example_theme-0.2.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "+amadeus_example_theme-0.2.0.dist-info/METADATA,sha256=nv0FXD6QrwFngyH6YKoqnEWyklwCLj39eRzX6_bQxOU,233",
+            "+amadeus_example_theme-0.2.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "+amadeus_example_theme-0.2.0.dist-info/entry_points.txt,sha256=UvpUNu06rRUQGvKT2t0zzVX0_9wsbXuymSJX0EtmGLU,71",
+            "+amadeus_example_theme-0.2.0.dist-info/top_level.txt,sha256=4ffmZWk0eKXndFUZP5X6A-ZXwHD_4qavFgktjVZUSIE,22",
+            "+amadeus_example_theme-0.2.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.2.0.dist-info/WHEEL",
+          "status": "added",
+          "before": null,
+          "after": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,5 @@",
+            "+Wheel-Version: 1.0",
+            "+Generator: setuptools (83.0.0)",
+            "+Root-Is-Purelib: true",
+            "+Tag: py3-none-any",
+            "+"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.2.0.dist-info/entry_points.txt",
+          "status": "added",
+          "before": null,
+          "after": "52fa5436ed3aad15101af293dadd33cd55f4ffdc2c6d7bb2992257d04b6618b5",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,2 @@",
+            "+[amadeus.extensions]",
+            "+com.example.desktop-theme = amadeus_example_theme"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.2.0.dist-info/licenses/LICENSE",
+          "status": "added",
+          "before": null,
+          "after": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,7 @@",
+            "+MIT No Attribution",
+            "+",
+            "+Copyright (c) 2026 Amadeus contributors",
+            "+",
+            "+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "+",
+            "+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.2.0.dist-info/top_level.txt",
+          "status": "added",
+          "before": null,
+          "after": "e1f7e665693478a5e77455193f95fa03e657c070ffe2a6af16092d8d56544881",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+amadeus_example_theme"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme/__init__.py",
+          "status": "added",
+          "before": null,
+          "after": "f58538f7c6e81df7a22ca20f2896e825c9f0c2789196d9c610d11d0187df30cd",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+\"\"\"Declarative resources; the Host never imports this package.\"\"\""
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme/amadeus-extension.json",
+          "status": "added",
+          "before": null,
+          "after": "40bfaa44eb5ea316fb26c57393f43dbfe7b983c54b65c59285f235d0ceb0f942",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+{\"license\": \"MIT-0\", \"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.desktop-theme\", \"version\": \"0.2.0\", \"display_name\": {\"en\": \"Quiet desktop\", \"zh-CN\": \"\\u9759\\u8c27\\u684c\\u9762\"}, \"description\": {\"en\": \"Two local palettes with no package code or network access.\", \"zh-CN\": \"\\u4e24\\u6b3e\\u672c\\u5730\\u914d\\u8272\\uff0c\\u4e0d\\u8fd0\\u884c\\u5305\\u4ee3\\u7801\\uff0c\\u4e5f\\u4e0d\\u8054\\u7f51\\u3002\"}, \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\"}, \"runtime\": {\"kind\": \"none\"}, \"contributes\": {\"theme\": [{\"id\": \"day\", \"contract\": \"amadeus.ui.theme/v0\", \"base\": \"classic\", \"title\": {\"en\": \"Quiet day\", \"zh-CN\": \"\\u9759\\u8c27\\u65e5\\u5149\"}, \"tokens\": {\"--bg\": \"#EAF1F7\", \"--surface\": \"#FFFFFF\", \"--surface-alt\": \"#F4F7FA\", \"--text\": \"#132B3D\", \"--muted\": \"#526B7F\", \"--accent\": \"#154A70\", \"--accent-hover\": \"#0C3957\", \"--faint\": \"#526B7F\", \"--selection-bg\": \"#F2F4F7\", \"--subtle-fill\": \"#F2F4F7\", \"--selected-fill\": \"#EAECF0\", \"--focus-fill\": \"#F2F4F7\"}}, {\"id\": \"night\", \"contract\": \"amadeus.ui.theme/v0\", \"base\": \"wallpaper-slice\", \"title\": {\"en\": \"Quiet night\", \"zh-CN\": \"\\u9759\\u8c27\\u591c\\u8272\"}, \"tokens\": {\"--bg\": \"rgba(6,17,22,.85)\", \"--surface\": \"#0A1D22\", \"--surface-alt\": \"#0D252A\", \"--text\": \"#E0F8F1\", \"--muted\": \"#A3CFC4\", \"--accent\": \"#7DE0CC\", \"--accent-hover\": \"#62BDA8\", \"--faint\": \"#A3CFC4\", \"--selection-bg\": \"rgba(84,255,221,.10)\"}, \"background\": {\"image\": \"background.png\", \"fit\": \"cover\", \"dim\": 0.8}}]}}"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme/background.png",
+          "status": "added",
+          "before": null,
+          "after": "a09d5e39aeea920520c7a603cc75f3b9b039bb30788bff9842c066f70993e900"
+        }
+      ],
+      "previous_candidate_diff": [
+        {
+          "path": "amadeus_example_theme-0.1.0.dist-info/METADATA",
+          "status": "removed",
+          "before": "a9131fe7f0b6c1ff5f30da8d8a148dbb8e19cc480a020f9941fc42dcb7f0e51d",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,8 +0,0 @@",
+            "-Metadata-Version: 2.4",
+            "-Name: amadeus-example-theme",
+            "-Version: 0.1.0",
+            "-Summary: Two declarative desktop palettes for the extension pilot",
+            "-License-Expression: MIT-0",
+            "-Requires-Python: >=3.11",
+            "-License-File: LICENSE",
+            "-Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.1.0.dist-info/RECORD",
+          "status": "removed",
+          "before": "4f958fd6d55823abbce4bca1d9f07c436f59d285e96f630b9ad51b7182dad805",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,9 +0,0 @@",
+            "-amadeus_example_theme/__init__.py,sha256=9YU498boHfeiLKIPKJboJcnwwniRltnGENEdAYffMM0,66",
+            "-amadeus_example_theme/amadeus-extension.json,sha256=nm4n1Ng1qfJMeMIt4rcUqFvewmXdfYtysJftxOxSI_E,1468",
+            "-amadeus_example_theme/background.png,sha256=oJ1eOa7qkgUgx6YDzHXzubA5uzB4i_-YQsBm9wmT6QA,2762",
+            "-amadeus_example_theme-0.1.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "-amadeus_example_theme-0.1.0.dist-info/METADATA,sha256=qRMf5_C2wf9fMNqNihSNu44ZzEgKAg-ZQfxC3Lfw5R0,233",
+            "-amadeus_example_theme-0.1.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "-amadeus_example_theme-0.1.0.dist-info/entry_points.txt,sha256=UvpUNu06rRUQGvKT2t0zzVX0_9wsbXuymSJX0EtmGLU,71",
+            "-amadeus_example_theme-0.1.0.dist-info/top_level.txt,sha256=4ffmZWk0eKXndFUZP5X6A-ZXwHD_4qavFgktjVZUSIE,22",
+            "-amadeus_example_theme-0.1.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.1.0.dist-info/WHEEL",
+          "status": "removed",
+          "before": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,5 +0,0 @@",
+            "-Wheel-Version: 1.0",
+            "-Generator: setuptools (83.0.0)",
+            "-Root-Is-Purelib: true",
+            "-Tag: py3-none-any",
+            "-"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.1.0.dist-info/entry_points.txt",
+          "status": "removed",
+          "before": "52fa5436ed3aad15101af293dadd33cd55f4ffdc2c6d7bb2992257d04b6618b5",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,2 +0,0 @@",
+            "-[amadeus.extensions]",
+            "-com.example.desktop-theme = amadeus_example_theme"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.1.0.dist-info/licenses/LICENSE",
+          "status": "removed",
+          "before": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,7 +0,0 @@",
+            "-MIT No Attribution",
+            "-",
+            "-Copyright (c) 2026 Amadeus contributors",
+            "-",
+            "-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "-",
+            "-THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.1.0.dist-info/top_level.txt",
+          "status": "removed",
+          "before": "e1f7e665693478a5e77455193f95fa03e657c070ffe2a6af16092d8d56544881",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1 +0,0 @@",
+            "-amadeus_example_theme"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.2.0.dist-info/METADATA",
+          "status": "added",
+          "before": null,
+          "after": "9efd055c3e90af01678321fa60aa2a9c45b2925c022e3dfd791cd7ebf6d0c4e5",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+Metadata-Version: 2.4",
+            "+Name: amadeus-example-theme",
+            "+Version: 0.2.0",
+            "+Summary: Two declarative desktop palettes for the extension pilot",
+            "+License-Expression: MIT-0",
+            "+Requires-Python: >=3.11",
+            "+License-File: LICENSE",
+            "+Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.2.0.dist-info/RECORD",
+          "status": "added",
+          "before": null,
+          "after": "bb7f4e5d11ff0a025d966b3347eb04125feba9b590ae8b218d4165146d3088bf",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,9 @@",
+            "+amadeus_example_theme/__init__.py,sha256=9YU498boHfeiLKIPKJboJcnwwniRltnGENEdAYffMM0,66",
+            "+amadeus_example_theme/amadeus-extension.json,sha256=QL-qROteoxb7JsVzk_Q9v-e5g8VLZcWShfI10M6w-UI,1468",
+            "+amadeus_example_theme/background.png,sha256=oJ1eOa7qkgUgx6YDzHXzubA5uzB4i_-YQsBm9wmT6QA,2762",
+            "+amadeus_example_theme-0.2.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "+amadeus_example_theme-0.2.0.dist-info/METADATA,sha256=nv0FXD6QrwFngyH6YKoqnEWyklwCLj39eRzX6_bQxOU,233",
+            "+amadeus_example_theme-0.2.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "+amadeus_example_theme-0.2.0.dist-info/entry_points.txt,sha256=UvpUNu06rRUQGvKT2t0zzVX0_9wsbXuymSJX0EtmGLU,71",
+            "+amadeus_example_theme-0.2.0.dist-info/top_level.txt,sha256=4ffmZWk0eKXndFUZP5X6A-ZXwHD_4qavFgktjVZUSIE,22",
+            "+amadeus_example_theme-0.2.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.2.0.dist-info/WHEEL",
+          "status": "added",
+          "before": null,
+          "after": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,5 @@",
+            "+Wheel-Version: 1.0",
+            "+Generator: setuptools (83.0.0)",
+            "+Root-Is-Purelib: true",
+            "+Tag: py3-none-any",
+            "+"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.2.0.dist-info/entry_points.txt",
+          "status": "added",
+          "before": null,
+          "after": "52fa5436ed3aad15101af293dadd33cd55f4ffdc2c6d7bb2992257d04b6618b5",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,2 @@",
+            "+[amadeus.extensions]",
+            "+com.example.desktop-theme = amadeus_example_theme"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.2.0.dist-info/licenses/LICENSE",
+          "status": "added",
+          "before": null,
+          "after": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,7 @@",
+            "+MIT No Attribution",
+            "+",
+            "+Copyright (c) 2026 Amadeus contributors",
+            "+",
+            "+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "+",
+            "+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme-0.2.0.dist-info/top_level.txt",
+          "status": "added",
+          "before": null,
+          "after": "e1f7e665693478a5e77455193f95fa03e657c070ffe2a6af16092d8d56544881",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+amadeus_example_theme"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_theme/amadeus-extension.json",
+          "status": "modified",
+          "before": "9e6e27d4d835a9f24c78c22de2b714a85bdec265dd7d8b72b097edc4ec5223f1",
+          "after": "40bfaa44eb5ea316fb26c57393f43dbfe7b983c54b65c59285f235d0ceb0f942",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1 +1 @@",
+            "-{\"license\": \"MIT-0\", \"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.desktop-theme\", \"version\": \"0.1.0\", \"display_name\": {\"en\": \"Quiet desktop\", \"zh-CN\": \"\\u9759\\u8c27\\u684c\\u9762\"}, \"description\": {\"en\": \"Two local palettes with no package code or network access.\", \"zh-CN\": \"\\u4e24\\u6b3e\\u672c\\u5730\\u914d\\u8272\\uff0c\\u4e0d\\u8fd0\\u884c\\u5305\\u4ee3\\u7801\\uff0c\\u4e5f\\u4e0d\\u8054\\u7f51\\u3002\"}, \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\"}, \"runtime\": {\"kind\": \"none\"}, \"contributes\": {\"theme\": [{\"id\": \"day\", \"contract\": \"amadeus.ui.theme/v0\", \"base\": \"classic\", \"title\": {\"en\": \"Quiet day\", \"zh-CN\": \"\\u9759\\u8c27\\u65e5\\u5149\"}, \"tokens\": {\"--bg\": \"#EAF1F7\", \"--surface\": \"#FFFFFF\", \"--surface-alt\": \"#F4F7FA\", \"--text\": \"#132B3D\", \"--muted\": \"#526B7F\", \"--accent\": \"#154A70\", \"--accent-hover\": \"#0C3957\", \"--faint\": \"#526B7F\", \"--selection-bg\": \"#F2F4F7\", \"--subtle-fill\": \"#F2F4F7\", \"--selected-fill\": \"#EAECF0\", \"--focus-fill\": \"#F2F4F7\"}}, {\"id\": \"night\", \"contract\": \"amadeus.ui.theme/v0\", \"base\": \"wallpaper-slice\", \"title\": {\"en\": \"Quiet night\", \"zh-CN\": \"\\u9759\\u8c27\\u591c\\u8272\"}, \"tokens\": {\"--bg\": \"rgba(6,17,22,.85)\", \"--surface\": \"#0A1D22\", \"--surface-alt\": \"#0D252A\", \"--text\": \"#E0F8F1\", \"--muted\": \"#A3CFC4\", \"--accent\": \"#7DE0CC\", \"--accent-hover\": \"#62BDA8\", \"--faint\": \"#A3CFC4\", \"--selection-bg\": \"rgba(84,255,221,.10)\"}, \"background\": {\"image\": \"background.png\", \"fit\": \"cover\", \"dim\": 0.8}}]}}",
+            "+{\"license\": \"MIT-0\", \"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.desktop-theme\", \"version\": \"0.2.0\", \"display_name\": {\"en\": \"Quiet desktop\", \"zh-CN\": \"\\u9759\\u8c27\\u684c\\u9762\"}, \"description\": {\"en\": \"Two local palettes with no package code or network access.\", \"zh-CN\": \"\\u4e24\\u6b3e\\u672c\\u5730\\u914d\\u8272\\uff0c\\u4e0d\\u8fd0\\u884c\\u5305\\u4ee3\\u7801\\uff0c\\u4e5f\\u4e0d\\u8054\\u7f51\\u3002\"}, \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\"}, \"runtime\": {\"kind\": \"none\"}, \"contributes\": {\"theme\": [{\"id\": \"day\", \"contract\": \"amadeus.ui.theme/v0\", \"base\": \"classic\", \"title\": {\"en\": \"Quiet day\", \"zh-CN\": \"\\u9759\\u8c27\\u65e5\\u5149\"}, \"tokens\": {\"--bg\": \"#EAF1F7\", \"--surface\": \"#FFFFFF\", \"--surface-alt\": \"#F4F7FA\", \"--text\": \"#132B3D\", \"--muted\": \"#526B7F\", \"--accent\": \"#154A70\", \"--accent-hover\": \"#0C3957\", \"--faint\": \"#526B7F\", \"--selection-bg\": \"#F2F4F7\", \"--subtle-fill\": \"#F2F4F7\", \"--selected-fill\": \"#EAECF0\", \"--focus-fill\": \"#F2F4F7\"}}, {\"id\": \"night\", \"contract\": \"amadeus.ui.theme/v0\", \"base\": \"wallpaper-slice\", \"title\": {\"en\": \"Quiet night\", \"zh-CN\": \"\\u9759\\u8c27\\u591c\\u8272\"}, \"tokens\": {\"--bg\": \"rgba(6,17,22,.85)\", \"--surface\": \"#0A1D22\", \"--surface-alt\": \"#0D252A\", \"--text\": \"#E0F8F1\", \"--muted\": \"#A3CFC4\", \"--accent\": \"#7DE0CC\", \"--accent-hover\": \"#62BDA8\", \"--faint\": \"#A3CFC4\", \"--selection-bg\": \"rgba(84,255,221,.10)\"}, \"background\": {\"image\": \"background.png\", \"fit\": \"cover\", \"dim\": 0.8}}]}}"
+          ],
+          "diff_truncated": false
+        }
+      ]
+    },
+    {
+      "id": "com.example.tone-tts",
+      "version": "0.1.0",
+      "filename": "amadeus_example_tone_tts-0.1.0-py3-none-any.whl",
+      "sha256": "cdbea2a6b70654952d9aeda97fec8085134ce6ecccfac2395f0b8467a7b2f0c1",
+      "size": 3393,
+      "host_static_check": "passed",
+      "catalog_static_policy": "passed",
+      "license": "MIT-0",
+      "review_status": "not_reviewed",
+      "inventory": [
+        {
+          "path": "amadeus_example_tone/__init__.py",
+          "status": "added",
+          "before": null,
+          "after": "e029241158a40e54d89a01f03b60df312b2f51fac80a91b4e3c3d7c5f6c7bdaf",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,19 @@",
+            "+\"\"\"MIT-0 offline author example, using only the delivered SDK and standard library.\"\"\"",
+            "+",
+            "+import math",
+            "+import struct",
+            "+import time",
+            "+from amadeus_extension import AudioChunk, Extension",
+            "+",
+            "+extension = Extension()",
+            "+",
+            "+",
+            "+@extension.tts(\"tone\")",
+            "+def synthesize(request, context):",
+            "+    pcm = b\"\".join(",
+            "+        struct.pack(\"<h\", int(1000 * math.sin(2 * math.pi * 440 * i / 24000))) for i in range(2400)",
+            "+    )",
+            "+    for _ in range(30):",
+            "+        context.check_cancelled()",
+            "+        yield AudioChunk(sample_rate=24000, pcm_s16le=pcm)",
+            "+        time.sleep(0.02)"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone/amadeus-extension.json",
+          "status": "added",
+          "before": null,
+          "after": "5f327776b31adb8c2a78b51961207efb7d18971dfc30a1a1c36ee3a9eebaf5c3",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+{\"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.tone-tts\", \"version\": \"0.1.0\", \"display_name\": \"Offline SDK tone\", \"description\": \"Synthetic PCM for author contract checks, not a speech service.\", \"license\": \"MIT-0\", \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\", \"platforms\": [\"win32\", \"darwin\", \"linux\"]}, \"runtime\": {\"kind\": \"python\", \"entry\": \"amadeus_example_tone:extension\", \"requires_python\": \">=3.12\"}, \"contributes\": {\"voice_backend\": [{\"id\": \"tone\", \"role\": \"tts\", \"contract\": \"amadeus.voice.tts/v0\", \"deployment\": \"local\", \"languages\": [\"en\"], \"streaming\": true}]}}"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.1.0.dist-info/METADATA",
+          "status": "added",
+          "before": null,
+          "after": "20f0497a970c55655140c4b733dd0dee20d35f6e05d4358db116042a71801f31",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+Metadata-Version: 2.4",
+            "+Name: amadeus-example-tone-tts",
+            "+Version: 0.1.0",
+            "+License-Expression: MIT-0",
+            "+Requires-Python: >=3.12",
+            "+License-File: LICENSE",
+            "+Requires-Dist: amadeus-extension-sdk==0.1.0",
+            "+Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.1.0.dist-info/RECORD",
+          "status": "added",
+          "before": null,
+          "after": "7d665fd42f3fd61dbc390256bb4f9c657c6d29bd209e367043d63a8f779a654d",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+amadeus_example_tone/__init__.py,sha256=4CkkEVikDlTYmgHwO2DfMSsvUfrICpG048PXxfbHva8,549",
+            "+amadeus_example_tone/amadeus-extension.json,sha256=XzJ3drMa24wqeLUZYSB--30Ylx38MKGhw27jqe669cM,625",
+            "+amadeus_example_tone_tts-0.1.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "+amadeus_example_tone_tts-0.1.0.dist-info/METADATA,sha256=IPBJepcMVWVRQMS3M90N7iDTX24F1DWNsRYEKnGAHzE,214",
+            "+amadeus_example_tone_tts-0.1.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "+amadeus_example_tone_tts-0.1.0.dist-info/entry_points.txt,sha256=6bCApIsyG35RA3tVo-7bjTK6L2wYJa_KN8v1EqeZ_KY,65",
+            "+amadeus_example_tone_tts-0.1.0.dist-info/top_level.txt,sha256=oNub5mAzbTaRzUUp5EMM-EqZ5DMPdnbEW-2nulE5OVs,21",
+            "+amadeus_example_tone_tts-0.1.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.1.0.dist-info/WHEEL",
+          "status": "added",
+          "before": null,
+          "after": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,5 @@",
+            "+Wheel-Version: 1.0",
+            "+Generator: setuptools (83.0.0)",
+            "+Root-Is-Purelib: true",
+            "+Tag: py3-none-any",
+            "+"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.1.0.dist-info/entry_points.txt",
+          "status": "added",
+          "before": null,
+          "after": "e9b080a48b321b7e51037b55a3eedb8d32ba2f6c1825afca37cbf512a799fca6",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,2 @@",
+            "+[amadeus.extensions]",
+            "+com.example.tone-tts = amadeus_example_tone"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.1.0.dist-info/licenses/LICENSE",
+          "status": "added",
+          "before": null,
+          "after": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,7 @@",
+            "+MIT No Attribution",
+            "+",
+            "+Copyright (c) 2026 Amadeus contributors",
+            "+",
+            "+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "+",
+            "+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.1.0.dist-info/top_level.txt",
+          "status": "added",
+          "before": null,
+          "after": "a0db9be660336d3691cd4529e4430cf84a99e4330f7676c45beda7ba5139395b",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+amadeus_example_tone"
+          ],
+          "diff_truncated": false
+        }
+      ],
+      "previous_candidate_diff": null
+    },
+    {
+      "id": "com.example.tone-tts",
+      "version": "0.2.0",
+      "filename": "amadeus_example_tone_tts-0.2.0-py3-none-any.whl",
+      "sha256": "46ec319336a9a7bb511026b6b416fc1d01cdd1a725d6c53aa6547d46e353cb8e",
+      "size": 3394,
+      "host_static_check": "passed",
+      "catalog_static_policy": "passed",
+      "license": "MIT-0",
+      "review_status": "not_reviewed",
+      "inventory": [
+        {
+          "path": "amadeus_example_tone/__init__.py",
+          "status": "added",
+          "before": null,
+          "after": "e029241158a40e54d89a01f03b60df312b2f51fac80a91b4e3c3d7c5f6c7bdaf",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,19 @@",
+            "+\"\"\"MIT-0 offline author example, using only the delivered SDK and standard library.\"\"\"",
+            "+",
+            "+import math",
+            "+import struct",
+            "+import time",
+            "+from amadeus_extension import AudioChunk, Extension",
+            "+",
+            "+extension = Extension()",
+            "+",
+            "+",
+            "+@extension.tts(\"tone\")",
+            "+def synthesize(request, context):",
+            "+    pcm = b\"\".join(",
+            "+        struct.pack(\"<h\", int(1000 * math.sin(2 * math.pi * 440 * i / 24000))) for i in range(2400)",
+            "+    )",
+            "+    for _ in range(30):",
+            "+        context.check_cancelled()",
+            "+        yield AudioChunk(sample_rate=24000, pcm_s16le=pcm)",
+            "+        time.sleep(0.02)"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone/amadeus-extension.json",
+          "status": "added",
+          "before": null,
+          "after": "057b7750a4d129f598cdb51f35805ea7ad9f55d4e52df32d22c1e8ab6ced2bcb",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+{\"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.tone-tts\", \"version\": \"0.2.0\", \"display_name\": \"Offline SDK tone\", \"description\": \"Synthetic PCM for author contract checks, not a speech service.\", \"license\": \"MIT-0\", \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\", \"platforms\": [\"win32\", \"darwin\", \"linux\"]}, \"runtime\": {\"kind\": \"python\", \"entry\": \"amadeus_example_tone:extension\", \"requires_python\": \">=3.12\"}, \"contributes\": {\"voice_backend\": [{\"id\": \"tone\", \"role\": \"tts\", \"contract\": \"amadeus.voice.tts/v0\", \"deployment\": \"local\", \"languages\": [\"en\"], \"streaming\": true}]}}"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.2.0.dist-info/METADATA",
+          "status": "added",
+          "before": null,
+          "after": "c5a055857f0b3801a038e69ad93fd81877c33d5420ea28be7e7636e9529b2e9b",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+Metadata-Version: 2.4",
+            "+Name: amadeus-example-tone-tts",
+            "+Version: 0.2.0",
+            "+License-Expression: MIT-0",
+            "+Requires-Python: >=3.12",
+            "+License-File: LICENSE",
+            "+Requires-Dist: amadeus-extension-sdk==0.1.0",
+            "+Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.2.0.dist-info/RECORD",
+          "status": "added",
+          "before": null,
+          "after": "34c64f585f18fe85346c1267bca0a349565f54581758dfd68c3db81472a62f87",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+amadeus_example_tone/__init__.py,sha256=4CkkEVikDlTYmgHwO2DfMSsvUfrICpG048PXxfbHva8,549",
+            "+amadeus_example_tone/amadeus-extension.json,sha256=BXt3UKTRKfWYzbUfNYBep62fVdTlLfMtIsHoq2ztK8s,625",
+            "+amadeus_example_tone_tts-0.2.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "+amadeus_example_tone_tts-0.2.0.dist-info/METADATA,sha256=xaBVhX8LOAGgOOaa2T_YGHfDPVQg6ii-fnY26VKbLps,214",
+            "+amadeus_example_tone_tts-0.2.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "+amadeus_example_tone_tts-0.2.0.dist-info/entry_points.txt,sha256=6bCApIsyG35RA3tVo-7bjTK6L2wYJa_KN8v1EqeZ_KY,65",
+            "+amadeus_example_tone_tts-0.2.0.dist-info/top_level.txt,sha256=oNub5mAzbTaRzUUp5EMM-EqZ5DMPdnbEW-2nulE5OVs,21",
+            "+amadeus_example_tone_tts-0.2.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.2.0.dist-info/WHEEL",
+          "status": "added",
+          "before": null,
+          "after": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,5 @@",
+            "+Wheel-Version: 1.0",
+            "+Generator: setuptools (83.0.0)",
+            "+Root-Is-Purelib: true",
+            "+Tag: py3-none-any",
+            "+"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.2.0.dist-info/entry_points.txt",
+          "status": "added",
+          "before": null,
+          "after": "e9b080a48b321b7e51037b55a3eedb8d32ba2f6c1825afca37cbf512a799fca6",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,2 @@",
+            "+[amadeus.extensions]",
+            "+com.example.tone-tts = amadeus_example_tone"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.2.0.dist-info/licenses/LICENSE",
+          "status": "added",
+          "before": null,
+          "after": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,7 @@",
+            "+MIT No Attribution",
+            "+",
+            "+Copyright (c) 2026 Amadeus contributors",
+            "+",
+            "+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "+",
+            "+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.2.0.dist-info/top_level.txt",
+          "status": "added",
+          "before": null,
+          "after": "a0db9be660336d3691cd4529e4430cf84a99e4330f7676c45beda7ba5139395b",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+amadeus_example_tone"
+          ],
+          "diff_truncated": false
+        }
+      ],
+      "previous_candidate_diff": [
+        {
+          "path": "amadeus_example_tone/amadeus-extension.json",
+          "status": "modified",
+          "before": "5f327776b31adb8c2a78b51961207efb7d18971dfc30a1a1c36ee3a9eebaf5c3",
+          "after": "057b7750a4d129f598cdb51f35805ea7ad9f55d4e52df32d22c1e8ab6ced2bcb",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1 +1 @@",
+            "-{\"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.tone-tts\", \"version\": \"0.1.0\", \"display_name\": \"Offline SDK tone\", \"description\": \"Synthetic PCM for author contract checks, not a speech service.\", \"license\": \"MIT-0\", \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\", \"platforms\": [\"win32\", \"darwin\", \"linux\"]}, \"runtime\": {\"kind\": \"python\", \"entry\": \"amadeus_example_tone:extension\", \"requires_python\": \">=3.12\"}, \"contributes\": {\"voice_backend\": [{\"id\": \"tone\", \"role\": \"tts\", \"contract\": \"amadeus.voice.tts/v0\", \"deployment\": \"local\", \"languages\": [\"en\"], \"streaming\": true}]}}",
+            "+{\"schema\": \"amadeus.extension/v0\", \"id\": \"com.example.tone-tts\", \"version\": \"0.2.0\", \"display_name\": \"Offline SDK tone\", \"description\": \"Synthetic PCM for author contract checks, not a speech service.\", \"license\": \"MIT-0\", \"author\": {\"name\": \"Amadeus contributors\"}, \"engines\": {\"amadeus_host_api\": \">=0.1,<0.2\", \"platforms\": [\"win32\", \"darwin\", \"linux\"]}, \"runtime\": {\"kind\": \"python\", \"entry\": \"amadeus_example_tone:extension\", \"requires_python\": \">=3.12\"}, \"contributes\": {\"voice_backend\": [{\"id\": \"tone\", \"role\": \"tts\", \"contract\": \"amadeus.voice.tts/v0\", \"deployment\": \"local\", \"languages\": [\"en\"], \"streaming\": true}]}}"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.1.0.dist-info/METADATA",
+          "status": "removed",
+          "before": "20f0497a970c55655140c4b733dd0dee20d35f6e05d4358db116042a71801f31",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,8 +0,0 @@",
+            "-Metadata-Version: 2.4",
+            "-Name: amadeus-example-tone-tts",
+            "-Version: 0.1.0",
+            "-License-Expression: MIT-0",
+            "-Requires-Python: >=3.12",
+            "-License-File: LICENSE",
+            "-Requires-Dist: amadeus-extension-sdk==0.1.0",
+            "-Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.1.0.dist-info/RECORD",
+          "status": "removed",
+          "before": "7d665fd42f3fd61dbc390256bb4f9c657c6d29bd209e367043d63a8f779a654d",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,8 +0,0 @@",
+            "-amadeus_example_tone/__init__.py,sha256=4CkkEVikDlTYmgHwO2DfMSsvUfrICpG048PXxfbHva8,549",
+            "-amadeus_example_tone/amadeus-extension.json,sha256=XzJ3drMa24wqeLUZYSB--30Ylx38MKGhw27jqe669cM,625",
+            "-amadeus_example_tone_tts-0.1.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "-amadeus_example_tone_tts-0.1.0.dist-info/METADATA,sha256=IPBJepcMVWVRQMS3M90N7iDTX24F1DWNsRYEKnGAHzE,214",
+            "-amadeus_example_tone_tts-0.1.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "-amadeus_example_tone_tts-0.1.0.dist-info/entry_points.txt,sha256=6bCApIsyG35RA3tVo-7bjTK6L2wYJa_KN8v1EqeZ_KY,65",
+            "-amadeus_example_tone_tts-0.1.0.dist-info/top_level.txt,sha256=oNub5mAzbTaRzUUp5EMM-EqZ5DMPdnbEW-2nulE5OVs,21",
+            "-amadeus_example_tone_tts-0.1.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.1.0.dist-info/WHEEL",
+          "status": "removed",
+          "before": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,5 +0,0 @@",
+            "-Wheel-Version: 1.0",
+            "-Generator: setuptools (83.0.0)",
+            "-Root-Is-Purelib: true",
+            "-Tag: py3-none-any",
+            "-"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.1.0.dist-info/entry_points.txt",
+          "status": "removed",
+          "before": "e9b080a48b321b7e51037b55a3eedb8d32ba2f6c1825afca37cbf512a799fca6",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,2 +0,0 @@",
+            "-[amadeus.extensions]",
+            "-com.example.tone-tts = amadeus_example_tone"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.1.0.dist-info/licenses/LICENSE",
+          "status": "removed",
+          "before": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1,7 +0,0 @@",
+            "-MIT No Attribution",
+            "-",
+            "-Copyright (c) 2026 Amadeus contributors",
+            "-",
+            "-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "-",
+            "-THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.1.0.dist-info/top_level.txt",
+          "status": "removed",
+          "before": "a0db9be660336d3691cd4529e4430cf84a99e4330f7676c45beda7ba5139395b",
+          "after": null,
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -1 +0,0 @@",
+            "-amadeus_example_tone"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.2.0.dist-info/METADATA",
+          "status": "added",
+          "before": null,
+          "after": "c5a055857f0b3801a038e69ad93fd81877c33d5420ea28be7e7636e9529b2e9b",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+Metadata-Version: 2.4",
+            "+Name: amadeus-example-tone-tts",
+            "+Version: 0.2.0",
+            "+License-Expression: MIT-0",
+            "+Requires-Python: >=3.12",
+            "+License-File: LICENSE",
+            "+Requires-Dist: amadeus-extension-sdk==0.1.0",
+            "+Dynamic: license-file"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.2.0.dist-info/RECORD",
+          "status": "added",
+          "before": null,
+          "after": "34c64f585f18fe85346c1267bca0a349565f54581758dfd68c3db81472a62f87",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,8 @@",
+            "+amadeus_example_tone/__init__.py,sha256=4CkkEVikDlTYmgHwO2DfMSsvUfrICpG048PXxfbHva8,549",
+            "+amadeus_example_tone/amadeus-extension.json,sha256=BXt3UKTRKfWYzbUfNYBep62fVdTlLfMtIsHoq2ztK8s,625",
+            "+amadeus_example_tone_tts-0.2.0.dist-info/licenses/LICENSE,sha256=wcy0Jht7HLgqRqcE5Mjhrvxmvb_GaFK2rXWzM-MYKVM,919",
+            "+amadeus_example_tone_tts-0.2.0.dist-info/METADATA,sha256=xaBVhX8LOAGgOOaa2T_YGHfDPVQg6ii-fnY26VKbLps,214",
+            "+amadeus_example_tone_tts-0.2.0.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91",
+            "+amadeus_example_tone_tts-0.2.0.dist-info/entry_points.txt,sha256=6bCApIsyG35RA3tVo-7bjTK6L2wYJa_KN8v1EqeZ_KY,65",
+            "+amadeus_example_tone_tts-0.2.0.dist-info/top_level.txt,sha256=oNub5mAzbTaRzUUp5EMM-EqZ5DMPdnbEW-2nulE5OVs,21",
+            "+amadeus_example_tone_tts-0.2.0.dist-info/RECORD,,"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.2.0.dist-info/WHEEL",
+          "status": "added",
+          "before": null,
+          "after": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,5 @@",
+            "+Wheel-Version: 1.0",
+            "+Generator: setuptools (83.0.0)",
+            "+Root-Is-Purelib: true",
+            "+Tag: py3-none-any",
+            "+"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.2.0.dist-info/entry_points.txt",
+          "status": "added",
+          "before": null,
+          "after": "e9b080a48b321b7e51037b55a3eedb8d32ba2f6c1825afca37cbf512a799fca6",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,2 @@",
+            "+[amadeus.extensions]",
+            "+com.example.tone-tts = amadeus_example_tone"
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.2.0.dist-info/licenses/LICENSE",
+          "status": "added",
+          "before": null,
+          "after": "c1ccb4261b7b1cb82a46a704e4c8e1aefc66bdbfc66852b6ad75b333e3182953",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1,7 @@",
+            "+MIT No Attribution",
+            "+",
+            "+Copyright (c) 2026 Amadeus contributors",
+            "+",
+            "+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.",
+            "+",
+            "+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+          ],
+          "diff_truncated": false
+        },
+        {
+          "path": "amadeus_example_tone_tts-0.2.0.dist-info/top_level.txt",
+          "status": "added",
+          "before": null,
+          "after": "a0db9be660336d3691cd4529e4430cf84a99e4330f7676c45beda7ba5139395b",
+          "text_diff": [
+            "--- ",
+            "+++ ",
+            "@@ -0,0 +1 @@",
+            "+amadeus_example_tone"
+          ],
+          "diff_truncated": false
+        }
+      ]
+    }
+  ]
+}
