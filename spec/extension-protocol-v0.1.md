@@ -254,6 +254,7 @@ Unknown fields are rejected at every level. A newer manifest format uses a new
 | `version` | yes | Exact Semantic Versioning 2.0.0 version |
 | `display_name` | yes | Localized text, at most 80 characters |
 | `description` | yes | Localized text, at most 500 characters |
+| `icon` | no | Package-relative PNG/JPEG path; at most 1 MiB ([§3.10](#310-package-checks)) |
 | `author` | yes | `{ "name", "email"?, "url"? }` |
 | `license` | no | SPDX license expression. An index MAY require it. |
 | `homepage`, `repository` | no | `https://` URL |
@@ -266,6 +267,15 @@ Unknown fields are rejected at every level. A newer manifest format uses a new
 **Localized text** is either a string or an object that maps language tags
 (for example `en`, `zh-CN`, `ja`) to strings. A Host displays the entry for the
 user's language, then `en`, then the first entry.
+
+Icons travel inside the package, for example `"icon": "assets/icon.png"`.
+They do not name a URL or an absolute filesystem path. A square image of
+256×256 pixels is recommended. The desktop accepts a decoded canvas up to
+1024×1024 pixels and shows icons at 36 CSS pixels without cropping. An omitted
+or unavailable icon falls back to the first displayed name character (uppercase
+for Latin letters). Older Hosts may reject this optional field; authors must
+declare an appropriate minimum application version in their distribution notes
+until the icon-capable Host profile is published. The Host API version is unchanged.
 
 ### 3.3 Identifiers
 
@@ -508,6 +518,7 @@ When a Host or validator has the package contents, it also checks:
 | P1 | The manifest exists, is at most 256 KiB, and parses as JSON. |
 | P2 | Each skill `path` is a directory inside the package that contains `SKILL.md`, contains and passes through no links, and is at most 16 MiB. |
 | P4 | Theme background resources are contained, unlinked PNG/JPEG files of at most 8 MiB. The Host also validates decoded size, token literals and rendered contrast before activation. |
+| P5 | Package icons are contained, unlinked PNG/JPEG files of at most 1 MiB, with matching signatures. The Host validates declared and decoded dimensions before displaying an image. Missing, unreadable or undecodable icons at display time use the name-initial fallback without granting filesystem access to the renderer. |
 | P3 | Each `${package}/…` command exists inside the package without passing through links. |
 
 ## 4. Lifecycle
