@@ -5,7 +5,16 @@ import json
 import tempfile
 from pathlib import Path
 from urllib.request import build_opener
-from catalog import BoundedRedirect, POLICY, canonical, fetch_artifact, https_url, parse_json, validate_index
+
+from catalog import (
+    POLICY,
+    BoundedRedirect,
+    canonical,
+    fetch_artifact,
+    https_url,
+    parse_json,
+    validate_index,
+)
 
 
 def verify(index_url, expected_path, previous_path=None):

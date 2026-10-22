@@ -1,11 +1,16 @@
 import copy
 import io
 from pathlib import Path
+
 import pytest
-from test_catalog import host_environment as host_environment, index
-from catalog import canonical
-from preflight_submission import preflight
+import test_catalog
 import verify_publication as delivery
+from preflight_submission import preflight
+from test_catalog import index
+
+from catalog import canonical
+
+host_environment = test_catalog.host_environment
 
 
 @pytest.mark.parametrize("fragment,admitted", [("notes_mcp", True), ("fish_audio", False)])

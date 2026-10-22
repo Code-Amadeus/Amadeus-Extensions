@@ -6,6 +6,7 @@ import shutil
 import subprocess
 import tempfile
 from pathlib import Path
+
 from catalog import PIN, canonical, check_policy, verify_host, wheel_diff
 
 
@@ -24,7 +25,7 @@ def preflight(wheel, host, python):
             result = subprocess.run(
                 [str(python), "-I", str(host / "tools/extension_package.py"),
                  "check-wheel", str(snapshot)],
-                capture_output=True, text=True, encoding="utf-8", timeout=60,
+                capture_output=True, text=True, encoding="utf-8", timeout=60, check=False,
             )
             inspection = json.loads(result.stdout)
             if result.returncode or not inspection.get("ok"):
