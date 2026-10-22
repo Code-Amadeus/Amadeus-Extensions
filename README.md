@@ -4,7 +4,10 @@ Public design direction and discussion for the Amadeus extension system.
 
 > **Status: Draft specification v0.1**
 >
-> A first draft of the extension protocol is available for discussion. Unmerged Amadeus experiments implement TTS/MCP/Skill lifecycle and data-only desktop themes; no stable SDK has been released. Interfaces and compatibility guarantees may change until 1.0.
+> A first draft of the extension protocol is available for discussion. Amadeus main implements an experimental subset with TTS/MCP/Skill lifecycle and data-only desktop themes; no stable SDK has been released. Interfaces and compatibility guarantees may change until 1.0.
+
+The implemented Host subset is documented in the [Host profile](https://github.com/Code-Amadeus/Amadeus/blob/fd17e707d8793480003f929bc8c78a8d134e41b5/docs/extension_host_profile_v0.1.md).
+Manifest validation here is not a claim that every draft contribution can run.
 
 ## Why this repository exists
 
@@ -50,6 +53,14 @@ python -m pip install --require-hashes -r requirements-dev.txt
 python tools/validate_manifest.py examples/mimo-tts
 python -m pytest
 ```
+
+## Curated catalog experiment
+
+See [catalog tooling and review policy](catalog/README.md). The empty bootstrap
+contains no reviewed packages. The Host experiment implements store browsing, downloads,
+manual updates and durable safety, with a complete local Git/HTTPS/desktop demonstration;
+these branches have not been released publicly. Start with the
+[submission and publication guide](catalog/SUBMISSION.md).
 
 ## Current design direction
 

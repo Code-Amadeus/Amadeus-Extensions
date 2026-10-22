@@ -48,3 +48,50 @@ jobs:
           first, second = (path.read_bytes() for path in wheels)
           assert first == second, 'Windows and Linux SDK wheels differ'
           print(f'{wheels[0].name} sha256={hashlib.sha256(first).hexdigest()}')
+
+  catalog-contracts:
+    runs-on: windows-2025
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          path: proposal
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12.10'
+      - uses: actions/checkout@v7
+        with:
+          repository: Code-Amadeus/Amadeus
+          # Reviewed D1 checker. Publish this commit before enabling the remote job.
+          ref: 1840c8e4f646992ddaebea3139c8895f29743a8f
+          path: host
+      - name: Install catalog tests and fixed static checker
+        shell: pwsh
+        run: |
+          python -m pip install --require-hashes -r proposal/requirements-dev.txt
+          python -m venv host/build/catalog-checker
+          host/build/catalog-checker/Scripts/python.exe -m pip install --require-hashes -r host/tools/requirements-extension-authoring.txt
+      - name: Build only the pinned Host reference packages
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force host/build/extension-authoring-review-wheels | Out-Null
+          $destination = (Resolve-Path host/build/extension-authoring-review-wheels).Path
+          foreach ($project in Get-ChildItem host/examples/extensions -Directory) {
+            Push-Location $project.FullName
+            python -I -c 'from setuptools.build_meta import build_wheel; import sys; build_wheel(sys.argv[1])' $destination
+            $result = $LASTEXITCODE
+            Pop-Location
+            if ($result -ne 0) { exit $result }
+          }
+      - name: Test catalog and local admission separation
+        working-directory: proposal
+        shell: pwsh
+        run: |
+          $env:AMADEUS_CATALOG_HOST = (Resolve-Path ../host).Path
+          $env:AMADEUS_CATALOG_PYTHON = (Resolve-Path ../host/build/catalog-checker/Scripts/python.exe).Path
+          python -m pytest -q tests/test_catalog.py tests/test_catalog_submission.py
+      # Admission runs independently from protected-base workflow/code.
+      # This job executes proposal tests only; it must never gate publication.

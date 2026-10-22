@@ -1,0 +1,10 @@
+{
+  "entries": [],
+  "format": "amadeus.catalog/v1",
+  "generator_commit": "85f49315dd01818748e4079b69bdf67d47eb7170",
+  "host_commit": "1840c8e4f646992ddaebea3139c8895f29743a8f",
+  "security": [],
+  "sequence": 0,
+  "source_commit": "85f49315dd01818748e4079b69bdf67d47eb7170",
+  "source_time": "2026-10-21T09:03:48+13:00"
+}
