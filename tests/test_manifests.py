@@ -57,8 +57,9 @@ HTTP_SERVER = {
 }
 
 
-def test_schema_is_a_valid_draft_2020_12_schema():
-    vm._validator()
+@pytest.mark.parametrize("schema_name", ["amadeus.extension/v0", "amadeus.extension/v1"])
+def test_schema_is_a_valid_draft_2020_12_schema(schema_name):
+    vm._validator(schema_name)
 
 
 @pytest.mark.parametrize("package", EXAMPLES, ids=lambda path: path.name)
@@ -288,7 +289,7 @@ def test_theme_background_requires_a_contained_package_file(tmp_path):
     manifest = example('desktop-theme')
     manifest['contributes']['theme'][0]['background'] = {'image': 'bg.png', 'fit': 'cover', 'dim': .4}
     assert not codes(manifest)
-    assert {issue.code for issue in vm.package_issues(manifest, tmp_path)} == {'P3.missing_file'}
+    assert {issue.code for issue in vm.package_issues(manifest, tmp_path)} == {'P4.theme_image'}
     (tmp_path / 'bg.png').write_bytes(b'Host separately validates image encoding and decoded dimensions')
     assert 'P4.theme_image' in {issue.code for issue in vm.package_issues(manifest, tmp_path)}
     (tmp_path / 'bg.png').write_bytes(b'\x89PNG\r\n\x1a\n' + b'header-only fixture; full decoding remains Host-owned')

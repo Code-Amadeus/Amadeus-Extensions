@@ -20,7 +20,8 @@ Companion documents:
 | [Context source contract](contracts/context-source-v0.md) (`amadeus.context.source/v0`) | Provisional |
 | [Observer contract](contracts/observer-v0.md) (`amadeus.events.observer/v0`) | Provisional |
 | [Theme contract](contracts/theme-v0.md) (`amadeus.ui.theme/v0`) | Provisional; local P1/P2 implementation under review |
-| [Manifest JSON Schema](../schemas/amadeus-extension.v0.schema.json) | Normative |
+| [Manifest v0 JSON Schema](../schemas/amadeus-extension.v0.schema.json) | Normative; no package icon field |
+| [Manifest v1 JSON Schema](../schemas/amadeus-extension.v1.schema.json) | Normative; adds optional package icons |
 | [Reference manifest validator](../tools/validate_manifest.py) | Informative |
 | [Example packages](../examples/) | Informative |
 
@@ -237,10 +238,17 @@ contribution kinds.
 
 A package carries one manifest named `amadeus-extension.json` (see
 [§8.1](#81-package-forms) for its location). The manifest is UTF-8 JSON without
-a byte order mark and at most 256 KiB. A valid manifest validates against
-[`schemas/amadeus-extension.v0.schema.json`](../schemas/amadeus-extension.v0.schema.json)
-and satisfies the rules in [§3.9](#39-semantic-rules). The Host reads the
-manifest without executing package code.
+a byte order mark and at most 256 KiB. A valid manifest validates against the
+schema selected by its `schema` value and satisfies [§3.9](#39-semantic-rules):
+
+| Manifest value | Structural rules |
+| --- | --- |
+| `amadeus.extension/v0` | [Frozen v0 schema](../schemas/amadeus-extension.v0.schema.json); `icon` is not allowed |
+| `amadeus.extension/v1` | [v1 schema](../schemas/amadeus-extension.v1.schema.json); adds optional `icon` |
+
+The Host reads the manifest without executing package code. Hosts implementing
+this revision accept both versions; existing v0 packages need no migration.
+The manifest version does not change contribution contracts or the Runner SDK.
 
 Unknown fields are rejected at every level. A newer manifest format uses a new
 `schema` value instead of adding fields that older Hosts would misread.
@@ -249,12 +257,12 @@ Unknown fields are rejected at every level. A newer manifest format uses a new
 
 | Field | Required | Value |
 | --- | --- | --- |
-| `schema` | yes | `"amadeus.extension/v0"` |
+| `schema` | yes | `"amadeus.extension/v0"` or `"amadeus.extension/v1"` |
 | `id` | yes | Package id ([§3.3](#33-identifiers)) |
 | `version` | yes | Exact Semantic Versioning 2.0.0 version |
 | `display_name` | yes | Localized text, at most 80 characters |
 | `description` | yes | Localized text, at most 500 characters |
-| `icon` | no | Package-relative PNG/JPEG path; at most 1 MiB ([§3.10](#310-package-checks)) |
+| `icon` | no; v1 only | Package-relative PNG/JPEG path; at most 1 MiB ([§3.10](#310-package-checks)) |
 | `author` | yes | `{ "name", "email"?, "url"? }` |
 | `license` | no | SPDX license expression. An index MAY require it. |
 | `homepage`, `repository` | no | `https://` URL |
@@ -268,14 +276,20 @@ Unknown fields are rejected at every level. A newer manifest format uses a new
 (for example `en`, `zh-CN`, `ja`) to strings. A Host displays the entry for the
 user's language, then `en`, then the first entry.
 
-Icons travel inside the package, for example `"icon": "assets/icon.png"`.
-They do not name a URL or an absolute filesystem path. A square image of
+To declare an icon, set `"schema": "amadeus.extension/v1"` and include a
+package-local path such as `"icon": "assets/icon.png"`. The v0 schema is unchanged
+and rejects `icon`. Icons do not name a URL or an absolute filesystem path. A square image of
 256×256 pixels is recommended. The desktop accepts a decoded canvas up to
 1024×1024 pixels and shows icons at 36 CSS pixels without cropping. An omitted
 or unavailable icon falls back to the first displayed name character (uppercase
-for Latin letters). Older Hosts may reject this optional field; authors must
-declare an appropriate minimum application version in their distribution notes
-until the icon-capable Host profile is published. The Host API version is unchanged.
+for Latin letters). Older Hosts that only implement v0 reject v1 manifests,
+including v1 manifests without an icon. In particular, existing Hosts validate
+the schema before checking `engines`, and may report `invalid manifest` rather
+than `incompatible`; a higher Host API requirement cannot change their behavior.
+Authors must state a v1-capable minimum application version in distribution
+notes. The Host API version remains unchanged because runtime contracts are unchanged.
+Catalog admission is a separate gate: icon packages must not enter a catalog
+until its pinned checker has been qualified for v1.
 
 ### 3.3 Identifiers
 
@@ -517,9 +531,9 @@ When a Host or validator has the package contents, it also checks:
 | --- | --- |
 | P1 | The manifest exists, is at most 256 KiB, and parses as JSON. |
 | P2 | Each skill `path` is a directory inside the package that contains `SKILL.md`, contains and passes through no links, and is at most 16 MiB. |
+| P3 | Each `${package}/…` command exists inside the package without passing through links. |
 | P4 | Theme background resources are contained, unlinked PNG/JPEG files of at most 8 MiB. The Host also validates decoded size, token literals and rendered contrast before activation. |
 | P5 | Package icons are contained, unlinked PNG/JPEG files of at most 1 MiB, with matching signatures. The Host validates declared and decoded dimensions before displaying an image. Missing, unreadable or undecodable icons at display time use the name-initial fallback without granting filesystem access to the renderer. |
-| P3 | Each `${package}/…` command exists inside the package without passing through links. |
 
 ## 4. Lifecycle
 

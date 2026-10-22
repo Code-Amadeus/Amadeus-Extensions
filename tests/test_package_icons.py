@@ -19,7 +19,7 @@ MANIFEST = {
 
 
 def icon_manifest(icon):
-    return {**copy.deepcopy(MANIFEST), 'icon': icon}
+    return {**copy.deepcopy(MANIFEST), 'schema': 'amadeus.extension/v1', 'icon': icon}
 
 
 def test_old_packages_need_no_icon(tmp_path):
@@ -36,7 +36,7 @@ def test_icon_declaration_rejects_external_paths_and_active_formats(icon):
 def test_icon_package_checks_share_image_signature_and_byte_limits(tmp_path, name, header):
     manifest = icon_manifest(name)
     assert not vm.manifest_issues(manifest)
-    assert vm.package_issues(manifest, tmp_path)[0].code == 'P3.missing_file'
+    assert vm.package_issues(manifest, tmp_path)[0].code == 'P5.package_icon'
     image = tmp_path / name
     image.write_bytes(header)
     assert not vm.package_issues(manifest, tmp_path)
