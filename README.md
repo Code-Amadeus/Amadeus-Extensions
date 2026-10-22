@@ -21,7 +21,8 @@ Our current focus is how extensions fit into Amadeus capability discovery, routi
 | [Desktop themes](spec/contracts/theme-v0.md) | Data-only palettes, installed fonts, bounded images and package lifecycle (provisional) |
 | [Context sources](spec/contracts/context-source-v0.md) | Reference material such as memories for Main Chat turns (provisional) |
 | [Observers](spec/contracts/observer-v0.md) | Projected Host events (provisional) |
-| [Manifest schema](schemas/amadeus-extension.v0.schema.json) | JSON Schema for `amadeus-extension.json` |
+| [Manifest v0 schema](schemas/amadeus-extension.v0.schema.json) | Existing manifests; no icon field |
+| [Manifest v1 schema](schemas/amadeus-extension.v1.schema.json) | Adds optional local package icons; new Hosts accept v0 and v1 |
 | [Examples](examples/) | Six manifest examples; the experimental Host supports only its documented subset |
 
 In short:
