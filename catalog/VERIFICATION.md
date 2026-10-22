@@ -97,3 +97,27 @@ Read-only GitHub configuration checks found no main protection/applicable rules,
 read-only default workflow tokens with no PR approval permission, and no enforced
 organization 2FA. Individual maintainer 2FA is unverified. No settings were changed;
 these remain release gates, alongside independent review and public reachable pins.
+
+
+## Draft integration qualification (2026-10-23)
+
+Before pushing the catalog draft, the full protocol suite at 8fb39ba ran on
+Windows / Python 3.12.10 with the explicit historical Host checker and its minimal
+hashed environment: **132 passed, 1 skipped** (Windows symlink privilege).
+The Host experiment incorporated main 5382b329 and reuses its dependency fixes.
+A fresh publisher-only run of the six-phase local Git/HTTPS demonstration passed
+input/publication CI, exact rebuild and candidate/live delivery verification in
+all phases; malformed submission and publication negatives remained enforced.
+Review identities and approvals were synthetic; the public index is still empty.
+
+Host draft must be pushed first so the fixed checker 1840c8e becomes remotely
+reachable. Remote Actions results are separate from the local qualification.
+No protected-branch change, real publisher approval, public artifact or index
+release is authorized by this draft.
+
+Parallel icon protocol PR #4 has no file overlap here, but its optional icon
+field is rejected by the current fixed Host checker. After the icon contract
+and Host implementation are integrated, qualify a real icon-bearing wheel and
+update the fixed checker and dependent pins explicitly; do not infer catalog
+acceptance from schema acceptance alone. Host UI PR #255 also overlaps store
+settings/IPC files and needs combined UI and admission verification on integration.
