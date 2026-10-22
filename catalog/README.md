@@ -125,3 +125,7 @@ wheel bytes and static checks. They are not catalog entries or approvals. Keep t
 bootstrap empty until independent review, public artifacts, protected publication
 and final release qualification are complete. The Host experimental S3 checklist
 is `docs/verification/extensions/store-v1.md`; no release is implied by this material.
+
+
+For author preflight, ownership/transfer, review invalidation, PR responsibilities,
+revision and verified distribution, follow the [submission workflow](SUBMISSION.md).

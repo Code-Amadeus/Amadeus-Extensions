@@ -48,3 +48,7 @@ artifacts. Do not relabel copyright removal as a security ban or delete user dat
 Before first public release: protect main, require reviewed merges, verify
 maintainer two-factor authentication and least-privilege workflows, and ensure
 submission execution jobs have no publishing credentials. S3 owns that evidence.
+
+
+For author preflight, ownership/transfer, review invalidation, PR responsibilities,
+revision and verified distribution, follow the [submission workflow](SUBMISSION.md).

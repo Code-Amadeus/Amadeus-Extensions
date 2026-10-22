@@ -92,7 +92,7 @@ jobs:
         run: |
           $env:AMADEUS_CATALOG_HOST = (Resolve-Path ../host).Path
           $env:AMADEUS_CATALOG_PYTHON = (Resolve-Path ../host/build/catalog-checker/Scripts/python.exe).Path
-          python -m pytest -q tests/test_catalog.py
+          python -m pytest -q tests/test_catalog.py tests/test_catalog_submission.py
       - uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.base.sha || github.sha }}

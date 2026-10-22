@@ -56,7 +56,10 @@ python -m pytest
 ## Curated catalog experiment
 
 See [catalog tooling and review policy](catalog/README.md). The empty bootstrap
-contains no reviewed packages; the Host store/download UI is not implemented.
+contains no reviewed packages. The Host experiment implements store browsing, downloads,
+manual updates and durable safety, with a complete local Git/HTTPS/desktop demonstration;
+these branches have not been released publicly. Start with the
+[submission and publication guide](catalog/SUBMISSION.md).
 
 ## Current design direction
 

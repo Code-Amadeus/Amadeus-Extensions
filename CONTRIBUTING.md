@@ -30,3 +30,7 @@ The build tool canonicalizes SDK text/ZIP metadata and recalculates RECORD per
 CI compares artifacts built independently on Windows and Linux. Do not replace
 that cross-platform comparison with two builds on the same machine. The Host's
 pinned wheel must match this canonical artifact; runtime support remains >=3.11.
+
+
+For author preflight, ownership/transfer, review invalidation, PR responsibilities,
+revision and verified distribution, follow the [submission workflow](catalog/SUBMISSION.md).
