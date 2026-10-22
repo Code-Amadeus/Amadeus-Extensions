@@ -152,3 +152,10 @@ After bootstrap, require the catalog-admission check from GitHub Actions before
 accepting any package/publication PR, and verify a deliberately invalid proposal
 is rejected on that protected path. Do not treat proposal unit tests or a local
 job simulation as that governance check.
+
+The fixed Host commit is retained by the annotated tag
+[extension-catalog-checker-d1](https://github.com/Code-Amadeus/Amadeus/tree/extension-catalog-checker-d1).
+This is a Git retention ref, not a Release or catalog publication. The toolchain
+still verifies the immutable commit hash, never a movable tag. After the Host
+prototype reaches main, requalify its checker there (including real v1 icon wheels)
+before updating the toolchain. Until then, the fixed checker rejects icon manifests.

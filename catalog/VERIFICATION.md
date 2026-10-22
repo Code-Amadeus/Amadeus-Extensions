@@ -121,3 +121,28 @@ and Host implementation are integrated, qualify a real icon-bearing wheel and
 update the fixed checker and dependent pins explicitly; do not infer catalog
 acceptance from schema acceptance alone. Host UI PR #255 also overlaps store
 settings/IPC files and needs combined UI and admission verification on integration.
+
+
+## Audit remediation (2026-10-23)
+
+The public v1 index moved to catalog/v1/index.json before publication. Supported
+clients retain safety delivery on the immutable-format path; a future format
+uses a new path. The fixed Host SHA is retained by extension-catalog-checker-d1,
+not a Release; CI still verifies the SHA rather than trusting the tag.
+
+Admission no longer runs after proposal tests in a shared interpreter/job.
+The new read-only pull_request_target workflow uses protected-base executable
+inputs and fresh environments, installs only trusted hashed dependencies, and
+treats proposal files as data. Proposal tests remain separate development checks.
+Local reproduction confirmed -I executes .pth in a contaminated venv, whereas
+fresh admission ignored malicious proposal Python/requirements/tests, accepted
+valid empty data and rejected invalid safety records. This does not certify the
+workflow's first introduction: after bootstrap reaches main, configure and
+exercise its required admission check before accepting any actual package.
+
+After the code change: complete protocol suite 132 passed / 1 existing Windows
+symlink skip; fresh six-phase local Git/HTTPS demonstration and 12 candidate/live
+checks passed. Host real Electron exercises passed 27 UI and 30 transport/install/
+settings-recovery checks. Human approvals were synthetic and the public index is
+still empty. Icon v1 is handled separately in #4/#255; this historical checker
+cannot admit it until requalification on Host main.
