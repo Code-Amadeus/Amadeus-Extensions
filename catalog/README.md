@@ -2,7 +2,7 @@
 
 This directory defines distribution facts, not new extension execution rights.
 The sole official index URL will be
-`https://raw.githubusercontent.com/Code-Amadeus/Amadeus-Extensions/main/catalog/index.json`
+`https://raw.githubusercontent.com/Code-Amadeus/Amadeus-Extensions/main/catalog/v1/index.json`
 on protected main. There is no signature in v1: repository access,
 branch protection, independent review, maintainer 2FA and least-privilege Actions
 are the trust root. These publication controls must be verified before S3.
@@ -63,8 +63,8 @@ protocol pin is changed by this catalog work.
    commit, never the wall clock. Repeat builds yield identical bytes.
 
 ```powershell
-python tools/build_catalog.py --source-repo . --source-commit <merged-input-sha> --approved-ref origin/main --sequence <previous-plus-one> --previous <current-main-index.json> --host <pinned-host> --python <minimal-python> --artifacts <artifact-cache> --output catalog/index.json --fetch
-python tools/check_catalog.py --index catalog/index.json --previous <current-main-index.json>
+python tools/build_catalog.py --source-repo . --source-commit <merged-input-sha> --approved-ref origin/main --sequence <previous-plus-one> --previous <current-main-index.json> --host <pinned-host> --python <minimal-python> --artifacts <artifact-cache> --output catalog/v1/index.json --fetch
+python tools/check_catalog.py --index catalog/v1/index.json --previous <current-main-index.json>
 python tools/check_catalog.py --wheel <current-wheel> --previous-wheel <previous-reviewed-wheel> --output <review-diff.json>
 ```
 
@@ -129,3 +129,26 @@ is `docs/verification/extensions/store-v1.md`; no release is implied by this mat
 
 For author preflight, ownership/transfer, review invalidation, PR responsibilities,
 revision and verified distribution, follow the [submission workflow](SUBMISSION.md).
+
+## Versioned delivery and independent admission
+
+The v1 public path is permanent: catalog/v1/index.json always retains the strict
+amadeus.catalog/v1 format. A new wire format uses another path. Maintainers must
+continue publishing understood safety facts and increasing sequences on supported
+older paths; switching v2 clients does not retire v1 safety delivery. Retirement
+requires an explicit client-support decision, never silently replacing v1 bytes
+with v2. There is no unversioned redirect used by clients.
+
+Proposal tests run in validate.yml and confer no admission authority. The separate
+catalog-admission.yml runs from the protected base via pull_request_target with
+read-only permissions, fresh private Python environments and base-pinned hashed
+dependencies. Proposal files are data only: its requirements, tests, workflow,
+sitecustomize and .pth files are never installed or executed by admission. No
+cache or artifacts from proposal jobs are reused.
+
+This first empty bootstrap requires human review of the workflow itself: the
+trusted workflow cannot certify its own introduction before it exists on main.
+After bootstrap, require the catalog-admission check from GitHub Actions before
+accepting any package/publication PR, and verify a deliberately invalid proposal
+is rejected on that protected path. Do not treat proposal unit tests or a local
+job simulation as that governance check.

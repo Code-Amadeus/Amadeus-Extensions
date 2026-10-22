@@ -1,0 +1,57 @@
+name: Catalog admission
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+permissions:
+  contents: read
+jobs:
+  catalog-admission:
+    runs-on: windows-2025
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: trusted
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/checkout@v7
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: proposal
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12.10'
+      - uses: actions/checkout@v7
+        with:
+          repository: Code-Amadeus/Amadeus
+          ref: 1840c8e4f646992ddaebea3139c8895f29743a8f
+          path: host
+          persist-credentials: false
+      - name: Create private environments from trusted hashed requirements
+        shell: pwsh
+        run: |
+          python -I -m venv admission-env
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          admission-env/Scripts/python.exe -I -m pip install --require-hashes -r trusted/requirements-dev.txt
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -I -m venv checker-env
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          checker-env/Scripts/python.exe -I -m pip install --require-hashes -r host/tools/requirements-extension-authoring.txt
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Inspect proposal only as data with protected-base tools
+        shell: pwsh
+        env:
+          CATALOG_BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          admission-env/Scripts/python.exe trusted/tools/check_catalog_ci.py --proposal proposal --base $env:CATALOG_BASE --host host --python checker-env/Scripts/python.exe --artifacts artifacts --evidence evidence
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: catalog-admission-evidence
+          path: evidence/*.json
+          if-no-files-found: ignore

@@ -93,28 +93,5 @@ jobs:
           $env:AMADEUS_CATALOG_HOST = (Resolve-Path ../host).Path
           $env:AMADEUS_CATALOG_PYTHON = (Resolve-Path ../host/build/catalog-checker/Scripts/python.exe).Path
           python -m pytest -q tests/test_catalog.py tests/test_catalog_submission.py
-      - uses: actions/checkout@v7
-        with:
-          ref: ${{ github.event.pull_request.base.sha || github.sha }}
-          path: trusted
-          fetch-depth: 0
-      - name: Check proposed catalog with protected-base tools
-        shell: pwsh
-        env:
-          CATALOG_BASE: ${{ github.event.pull_request.base.sha || github.sha }}
-        run: |
-          if (!(Test-Path trusted/tools/check_catalog_ci.py)) {
-            # One-time bootstrap can introduce tools and an empty index only.
-            $index = Get-Content proposal/catalog/index.json -Raw | ConvertFrom-Json
-            $safety = @(Get-Content proposal/catalog/security.json -Raw | ConvertFrom-Json)
-            $packages = @(Get-ChildItem proposal/catalog/packages -Recurse -Filter *.json)
-            if ($index.sequence -ne 0 -or $index.entries.Count -ne 0 -or $index.security.Count -ne 0 -or $packages.Count -ne 0 -or $safety.Count -ne 0) { throw 'Bootstrap cannot publish packages or safety decisions' }
-            exit 0
-          }
-          python trusted/tools/check_catalog_ci.py --proposal proposal --base $env:CATALOG_BASE --host host --python host/build/catalog-checker/Scripts/python.exe --artifacts artifacts --evidence evidence
-      - uses: actions/upload-artifact@v7
-        if: always()
-        with:
-          name: catalog-review-evidence
-          path: evidence/*.json
-          if-no-files-found: ignore
+      # Admission runs independently from protected-base workflow/code.
+      # This job executes proposal tests only; it must never gate publication.

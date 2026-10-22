@@ -32,7 +32,7 @@ def main():
     args = parser.parse_args()
     args.evidence.mkdir(parents=True, exist_ok=True)
     profile = verify_host(args.host, args.python)
-    previous = read_json(ROOT / "catalog/index.json")
+    previous = read_json(ROOT / "catalog/v1/index.json")
     candidate_safety = {
         **previous,
         "sequence": previous["sequence"] + 1,
@@ -68,7 +68,7 @@ def main():
                 }
             )
         )
-    proposed = validate_index(read_json(args.proposal / "catalog/index.json"))
+    proposed = validate_index(read_json(args.proposal / "catalog/v1/index.json"))
     validate_transition(previous, proposed)
     if canonical(previous) == canonical(proposed):
         print(json.dumps({"ok": True, "publication": False}))
@@ -133,7 +133,7 @@ def main():
             "--artifacts",
             str(args.artifacts.resolve()),
             "--output",
-            str((args.proposal / "catalog/index.json").resolve()),
+            str((args.proposal / "catalog/v1/index.json").resolve()),
             "--fetch",
             "--check",
         ]

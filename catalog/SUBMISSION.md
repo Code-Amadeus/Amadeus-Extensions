@@ -100,7 +100,7 @@ same PR. The reviewer records which prior evidence/approval was superseded.
    published after the live bytes and newly distributed/relocated assets pass.
 
 ~~~powershell
-python tools/verify_publication.py --index-url <official-index-url> --expected catalog/index.json --previous <previous-index.json> --output delivery.json
+python tools/verify_publication.py --index-url <official-index-url> --expected catalog/v1/index.json --previous <previous-index.json> --output delivery.json
 ~~~
 
 The explicit expected file pins the sequence/content; a stale or different served
