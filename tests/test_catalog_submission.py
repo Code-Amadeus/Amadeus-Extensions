@@ -1,16 +1,60 @@
 import copy
 import io
+import json
+import os
 from pathlib import Path
+import shutil
+import subprocess
+import sys
 
 import pytest
 import test_catalog
 import verify_publication as delivery
 from preflight_submission import preflight
-from test_catalog import index
+from test_catalog import ROOT, index
 
 from catalog import canonical
 
 host_environment = test_catalog.host_environment
+
+
+def test_trusted_admission_does_not_execute_proposal_python(host_environment, tmp_path):
+    host, python, _ = host_environment
+    proposal = tmp_path / "proposal"
+    (proposal / "catalog/v1").mkdir(parents=True)
+    (proposal / "catalog/packages").mkdir()
+    for relative in ("catalog/security.json", "catalog/v1/index.json"):
+        shutil.copyfile(ROOT / relative, proposal / relative)
+
+    marker = tmp_path / "proposal-code-executed"
+    payload = (
+        "from pathlib import Path\n"
+        f"Path({str(marker)!r}).write_text('unexpected execution')\n"
+        "raise RuntimeError('proposal Python must not execute')\n"
+    )
+    for relative in ("catalog.py", "sitecustomize.py", "tools/check_catalog_ci.py"):
+        target = proposal / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(payload, encoding="utf-8")
+    # The trusted job must not install this proposal's dependencies either.
+    (proposal / "requirements-dev.txt").write_text("not-a-real-dependency\n", encoding="utf-8")
+
+    environment = dict(os.environ)
+    environment.pop("PYTHONPATH", None)
+    environment.pop("PYTHONHOME", None)
+    result = subprocess.run(
+        [
+            sys.executable, str(ROOT / "tools/check_catalog_ci.py"),
+            "--proposal", str(proposal), "--base", "HEAD",
+            "--host", str(host), "--python", str(python),
+            "--artifacts", str(tmp_path / "artifacts"),
+            "--evidence", str(tmp_path / "evidence"),
+        ],
+        cwd=tmp_path, env=environment, capture_output=True, text=True, timeout=90,
+    )
+    assert result.returncode == 0, (result.stdout, result.stderr)
+    assert json.loads(result.stdout) == {"ok": True, "publication": False}
+    assert not marker.exists(), "untrusted proposal Python was executed"
 
 
 @pytest.mark.parametrize("fragment,admitted", [("notes_mcp", True), ("fish_audio", False)])
