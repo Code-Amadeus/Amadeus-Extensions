@@ -1,0 +1,170 @@
+{
+  "schema": "windows_gui_runtime_public_acceptance.v1",
+  "artifact": {
+    "id": "io.github.desolate-jix.gui-runtime",
+    "extension_version": "0.0.4",
+    "wheel": {
+      "file": "amadeus_agent_gui_runtime-0.0.4-py3-none-any.whl",
+      "bytes": 13822,
+      "sha256": "9acc7f5d1d667d1d44e3750cdf0f351abefeb5e5136b7fad91d50d77a6d29b31"
+    },
+    "source_zip": {
+      "file": "extension-source-0.0.4.zip",
+      "bytes": 16069,
+      "sha256": "4b6ef25b280cdfd4b8e3567ef8321e9a9137019cfd9738add3453dfb2c9ddd8d"
+    },
+    "runtime_version": "0.1.6",
+    "runtime_candidate": "05",
+    "runtime_installer_sha256": "90c506f5666345379924faf1e335d6c5dd626f215fcebe2a92ddb2b01deb2042"
+  },
+  "snapshot_timing": "Immutable wheel/source archive pending text is the build-time snapshot. This report records later installed technical acceptance without altering those artifacts or catalog review status.",
+  "bare_runtime": {
+    "technical_result": "passed_with_evidence_limits",
+    "route": "Original Main caller -> public authenticated HTTP MCP -> installed Runtime",
+    "workflow": [
+      "Catalog",
+      "2026",
+      "October",
+      "Up to 2026",
+      "Up to Catalog"
+    ],
+    "original_steps_completed": 5,
+    "TEST_primary_refusals": 1,
+    "TEST_ordinary_refusals": 1,
+    "actual_bound_before_png_review": true,
+    "separate_review_and_continue": true,
+    "same_original_job_and_candidate": true,
+    "first_action_pre_review_dispatches": 0,
+    "first_action_after_continue_dispatches": 1,
+    "logical_actions": 5,
+    "physical_clicks": 8,
+    "marker_unchanged": true,
+    "owned_window_closed": true,
+    "runtime_cleanup_verified": true,
+    "original_sdk_DELETE_200_observed": true
+  },
+  "native_pi": {
+    "technical_result": "passed_with_evidence_limits",
+    "route": "Actual ExtensionInstaller -> shipping Work -> original native Pi 1.2.0 -> authenticated HTTP MCP -> installed Runtime",
+    "workflow": [
+      "Documents",
+      "Reports",
+      "Up to Documents",
+      "Receipts"
+    ],
+    "original_steps_completed": 4,
+    "TEST_primary_refusals": 1,
+    "TEST_ordinary_refusals": 1,
+    "actual_bound_before_frame_review": true,
+    "separate_review_and_continue": true,
+    "same_original_job_and_candidate": true,
+    "markers_unchanged": true,
+    "image": {
+      "same_bound_source_frame": true,
+      "source_dimensions_px": [
+        2560,
+        1377
+      ],
+      "model_image_dimensions_px": [
+        2000,
+        1076
+      ],
+      "native_transform": "Photon Lanczos3 full-frame resize",
+      "dimension_mapping_note": 1.28,
+      "replayed_decoded_pixel_bytes_match": true,
+      "original_source_PNG_bytes_delivered_to_model": false,
+      "native_replayed_derived_PNG_bytes_match": true
+    },
+    "cleanup": {
+      "owned_window_closed": true,
+      "runtime_cleanup_verified": true,
+      "fresh_native_initialize_status_DELETE_probe_passed": true,
+      "old_session_DELETE_status_not_inferred_from_fresh_probe": true,
+      "actual_extension_remove_deleteData_passed": true
+    },
+    "original_trial_business_status": "success",
+    "original_first_job_attempts": 1,
+    "logical_actions": 4,
+    "physical_clicks": 7,
+    "work_terminal": {
+      "state": "review_ready",
+      "execution": "succeeded",
+      "completion": "partial"
+    }
+  },
+  "integrity_and_cleanup": {
+    "candidate04_installed_payload_files_verified": 674,
+    "candidate05_installed_payload_files_verified": 674,
+    "both_installed_payloads_unchanged_after_live_test": true,
+    "model_and_threshold_sources_unchanged_count": 6,
+    "daily_configurations_unchanged_count": 2,
+    "owned_ports_without_listener_count": 5,
+    "tested_installation_roots_uninstalled_and_absent_count": 2,
+    "owned_services_stopped_after_runtime_cleanup": true,
+    "forced_service_exit_is_not_claimed_graceful": true
+  },
+  "retained_first_failures": [
+    {
+      "candidate": "04",
+      "workflow": "Notepad edit/menu/save",
+      "business_passed": false,
+      "reason": "Clipboard preservation rejected unsupported_format:not_started; no typing/save success claimed."
+    },
+    {
+      "candidate": "04",
+      "workflow": "Assets/Images/Up/Notes",
+      "business_passed": false,
+      "reason": "pre_action_review_no_longer_active without recorded fine subcause; no retrospective exact-cause assertion."
+    }
+  ],
+  "separate_lock_contention_fix": {
+    "independent_offline_result": "closed_offline",
+    "scope": "Exact transient CommandQueueBusy propagation/revalidation and original job continuation; not proof of old live subcause."
+  },
+  "technical_audits": {
+    "bare_runtime": {
+      "result": "passed_with_evidence_limits",
+      "report_sha256": "0540845421f9621cf7448796447e7b3d91363780c51d42d3e03814853a48d8f1"
+    },
+    "native_pi": {
+      "result": "passed_with_evidence_limits",
+      "minimum_checks_passed": 11,
+      "report_sha256": "779cef0e701a2524669e8be67fc7d359caa46240ad863b87cb4b2b9a35d3648e"
+    },
+    "scope": "Independent technical evidence review by agents; not independent catalog human/runtime approval."
+  },
+  "limits": [
+    "Controlled TEST double refusals, with original model receipts preserved; not natural-refusal accuracy.",
+    "Read-only navigation; no typing/save-to-disk qualification or unattended/general-success benchmark.",
+    "Main/operator-mediated actions and permissions are not current human-user UI clicks or measured human wait.",
+    "Freshness/hard gates and thresholds remain in force; Main review is not unconditional dispatch permission.",
+    "Pi saw a native full-frame resize of the bound source, not original PNG bytes or unscaled coordinates.",
+    "Exact freshness-deadline timing is not invented from missing live timestamps; code/offline checks are separate.",
+    "Native installer/remove confirmations used explicit Main-authorized synthetic callbacks; no native install-dialog UI qualification.",
+    "Work completion=partial is separate from the verified original four-step business completion.",
+    "No token, cost, latency or speed optimization is claimed; no mixed provider/cache usage is summed into cost."
+  ],
+  "catalog": {
+    "human_runtime_review": "not_reviewed",
+    "reviewer": null,
+    "approval": null,
+    "public_wheel_url": "https://github.com/Desolate-Jix/agent-gui-runtime/releases/download/instant-v0.1.6/amadeus_agent_gui_runtime-0.0.4-py3-none-any.whl",
+    "public_source_url": "https://github.com/Desolate-Jix/agent-gui-runtime/releases/download/instant-v0.1.6/extension-source-0.0.4.zip",
+    "uploaded": false,
+    "submitted": false,
+    "published": false
+  },
+  "privacy": {
+    "public_inventory_only": true,
+    "raw_images_logs_sessions_private_configs_tokens_keys_or_local_absolute_paths_included": false
+  },
+  "distribution": {
+    "release_tag": "instant-v0.1.6",
+    "runtime_version": "0.1.6",
+    "extension_version": "0.0.4",
+    "runtime_installer_url": "https://github.com/Desolate-Jix/agent-gui-runtime/releases/download/instant-v0.1.6/AgentGUIRuntimeExecution-Setup.exe",
+    "wheel_url": "https://github.com/Desolate-Jix/agent-gui-runtime/releases/download/instant-v0.1.6/amadeus_agent_gui_runtime-0.0.4-py3-none-any.whl",
+    "source_url": "https://github.com/Desolate-Jix/agent-gui-runtime/releases/download/instant-v0.1.6/extension-source-0.0.4.zip",
+    "delivery_status": "Prepared locally; publisher must upload and verify served bytes before submitting the PR."
+  }
+}
