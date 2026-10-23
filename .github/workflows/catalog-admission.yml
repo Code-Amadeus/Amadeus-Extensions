@@ -22,6 +22,10 @@ jobs:
           path: proposal
           fetch-depth: 0
           persist-credentials: false
+          # Fork contents are inspection data only. Run no scripts, actions,
+          # dependency installs or wheels from proposal in this trusted job.
+          # Checkers/requirements below come from protected base or the fixed Host.
+          allow-unsafe-pr-checkout: true
       - uses: actions/setup-python@v7
         with:
           python-version: '3.12.10'
