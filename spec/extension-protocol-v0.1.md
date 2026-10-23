@@ -905,6 +905,59 @@ A Host installs a package as one transaction:
 Installation runs no package hooks. A Host never executes commands from a
 package's documentation, such as "prerequisites" in a README or `SKILL.md`.
 
+#### 8.2.1 Connector and complete-plugin installation commitments
+
+Package documentation and any catalog listing MUST identify the installation
+commitment before the user confirms installation: **connector** or **complete
+plugin**. These describe deployment responsibility, not manifest fields, trust
+tiers, transports, or `runtime.kind` values. An HTTP contribution is not, by
+itself, evidence of either commitment.
+
+A **connector** integrates an independently installed or operated application
+or service. It MUST disclose the required application/service, compatible
+versions or protocol requirements, required connection configuration, and who
+owns installation, startup, updates, shutdown and removal of that external
+component. Separate setup instructions MAY be linked, but MUST be presented as
+external prerequisites before installation, not discovered as hidden plugin
+setup afterwards.
+
+Installing a connector means the connector is installed; it MUST NOT be reported
+as a working connection until its required service and configuration are
+available. A missing, unreachable or incompatible service, or missing/invalid
+credentials, MUST remain visible as an unmet connection requirement. The Host
+manages the connector's own resources under [§4](#4-lifecycle), including its
+existing rules for draining, secret retention and removal. Disabling or removing
+the connector MUST NOT imply that the external service was stopped or
+uninstalled, or that its data was deleted.
+
+A **complete plugin** MUST provision the components needed for its advertised
+initial capability through one Host-supported installation flow, starting from
+an installed, supported Host and that Host's documented platform prerequisites.
+Required local runtimes, executable components, dependencies and assets MUST be
+included in that responsibility.
+The user MUST NOT need to install another program, prepare a Python environment,
+run shell commands or manually maintain a background service to finish the
+plugin's deployment. The Host owns installation and the lifecycle of the
+provisioned components under [§4](#4-lifecycle).
+
+One installation flow MAY retrieve multiple declared artifacts; it need not be
+one file or one network transfer. The transaction, validation and confirmation
+rules in §8.2 still apply. Download or setup failure MUST remain observable and
+MUST NOT be reported as completed deployment. An optional feature or model MAY
+require a separately disclosed setup flow, but a component required for the
+advertised initial capability MUST NOT be labelled optional to avoid this rule.
+
+Both commitments MAY require explicit user configuration, such as login, API
+credentials or model selection. This does not permit manual runtime deployment
+to be relabelled as configuration. Installation remains distinct from enabling,
+binding, granting authority and becoming ready for work; this section adds no
+lifecycle state and does not change those existing boundaries.
+
+These commitments do not add an installation mechanism or relax a Host profile
+or catalog policy. Unsupported runtime/dependency delivery MUST NOT be presented
+as supported complete-plugin installation. In particular, neither commitment
+permits package install hooks or executing setup instructions from documentation.
+
 ### 8.3 Development mode
 
 A developer adds a source directory to the Host. The Host creates the package's
