@@ -1,0 +1,478 @@
+{
+  "schema": "amadeus.connector.author-validation.v2",
+  "document_state": "author_checks_completed_independent_catalog_review_pending",
+  "source_commit": "db9dc10dacf3534949cd59e3e83804232fb227dd",
+  "passed": true,
+  "published": false,
+  "connector_version": "0.0.7",
+  "recommended_runtime_version": "0.1.10",
+  "minimum_http_protocol_version": "0.1.6",
+  "compatibility_rule": "The protocol floor is not a compatibility range. Verify the exact installed Runtime/Host versions, authentication, tools, schemas and review/cleanup contracts; future 0.1.x versions are not automatically qualified.",
+  "review_status": "not_reviewed",
+  "independent_catalog_approval": "pending",
+  "packaging": {
+    "two_offline_builds_byte_identical": true,
+    "wheel_record_and_source_match": true,
+    "metadata_and_resources_match_source": true,
+    "source_zip_verified": true,
+    "dependencies": [],
+    "runtime_payload_included": false,
+    "wheel_sha256": "43e5a22e9a289ee7ad9852f66128096e1f361449a54dbb619038e870b5b852b7",
+    "source_zip_sha256": "ef3bd6fd3dacbaaceb4f3c79e6e68b3030c60bc9e86b99ade011c882d20d3ae9",
+    "manifest_config_permissions_contributions_runtime_engines_unchanged_from_006": true,
+    "retained_preflight_failure": "Initial unpublished candidate exceeded the fixed Host description limit (516 characters); one English phrase was shortened to 488 characters, followed by fresh two-build and pinned-preflight success. Failed candidate bytes were retained and are not the delivered artifact."
+  },
+  "pinned_static_preflight": {
+    "catalog_commit": "3c739e1a5c177d585db3ed63868725dae5cadc32",
+    "host_commit": "1840c8e4f646992ddaebea3139c8895f29743a8f",
+    "requirements_sha256": "eca122787362dc7d39b309b931c5e17ce7fb0507f79524589f2978bb018c17e7",
+    "environment": {
+      "platform": "win32",
+      "python": "3.12.10"
+    },
+    "checks": {
+      "catalog_policy": "passed",
+      "human_and_runtime_review": "pending",
+      "package_format": "passed",
+      "target_host": "passed"
+    },
+    "review_status": "not_reviewed",
+    "runtime_tests_run_by_static_checker": false,
+    "report_sha256": "f0122c2b825b8ea4a9190bc6efd1d8aec040cec9756dca0615ed2834e3786c90",
+    "previous_wheel_version": "0.0.6",
+    "previous_wheel_sha256": "e55b88de422d2a8bfcb0edd39331a4980d5753c25a2ec084b7b2abac2ee8c586"
+  },
+  "runtime_scope": {
+    "new_rejection_proof": "Only original producer-ordered, durable pre-dispatch rejection evidence may settle a failed control as zero input.",
+    "legacy_successful_observe": "Original immutable observation artifacts and original terminal input evidence may be verified without backfilling a new control receipt.",
+    "absence_is_not_zero_input": true,
+    "old_error_strings_are_not_proof": true,
+    "legacy_rejected_control_without_original_proof": "blocked",
+    "unknown_active_missing_changed_or_partially_written_evidence": "blocked",
+    "reserved_observe_hidden_by_failed_control": "blocked",
+    "successful_control_settlement_not_qualified": [
+      "recover",
+      "resume_pre_dispatch"
+    ],
+    "api_and_thresholds": "unchanged",
+    "input_authorization_and_gates": "unchanged",
+    "new_performance_claim": false,
+    "new_general_accuracy_claim": false,
+    "physical_power_loss_certified": false
+  },
+  "recovery_policy": {
+    "operator_only_tools": [
+      "instant_recovery_preview",
+      "instant_recover_session"
+    ],
+    "pi_must_not_invoke_for_disconnected_owner_takeover": true,
+    "same_live_session_main_review_and_original_job_continue": "retained_under_existing_gates",
+    "legacy_rejection_without_original_producer_proof": "blocked; no backfilled proof or rewritten journal",
+    "successful_recover_and_resume_pre_dispatch_settlement": "unqualified"
+  },
+  "test_group_accounting": {
+    "groups_overlap": true,
+    "aggregate_test_total": null,
+    "reason": "Each XML group is reported independently; overlapping tests are not added together.",
+    "counts_read_from_xml": true
+  },
+  "test_groups": [
+    {
+      "evidence": "control-gates-final.xml",
+      "sha256": "e87c5390612536949c20560e0649806f4ae77a8163a00d41324b61169bd0d266",
+      "role": "Execution/queue/start/cancel/recovery/worker/host gates",
+      "counts_from_junit": {
+        "tests": 282,
+        "passed": 282,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "result": "passed",
+      "source_scope": "Before the final reserved-observe tightening; affected control/observe cases were rerun in separate groups."
+    },
+    {
+      "evidence": "control-observe-final.xml",
+      "sha256": "68b306d520a889cce28a73ac784c891ea736d1d23bd22e9adba525f4cc6a4fe5",
+      "role": "Control, read-only observe and maintained manual observation",
+      "counts_from_junit": {
+        "tests": 136,
+        "passed": 136,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "result": "passed",
+      "source_scope": "Includes reserved-observe refusal; final typed-invalid binding guard is additionally covered by the final control and independent boundary groups."
+    },
+    {
+      "evidence": "control-rejection-complete.xml",
+      "sha256": "7212084154e6eb2c61e2eef96967d6508b0b3c3ae666d2d13335c64c46ccb545",
+      "role": "Final control proof, typed invalid bindings and reserved-observe refusal",
+      "counts_from_junit": {
+        "tests": 34,
+        "passed": 34,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "result": "passed"
+    },
+    {
+      "evidence": "observe-maintained-final.xml",
+      "sha256": "4062a39c73a16798f596e437502b4610709685bedd8212baf377d2f2b3a18365",
+      "role": "Maintained capture boundary and immutable observe artifacts",
+      "counts_from_junit": {
+        "tests": 35,
+        "passed": 35,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "result": "passed"
+    },
+    {
+      "evidence": "root-release-regression.xml",
+      "sha256": "e0deb3c5d06a60541163d5f2ca91116144818c644137ad7a35aeca52a0a0d153",
+      "role": "Release packaging and runtime regression",
+      "counts_from_junit": {
+        "tests": 51,
+        "passed": 51,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "result": "passed"
+    },
+    {
+      "evidence": "upgrade-route-trial-01.xml",
+      "sha256": "1b82e648243c9c3cdeab9f8e08331de7472267d1d74404d62c5836882631dea2",
+      "role": "Published 0.1.9 installer/staging/original-updater to 0.1.10",
+      "counts_from_junit": {
+        "tests": 6,
+        "passed": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "result": "passed"
+    },
+    {
+      "evidence": "review/final-control-audit.xml",
+      "sha256": "ccf7393340071946a32d95e431a8016bc715364c8f8a6c2c3db36c211b543e50",
+      "role": "Author-team separate control capability and crash/tamper audit",
+      "counts_from_junit": {
+        "tests": 26,
+        "passed": 26,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "result": "passed",
+      "source_scope": "Initial frozen control audit before the final reserved-observe tightening; the final boundary audit is reported separately."
+    },
+    {
+      "evidence": "review/observe-reserve-final-two.xml",
+      "sha256": "d677e8b657ffd38a6a1423dc2c5ff416ad40a055447e1de96c3f5fffd850d5ce",
+      "role": "Author-team separate final reserved-observe boundary audit",
+      "counts_from_junit": {
+        "tests": 2,
+        "passed": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "result": "passed",
+      "source_scope": "Final typed-invalid and reserved-observe consumer boundary."
+    }
+  ],
+  "retained_failure_and_repair_evidence": [
+    {
+      "evidence": "observe-red.xml",
+      "sha256": "144f5eb6d2a0d2ddcb4b253fa96b18b5cd9002b3cce3a841655f54ce802da3e6",
+      "role": "Original observe-control unsupported settlement failure",
+      "counts_from_junit": {
+        "tests": 3,
+        "passed": 0,
+        "failures": 3,
+        "errors": 0,
+        "skipped": 0
+      },
+      "result": "expected_failure_reproduced"
+    },
+    {
+      "evidence": "control-rejection-red.xml",
+      "sha256": "03641d30868365c2fdadd345114fc828070ec737d5d6b411dcb158b55c2962ef",
+      "role": "Original sole/extra rejected start and stale review settlement failures",
+      "counts_from_junit": {
+        "tests": 3,
+        "passed": 0,
+        "failures": 3,
+        "errors": 0,
+        "skipped": 0
+      },
+      "result": "expected_failure_reproduced"
+    },
+    {
+      "evidence": "failed-observe-reserved-red.xml",
+      "sha256": "82f4b2eefa552b43327912cb1ec6710ba3f85dde15d8b2ee4deb032c7e990762",
+      "role": "Reserved observation hidden by failed control before final tightening",
+      "counts_from_junit": {
+        "tests": 1,
+        "passed": 0,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      "result": "expected_failure_reproduced"
+    },
+    {
+      "evidence": "failed-observe-reserved-green.xml",
+      "sha256": "b309327e61dd8eae0202dabfd537f0bb1fa31867922b7e586694a65600f18b71",
+      "role": "Same retained reserved-observe reproduction after final tightening",
+      "counts_from_junit": {
+        "tests": 1,
+        "passed": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "result": "passed"
+    }
+  ],
+  "published_019_to_010_upgrade": {
+    "evidence": "upgrade-route-trial-01-acceptance.json",
+    "sha256": "7d777146d328e1f8864b3137c8df73be8a91a4156b39c39fbc82554b1b3352c4",
+    "result": "passed",
+    "junit_sha256": "1b82e648243c9c3cdeab9f8e08331de7472267d1d74404d62c5836882631dea2",
+    "baseline_version": "0.1.9",
+    "new_version": "0.1.10",
+    "old_target_digest": "6163b60b33eecbc4067a1951c0ae2f690385719e13d85c255159c11bbc161d8a",
+    "new_target_digest": "73b54fb57ae996d9803e8745400a68e4f40294d11358a62acbac47b5364d5f23",
+    "published_baseline_asset_sha256": {
+      "runtime-update.json": "1b3e23c9da0921ccb44e7c77dc15585f798a5d702e4961ad622c4c18b6c9c123",
+      "AgentGUIRuntimeExecution-Setup.exe": "bde46f7a8c47b42388c8ac39916c5152cb0931528d171170c0d9b91e2bf5e972",
+      "AgentGUIRuntimeExecution-update.zip": "0e54ee8037bc2104d5a1b0729ca3f4f14add54f53c7d5a0c0e186b60f67d52ff"
+    },
+    "new_payload_files": 703,
+    "old_payload_files": 700,
+    "original_payloads_and_sessions_unchanged": true,
+    "legacy_observe_original_dispatch_count": 1,
+    "legacy_observe_new_control_receipt_exists": false,
+    "verified_route": [
+      "published019_installer_real_check_install",
+      "published019_stage_exact010_from_local_verified_assets",
+      "old_official_settle_and_apply_refused_unsettled_observe",
+      "new010_manual_installer_refused_unsettled_observe",
+      "new010_external_cli_locked_settlement_success",
+      "original019_updater_apply010_success",
+      "independent_installed010_health_success",
+      "user_and_environment_sentinels_unchanged"
+    ],
+    "negative_controls": [
+      "old_rejected_review_without_original_control_proof",
+      "installation_active_lock",
+      "missing_original_receipt",
+      "changed_original_receipt",
+      "active_original_process"
+    ],
+    "new_control_proof_backfilled": false,
+    "old_journal_rewritten": false,
+    "registrations_manually_deleted": false,
+    "fixture_boundaries": [
+      "synthetic original dispatch receipt",
+      "synthetic PNG capture",
+      "offline assessment"
+    ],
+    "network_used": false,
+    "desktop_used": false,
+    "model_used": false,
+    "health": {
+      "passed": true,
+      "input_executed": false,
+      "host_started": false
+    }
+  },
+  "new_installed_pi_live_acceptance": {
+    "status": "passed_scoped_author_functional_acceptance",
+    "passed": true,
+    "report": {
+      "name": "PUBLIC_LIVE_0110_ACCEPTANCE.json",
+      "url": "https://github.com/Desolate-Jix/agent-gui-runtime/releases/download/instant-v0.1.10/PUBLIC_LIVE_0110_ACCEPTANCE.json",
+      "sha256": "e3f11f74c21ba3c93a4d62bb84d2fa1ab4197c793fd99396e05d62249df9b96d"
+    },
+    "acceptance": {
+      "schema": "runtime_live_control_acceptance.v1",
+      "result": "passed",
+      "source_commit": "db9dc10dacf3534949cd59e3e83804232fb227dd",
+      "runtime_version": "0.1.10",
+      "connector_version": "0.0.7",
+      "scope": "one installed four-step functional TEST with original Pi review",
+      "successful_steps": 4,
+      "original_input_dispatches": 4,
+      "original_runs": 1,
+      "history_judged_by": [
+        "agent",
+        "decision",
+        "decision",
+        "decision"
+      ],
+      "competing_start_rejected_before_dispatch": true,
+      "stale_packet_review_rejected_before_dispatch": true,
+      "observe_captured_read_only": true,
+      "observe_settlement_action_executed": false,
+      "original_step_replayed": false,
+      "new_observation_review_then_explicit_continue": true,
+      "observation_image_delivery": {
+        "source": "instant_result images=after",
+        "image_block_present": true,
+        "original_pixels_metadata": true,
+        "sha256": "931f4a915b1f4ec6ce1749edefb78e54b2165c5fa93f2ac188332337a30adc54",
+        "packet_sha256": "a2ffcf5454abcbfe09be773191579336a8ad8afe6276411a45d35d3001a650aa",
+        "logged_base64_truncated": true
+      },
+      "final_png_sha256": "9e68556999ccb28e1cb16fda1f7f3009ef5e9dbe223032b53012feebc0283b4e",
+      "root_visual_confirmation": "Receipts and receipt-marker.txt confirmed in the bound final PNG",
+      "payload": {
+        "files_verified": 703,
+        "all_original_hashes_unchanged": true,
+        "manifest_file_set_sha256": "c26994cfd34ad5a0831a35b943ae07a9f80b371ab79ef25c9ab661b253dfbec8"
+      },
+      "markers": {
+        "count": 2,
+        "all_original_hashes_unchanged": true
+      },
+      "cleanup": {
+        "original_report_stopped": true,
+        "cleanup_errors": [],
+        "sampler_stopped": true,
+        "owned_window_closed": true,
+        "fresh_probe": {
+          "host_alive": false,
+          "pending_ids": [],
+          "cleanup_verified": true
+        },
+        "http_owner_delete_status": 200,
+        "owner_launcher_runtime_exit": 1,
+        "owner_launcher_product_exit": 1
+      },
+      "official_settlement": {
+        "settled": true,
+        "registered_sessions": 1,
+        "cleared_sessions": 1,
+        "coverage": "registered_sessions_only",
+        "legacy_sessions_proven": false
+      },
+      "input_catalog_sha256": "c01581112e93273d6fd8f1cc60ab6e9f5b853647d7c9edb34ad9651c2c319f5b",
+      "caller_tool_errors": [
+        {
+          "kind": "shell_tool_request_rejected",
+          "source_line": 19,
+          "event_sha256": "3fb33c7295372a6217dbd1e84c17dc3d42661d4a77c1077914ec2bb3702c3648"
+        },
+        {
+          "kind": "unsupported_observation_view_argument",
+          "source_line": 134,
+          "event_sha256": "7b5e86f528170ba13b8e48f8cae00de3c947e3fddea045157b73595ed35edc21"
+        },
+        {
+          "kind": "after_view_image_unavailable",
+          "source_line": 146,
+          "event_sha256": "2c788d1a78f52bc507a8d440b945c329e0d0475bb4fcd00def12188a7df12008"
+        }
+      ],
+      "caller_overhead": {
+        "tool_calls": 25,
+        "permission_requested": 21,
+        "permission_allowed": 21,
+        "repeated_read_only_calls_retained": true
+      },
+      "limitations": [
+        "Functional TEST; not an error-free or performance sample.",
+        "Model totals, reasoning time and unclassified caller gaps are not inferred.",
+        "Product log truncates image base64; delivery metadata and bound original PNG hashes are retained.",
+        "Earlier live attempts remain separate; no results were replaced or rescored."
+      ],
+      "source_artifact_sha256": {
+        "frozen_configuration": "24de0eec4a4e76492c8983d7e6a64cfabc431586541a3038b227d006c9e3dabe",
+        "release_runtime_update_manifest": "16e7ba09d00f1baff98440fab6308716789797f043b6d71ec1837319a92448f1",
+        "original_marker_inventory": "ac041d2c17a60d290e90917a0d93824d5c8d41868daad46e4ecdfdd52c05e88e",
+        "frozen_decision_profile": "6e0654d2913a27cc16a4454efda09a5aa16b0ffd4ec124f9060315fb7e48e29b",
+        "original_trial": "7b96f008941b20b2bad330e82062c87a39934787d31c96868bee0dc26edceeb6",
+        "original_input_command_1": "fba97faae769c00fd0b27e61569c5252394519cdba5e7d2f87dae6a950f381a6",
+        "original_input_acceptance_1": "e4160ade44d12e8535f1c1d553a288ad8379d12c700dcc75cdc33146dc0174a1",
+        "original_input_worker_1": "3d2c4479beb2fa5283311319413c38c4c465eb39037e0eb194167491ecd094b6",
+        "original_input_command_2": "ed201e9b0ef23b3427920be558b8a10dc35f23674acd7bd1e948103f2ed991d2",
+        "original_input_acceptance_2": "88c7dc0938ac284948bee21a77982e8885f6ea0636c3b743b9189055344ab180",
+        "original_input_worker_2": "a933365bead57c7f96ea5b694c23c2c9b21b2f0345326f0f7540f471f6a3889d",
+        "original_input_command_3": "b69a934a09768ca52491ae890f640b3730944b8f075fcb074b5b0403add8523d",
+        "original_input_acceptance_3": "7c4980312c0b9e8fceb02a5d0f85444633add7d04bd4f52140dc43b50952916a",
+        "original_input_worker_3": "2bf13692a7fd12eb0e1b3aed537384dda52abd9284f606faeffa4a91843ae09f",
+        "original_input_command_4": "25c02f0e7f44feef5033f5f25ece05461d3a153830deeb9a6850208cb3ba8140",
+        "original_input_acceptance_4": "be0c88f5f90d1b7111a75e9b6d44b1a03a4dede3a44c556e189ad2d6695144b4",
+        "original_input_worker_4": "4005e2805de8ab8e01d86a743b1d4dcd32c8de78289a407af0efd404cfdde8cd",
+        "plan-start-01_response": "83aea703d1bd6b23b77d42bdbd310ec21ac5aadb6af39be5b6e2383709cc4bb9",
+        "plan-start-01_command": "0aef89385d2f80541a8767debd2d524ddc4e1e08a8efe491e4c9055b2101519c",
+        "plan-start-01_control_receipt": "8b8bb1b8c6f0202e88402c5a62c6ef3e76c1075f6cecfe14f991d7f2237532ce",
+        "test-extra-start-01_response": "b50057599419c98c1294c5a835ef54355c8378cbd3292976a82aa26ce2aa12e1",
+        "test-extra-start-01_command": "0aef89385d2f80541a8767debd2d524ddc4e1e08a8efe491e4c9055b2101519c",
+        "test-extra-start-01_control_receipt": "f9ab522e5a62b8ea5bcda0f803c05bc1a0fb6b6577c09c1e4a83171f749e0421",
+        "observe-01_response": "485f5ff0d30c6e9966915dd46096697000412c18d5126dae05b0d0db904c5e08",
+        "observe-01_command": "affd950bbe2fc3a6d81569ddece5225fb0370c7605e8c0cb90f19a598695b056",
+        "observe-01_control_receipt": "098db74d4eecc48c2244c6b69410c8f0ce8f4c8f1b38aa98937ef7f063e52a23",
+        "test-stale-review-01_response": "bf285930a0c65377d793834a8dbf60b80da7c8aba655d26fcf2ee4958aeda662",
+        "test-stale-review-01_command": "075174ac50dafd57ad443ce7ce0335dbcd65fe488ec2bbe4a6a83530783cdff5",
+        "test-stale-review-01_control_receipt": "45beab91ade724650d16fd7b1a0c76551dba20de011cbe96f9f564080ef08a5a",
+        "review-01_response": "15d9d9ff3e096195604b90eaec83630c904cadc5748b5ccc60e3c79e4bb056fd",
+        "review-01_command": "0941950cee20fbe3a0861383e41329ad9acb27a5e52567a14f7bdd442b5fadad",
+        "review-01_control_receipt": "5c572ddd6a08afd39b264705e65e6a815b1b8d50a161cd39f883c362a93c0ac5",
+        "continue-01_response": "f1cb02f9660ad70a0fd7f42e2a95530060946b69e2d2a01e11a8e3cb9c3c0e80",
+        "continue-01_command": "b1d9e589c960b709aa786fdcec5f5bc6e9408acf8d7e6d930ff72e57e88f8442",
+        "continue-01_control_receipt": "672a81edf56c1805c5148a9496a2e7168400acfa20f199386852e8108abfef2b",
+        "bound_observation_png": "931f4a915b1f4ec6ce1749edefb78e54b2165c5fa93f2ac188332337a30adc54",
+        "bound_final_png": "9e68556999ccb28e1cb16fda1f7f3009ef5e9dbe223032b53012feebc0283b4e",
+        "original_stopped_report": "817025bda4ef4248f12333b0189d4df4ba6cc4c9f572e6ba11407c1e961ca98b",
+        "original_owned_window_close": "0b0cfda23f385ef44d5811ef44f3f4f4f532db58cf0fe65bf771a1d5593af733",
+        "independent_fresh_release_probe": "a2f28650c46197b417153ddb74aa31a83073bf124f88b80aff5d5b184a670f15",
+        "original_owners_stopped": "2e4aaed6f373c48759b1575e63d15961ecf2fcfcf8fbc1bec8f55b6006a31fa9",
+        "official_installed_settle_stdout_stderr": "ed1a8e1f4e0480ec96dcc1f97b71458c68e4d8e670d040ec2d82376aa0b6bca7",
+        "original_product_events": "2f85042c14eccfc5ed0e94b5b901bbd0b18595cf3e142d2e89719f374a54ee17"
+      }
+    },
+    "history_summary": {
+      "deliberate_first_step_main_judgment": 1,
+      "following_decision_judgments": 3,
+      "extra_semantic_main_interventions": 0
+    },
+    "parent_shutdown_semantics": {
+      "owned_runtime_parent_raw_exit_code": 1,
+      "owned_product_parent_raw_exit_code": 1,
+      "outer_harness_exit_code_reported_by_root": 0,
+      "interpretation": "The owned parents were terminated after verified Runtime host/window cleanup and HTTP release; this is not called graceful zero-exit shutdown of every process."
+    }
+  },
+  "publication_checks": {
+    "release_upload": "not performed at validation freeze; see separate delivery receipt",
+    "anonymous_download_verification": "not performed at validation freeze; see separate delivery receipt",
+    "release_tag_and_asset_sha256_verification": "not performed at validation freeze; see separate delivery receipt",
+    "independent_final_head_review": "pending"
+  },
+  "limitations": [
+    "Author checks and code audits do not establish independent catalog approval.",
+    "Overlapping test groups are reported separately, without summing a unique test total.",
+    "The upgrade route uses bounded synthetic dispatch/image/assessment fixtures and is separate from installed GUI execution.",
+    "Active, unknown, missing, changed, partially written or reserved observation evidence remains refused.",
+    "No new performance, general accuracy, unattended execution or physical power-loss claim.",
+    "The final live run is a functional TEST with three retained caller errors and terminated owned parents; it is not an error-free sample or a performance benchmark."
+  ],
+  "privacy": {
+    "raw_screenshots_included": false,
+    "absolute_local_paths_included": false,
+    "local_usernames_or_sids_included": false,
+    "credentials_or_real_profile_values_included": false,
+    "source_paths": "repository/package-relative only",
+    "evidence_references": "portable relative artifact names and SHA-256 only"
+  },
+  "published_state_scope": "at_validation_freeze",
+  "publication_state_at_validation_freeze": "not_performed; see separate delivery receipt"
+}

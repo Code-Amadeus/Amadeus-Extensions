@@ -1,0 +1,199 @@
+{
+  "schema": "amadeus.connector.author-validation.v1",
+  "connector_version": "0.0.5",
+  "status": "bounded_checks_passed_with_observation",
+  "review_status": "not_reviewed",
+  "independent_store_review": "pending",
+  "new_installed_pi_gui_acceptance": "not_run",
+  "packaging": {
+    "two_offline_builds_byte_identical": true,
+    "wheel_record_and_source_match": true,
+    "readme_embedded_in_metadata": true,
+    "source_zip_verified": true
+  },
+  "host_contract": {
+    "fixed_host": "1840c8e4f646992ddaebea3139c8895f29743a8f",
+    "current_host": "b6616a166925963ad6de4ab0a02f4eef2dccd657",
+    "python": "3.12.10",
+    "checks_per_host": 2,
+    "skipped": 0,
+    "cases": [
+      "installed manifest/Skill validation",
+      "native HTTP projection and secret binding"
+    ]
+  },
+  "preflight": {
+    "host_commit": "1840c8e4f646992ddaebea3139c8895f29743a8f",
+    "environment": {
+      "platform": "win32",
+      "python": "3.12.10"
+    },
+    "checks": {
+      "catalog_policy": "passed",
+      "human_and_runtime_review": "pending",
+      "package_format": "passed",
+      "target_host": "passed"
+    },
+    "review_status": "not_reviewed"
+  },
+  "source_http": {
+    "runtime_version": "0.1.8",
+    "runtime_source_base": "654fe148c0492feed2b01ec643597ea006b6a8c6",
+    "python": "3.12.10",
+    "recognition_source": "external_api",
+    "model_endpoint": "closed loopback fixture; no external model service",
+    "protocol_and_host_exit_checks_passed": true,
+    "initialize_version": "0.1.8",
+    "security_cases": [
+      {
+        "case": "missing_token",
+        "status": 401,
+        "error_code": "authentication_required",
+        "rejected_before_owner_creation": true
+      },
+      {
+        "case": "wrong_token",
+        "status": 401,
+        "error_code": "authentication_required",
+        "rejected_before_owner_creation": true
+      },
+      {
+        "case": "untrusted_host",
+        "status": 421,
+        "error_code": "host_forbidden",
+        "rejected_before_owner_creation": true
+      },
+      {
+        "case": "wrong_loopback_host_port",
+        "status": 421,
+        "error_code": "host_forbidden",
+        "rejected_before_owner_creation": true
+      },
+      {
+        "case": "untrusted_origin",
+        "status": 403,
+        "error_code": "origin_forbidden",
+        "rejected_before_owner_creation": true
+      },
+      {
+        "case": "loopback_browser_origin",
+        "status": 403,
+        "error_code": "origin_forbidden",
+        "rejected_before_owner_creation": true
+      },
+      {
+        "case": "duplicate_authorization",
+        "status": 401,
+        "rejected_before_owner_creation": true
+      }
+    ],
+    "owner_isolation": [
+      {
+        "case": "failed_initialize_releases_unowned_transport",
+        "passed": true
+      },
+      {
+        "round": 1,
+        "competing_initialize_rejected": true,
+        "wrong_owner_rejected": true,
+        "missing_owner_rejected": true,
+        "unsupported_sessionless_protocol_rejected": true,
+        "live_host_delete_rejected_without_stop": true
+      },
+      {
+        "round": 2,
+        "competing_initialize_rejected": true,
+        "wrong_owner_rejected": true,
+        "missing_owner_rejected": true,
+        "unsupported_sessionless_protocol_rejected": true,
+        "live_host_delete_rejected_without_stop": true
+      }
+    ],
+    "tools": {
+      "names": [
+        "instant_image",
+        "instant_recover_session",
+        "instant_recovery_preview",
+        "instant_result",
+        "instant_run",
+        "instant_start",
+        "instant_status",
+        "instant_stop",
+        "instant_submit"
+      ],
+      "public_generic_contract_markers": {
+        "step_decision_check_before_action_documented": true,
+        "action_review_input_property": true,
+        "field_evidence_mode_input_property": true,
+        "visual_field_proof_documented": true,
+        "agent_command_continue_enum": true,
+        "bound_review_and_explicit_continue_documented": true
+      },
+      "dedicated_packet_generation_exercised": false,
+      "note": "Schema/description discovery proves advertised generic review/continue and field-evidence surfaces; it does not prove dedicated packets were generated"
+    },
+    "rounds": [
+      {
+        "round": 1,
+        "ready": true,
+        "host_stopped": true,
+        "cleanup_verified": true,
+        "pending_count": 0,
+        "release_status": 200,
+        "tcp_reconnect_preserved_owner": true,
+        "old_owner_rejected": true
+      },
+      {
+        "round": 2,
+        "ready": true,
+        "host_stopped": true,
+        "cleanup_verified": true,
+        "pending_count": 0,
+        "release_status": 200,
+        "tcp_reconnect_preserved_owner": true,
+        "old_owner_rejected": true
+      }
+    ],
+    "all_hosts_exited": true,
+    "listeners_closed": true,
+    "desktop_commands": 0,
+    "screenshots": 0,
+    "model_triggering_commands": 0,
+    "queue_command_kinds": [
+      "close"
+    ],
+    "dedicated_review_packets_exercised": false,
+    "explicit_test_host_start_authorization": true
+  },
+  "maintenance_registration_observation": {
+    "first_stopped_registration_immediately_retired": false,
+    "live_host_or_unsettled_input_retained": false,
+    "maintenance_admission_or_update_attempt_tested": false,
+    "blocked_update_reproduced": false,
+    "source_behavior": "Maintenance independently verifies original settlement evidence and may retire settled registrations.",
+    "final_test_cleanup": "Only exact test-owned sessions were verified and cleared using the production ledger API.",
+    "remaining_test_registrations": 0,
+    "limit": "Manual test cleanup is not proof of immediate automatic retirement; no complete lifecycle or maintenance qualification is claimed.",
+    "explanation": "Different Windows venv wrapper/runner identities are a source-based hypothesis, not a captured child-side error."
+  },
+  "retained_nonpasses": [
+    "First HTTP attempt stopped on a Windows closed-port ConnectTimeout not handled by the original probe; corrected probe rerun passed within the stated scope.",
+    "Initial host contract run used an API environment missing PyYAML; qualified minimal-checker reruns passed two checks per Host.",
+    "Initial build readback compared undecoded/CRLF METADATA to LF Unicode source; UTF-8/line-ending-aware readback and a fresh two-build run passed.",
+    "Immediate retirement of all stopped maintenance registrations was not observed; subsequent maintenance admission was not tested."
+  ],
+  "not_run": [
+    "new Pi native 0.0.5/Runtime 0.1.8 GUI task",
+    "real model quality/cost/speed",
+    "dedicated pre-action/field-review packet generation in this HTTP-only run",
+    "new Host disable/uninstall integration",
+    "physical reboot/power loss",
+    "arbitrary third-party data migration",
+    "independent catalog review/publication"
+  ],
+  "historical_evidence": {
+    "combination": "installed Runtime 0.1.6 + connector 0.0.4",
+    "url": "https://github.com/Desolate-Jix/agent-gui-runtime/blob/instant-v0.1.6/docs/verification/MAIN_PRE_ACTION_REVIEW_20261023.md",
+    "reuse_limit": "Scoped assisted TEST double-refusal/Main continuation evidence; not new 0.0.5/0.1.8 acceptance."
+  }
+}

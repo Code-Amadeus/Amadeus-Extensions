@@ -1,0 +1,235 @@
+{
+  "schema": "amadeus.connector.author_validation.v1",
+  "source_commit": "323099100b04beeb6ee67a846f0e530998c19bbc",
+  "connector_version": "0.0.8",
+  "recommended_runtime": "0.1.11",
+  "passed": true,
+  "passed_scope": "The bounded author checks listed here only; independent catalog approval remains not_reviewed.",
+  "artifacts": [
+    {
+      "name": "amadeus_agent_gui_runtime-0.0.8-py3-none-any.whl",
+      "bytes": 27990,
+      "sha256": "2f532faf152faf2e1e3ab3140e1097487689be34d638e4ee86539e06886cbcaf"
+    },
+    {
+      "name": "extension-source-0.0.8.zip",
+      "bytes": 52657,
+      "sha256": "b54afe548dae17c04600f48553b9e27033db4a370f6963ad2ea518b585cff3b4"
+    }
+  ],
+  "baseline_007": {
+    "wheel_sha256": "43e5a22e9a289ee7ad9852f66128096e1f361449a54dbb619038e870b5b852b7",
+    "source_zip_sha256": "ef3bd6fd3dacbaaceb4f3c79e6e68b3030c60bc9e86b99ade011c882d20d3ae9"
+  },
+  "build_anchor_commit": "db9dc10dacf3534949cd59e3e83804232fb227dd",
+  "frozen_source_inventory_matches_final_commit": true,
+  "pinned_static_preflight": {
+    "catalog_commit": "3c739e1a5c177d585db3ed63868725dae5cadc32",
+    "host_commit": "1840c8e4f646992ddaebea3139c8895f29743a8f",
+    "requirements_sha256": "eca122787362dc7d39b309b931c5e17ce7fb0507f79524589f2978bb018c17e7",
+    "environment": {
+      "platform": "win32",
+      "python": "3.12.10"
+    },
+    "checks": {
+      "catalog_policy": "passed",
+      "human_and_runtime_review": "pending",
+      "package_format": "passed",
+      "target_host": "passed"
+    },
+    "review_status": "not_reviewed"
+  },
+  "original_public_static_reports": {
+    "preflight.json": {
+      "name": "preflight.json",
+      "bytes": 73402,
+      "sha256": "05e7cd531189c25cb98bdaf7d9c95e8604bc6755d219aa0e030494b9c3bf98f8"
+    },
+    "wheel-inventory.json": {
+      "name": "wheel-inventory.json",
+      "bytes": 1740,
+      "sha256": "86a9f1dbf6b1429b0e32abcdda538f43822771297c5945ec07b3f6225d9b395e"
+    },
+    "candidate-diff-from-0.0.7.json": {
+      "name": "candidate-diff-from-0.0.7.json",
+      "bytes": 79619,
+      "sha256": "db3e1465a15d97aaa84311d7f5b471fec7b8d1c9d45527ba943ad8df416768a6"
+    }
+  },
+  "static_report_provenance": "The already sanitized public fixed-checker reports are copied byte for byte, with their original inventory list shape. They bind the wheel SHA-256 and are not represented as checks rerun at the final source commit.",
+  "source_regressions": [
+    {
+      "scope_id": "source_lifecycle",
+      "scope": "HTTP lifecycle, initialization/DELETE, attachment, MCP, epoch/admission, startup and cleanup gates; source tests, not installed GUI execution.",
+      "passed": true,
+      "tests": 215,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "original_junit": {
+        "name": "lifecycle-final.xml",
+        "bytes": 29697,
+        "sha256": "f7ce9bb53074e3f876e7b16cda7aec1baf02b6255f9217230afeab0083ab3849"
+      },
+      "test_modules": [
+        "tests.test_instant_agent_startup",
+        "tests.test_instant_attachment_transport",
+        "tests.test_instant_epoch_recovery",
+        "tests.test_instant_mcp",
+        "tests.test_instant_mcp_http",
+        "tests.test_instant_mcp_http_initial_lifecycle",
+        "tests.test_instant_start_cleanup_rejection",
+        "tests.test_session_epoch_admission"
+      ],
+      "combined_with_other_counts": false
+    },
+    {
+      "scope_id": "source_package_and_settlement",
+      "scope": "Execution packaging, updater/settlement, original task-plan observation and rejection settlement; overlaps are not added to other scopes.",
+      "passed": true,
+      "tests": 139,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "original_junit": {
+        "name": "package-settlement-regression.xml",
+        "bytes": 21825,
+        "sha256": "92fdd65045a7bff2b02ce47642a3d82041e518633596a1e188b86e3ea9866ac1"
+      },
+      "test_modules": [
+        "tests.test_execution_component",
+        "tests.test_runtime_update_cli",
+        "tests.test_runtime_update_schedule",
+        "tests.test_session_input_task_plan",
+        "tests.test_session_input_task_plan_observation",
+        "tests.test_task_plan_control_rejection_terminal"
+      ],
+      "combined_with_other_counts": false
+    },
+    {
+      "scope_id": "independent_source_counterexamples",
+      "scope": "Independent bounded source counterexamples for never-started proof and conservative release gates; not another installed GUI run.",
+      "passed": true,
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "original_junit": {
+        "name": "independent-counterexamples.xml",
+        "bytes": 886,
+        "sha256": "c94604e4f448ba82bc66593612c66a11e02302cc87c237c981b02747e51aa208"
+      },
+      "test_modules": [
+        "test_independent_cold_counterexamples"
+      ],
+      "combined_with_other_counts": false
+    }
+  ],
+  "regression_count_policy": "215, 139 and 4 are separately scoped original JUnit results; no combined unique-test total is reported.",
+  "root_runtime_public_acceptance": {
+    "name": "PUBLIC_HTTP_OWNER_RELEASE_ACCEPTANCE.json",
+    "bytes": 9280,
+    "sha256": "a4007f761ea9865c628373b97467cdf176729c8a056f9e77ae34731883653a3b",
+    "passed": true,
+    "version": "0.1.11",
+    "scope": "Root public HTTP owner-release acceptance; its original report remains separate evidence."
+  },
+  "installed_http_acceptance": {
+    "name": "PUBLIC_INSTALLED_HTTP_LIFECYCLE_ACCEPTANCE.json",
+    "bytes": 3185,
+    "sha256": "957ead096957456ed9342c54f1f8bd2292dd937a761d4f1ee71e9504ac68da19",
+    "source_commit_reference": "323099100b04beeb6ee67a846f0e530998c19bbc",
+    "original_report_modified": false,
+    "source_association_note": "The CLI source reference and verified frozen package source associate this release with the unmodified installed report; an absent source_commit in that original schema is not backfilled.",
+    "result": {
+      "schema": "installed_http_lifecycle_acceptance.v1",
+      "version": "0.1.11",
+      "passed": true,
+      "raw_tcp_rounds": 2,
+      "raw_delete_statuses": [
+        200,
+        200
+      ],
+      "sdk_auto_negotiation_rounds": 2,
+      "sdk_automatic_delete_statuses": [
+        200,
+        200
+      ],
+      "cleanup_verified_remained_false": true,
+      "exact_never_started_producer_proof": true,
+      "lease_held_after_http_deletes": true,
+      "lease_released_at_server_shutdown": true,
+      "all_owned_file_hashes_equal_before_after": true,
+      "native_temporary_check_install_and_uninstall": true,
+      "temporary_owned_root_removed": true,
+      "installed_app_namespace_only": true,
+      "start_calls": 0,
+      "execution_host_launch_calls": 0,
+      "input_submit_calls": 0,
+      "desktop_actions": 0,
+      "model_api_calls": 0,
+      "installer_sha256": "1afaed72ce84f1c59965f6b915e9ffd8a32b8eaa1a6c9d6720eee8d1f71de56a",
+      "payload_files_verified_before_and_after": 704,
+      "runtime_python": "3.12.10",
+      "runtime_mcp": "2.1.1",
+      "runtime_httpx": "0.28.1",
+      "host_python": "3.12.14",
+      "host_mcp": "2.2.0",
+      "host_httpx2": "2.12.0",
+      "source_commit": "323099100b04beeb6ee67a846f0e530998c19bbc",
+      "source_commit_provenance": "root_supplied_after_frozen_source_verification",
+      "frozen_source_inputs_match_payload": true,
+      "frozen_source_input_files_verified": 702,
+      "measurement_report_sha256": "061ae84f2dcb63b83a1f157170eca784dcad6384cd2f9a239dff00681fedbab1",
+      "raw_stop_before_second_delete": true,
+      "distinct_owner_per_connection": true,
+      "negotiated_protocol": "2025-11-25",
+      "sdk_client_harness_processes": 1,
+      "data_root_written": false,
+      "shutdown_close_calls": 1,
+      "strict_minimal_child_environments": true,
+      "inherited_provider_credentials": false,
+      "temporary_token_persisted_or_printed": false,
+      "network_connections_loopback_only": true,
+      "daily_installation_changed": false,
+      "daily_host_configuration_changed": false,
+      "dependencies_installed": false,
+      "partial_attempts": [
+        {
+          "classification": "external_acceptance_harness_error",
+          "reason": "Windows subprocess audit executable=None caused the harness Path conversion TypeError before SDK launch.",
+          "raw_tcp_rounds_passed": 2,
+          "raw_delete_statuses": [
+            200,
+            200
+          ],
+          "sdk_client_started": false,
+          "runtime_failure_observed": false,
+          "native_check_uninstall_passed": true,
+          "owned_root_removed": true,
+          "original_runtime_stderr_sha256": "3e69d9c2e801922067ffc16ff04f4eb59d915aade220f90b7e0b5dad563a34cf",
+          "original_orchestrator_error_sha256": "186fb4c42ebd6d6e285821b67888364df9f0c91caed52654f591a41622828eb2",
+          "cleanup_result_sha256": "be80bf230066e01ce1436ad5898239507f33a8d1c1b5413a47414a8b9250f910",
+          "native_uninstall_log_sha256": "4eefc99e3d73f9a6e7e1556e4014e552a3d6a111447c36d63eea51b4736b1d2a"
+        }
+      ]
+    },
+    "scope": "Native temporary-check install/uninstall plus real installed HTTP and Host SDK lifecycle. No execution host, desktop action or model API; this is not Amadeus/Pi GUI acceptance."
+  },
+  "boundaries": {
+    "minimum_http_protocol": "0.1.6",
+    "minimum_is_not_a_future_patch_compatibility_range": true,
+    "manifest_config_permissions_contributes_runtime_engines_unchanged_from_007": true,
+    "disconnected_session_recovery": "operator-only",
+    "same_live_session_main_review_continue": "retained under existing contracts",
+    "new_amadeus_pi_gui_acceptance_claimed": false,
+    "old_gui_author_results_recounted": false,
+    "model_policy_thresholds_or_input_authorization_changed": false
+  },
+  "review_status": "not_reviewed",
+  "publication": {
+    "status": "not_performed_at_validation_freeze",
+    "delivery_verification": "Actual upload, release-tag/source identity and anonymous downloaded-asset hash checks belong to a separate delivery receipt."
+  },
+  "privacy": "Only explicit public field allowlists, artifact identities and scoped counts are exported; no raw logs, local report paths, tokens or private live payloads are copied."
+}

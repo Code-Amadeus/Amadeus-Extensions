@@ -1,0 +1,303 @@
+{
+  "schema": "runtime_task_plan_settlement_acceptance.v1",
+  "document_state": "author_checks_completed_independent_catalog_review_pending",
+  "passed": true,
+  "published": false,
+  "versions": {
+    "runtime": "0.1.9",
+    "connector": "0.0.6",
+    "baseline_runtime": "0.1.8"
+  },
+  "source_commit": "b0ddd8096bacd0d8710cc60736bce5b861032156",
+  "scope": {
+    "settlement_controls_covered": [
+      "start",
+      "review",
+      "continue",
+      "cancel",
+      "status"
+    ],
+    "conservatively_unqualified_controls": {
+      "recover": "control_unsupported",
+      "observe": "control_unsupported",
+      "resume_pre_dispatch": "control_unsupported"
+    },
+    "all_task_plans_qualified": false,
+    "claims": "Retained terminal input proof for the stated controls and reviewed evidence shapes; no new execution authority or replay permission."
+  },
+  "runtime_artifacts": {
+    "update_target_digest": "6163b60b33eecbc4067a1951c0ae2f690385719e13d85c255159c11bbc161d8a",
+    "payload_files": 700,
+    "python_modules": 589,
+    "source_resource_inputs_verified": 698,
+    "source_component_sha256": {
+      "input_terminal_verifier": "0095abb39d504f4eedb4f5afb23823f9c69897f1b55ed9aa798fb9c57c8edbd5",
+      "task_plan_terminal_verifier": "cc72b7ff9fbb39fdb5232c34cc25dc008d3c44170dc2200281c32be041149d15"
+    },
+    "assets": {
+      "AgentGUIRuntimeExecution-Setup.exe": {
+        "bytes": 4609536,
+        "sha256": "bde46f7a8c47b42388c8ac39916c5152cb0931528d171170c0d9b91e2bf5e972"
+      },
+      "AgentGUIRuntimeExecution-update.zip": {
+        "bytes": 4452343,
+        "sha256": "0e54ee8037bc2104d5a1b0729ca3f4f14add54f53c7d5a0c0e186b60f67d52ff"
+      },
+      "runtime-update.json": {
+        "bytes": 124114,
+        "sha256": "1b3e23c9da0921ccb44e7c77dc15585f798a5d702e4961ad622c4c18b6c9c123"
+      },
+      "AgentGUIRuntimeExecution-Source-0.1.9.zip": {
+        "bytes": 4452343,
+        "sha256": "0e54ee8037bc2104d5a1b0729ca3f4f14add54f53c7d5a0c0e186b60f67d52ff"
+      },
+      "execution-payload-manifest.json": {
+        "bytes": 96345,
+        "sha256": "8978f79b4788c3405a86b8f9d5f824a7be68e6c89a16c25b67ef8e1310fb7f93"
+      },
+      "SOURCE_PYTHON_MANIFEST.json": {
+        "bytes": 103244,
+        "sha256": "0a41c39c1b12feb61936fb83287a2eeb56da14bb7dca5bb7537e0139dcbfd199"
+      },
+      "LICENSE.txt": {
+        "bytes": 776,
+        "sha256": "5a4dc3799f96814e9f8b9bba5060bfc59327d90e480c093e5f18a53b8224116a"
+      }
+    },
+    "package_verification_report_sha256": "fe720cb4c75151bf24dc7f1fa4262d7287f52b822451c2a7848507b5f43fd207",
+    "payload_installer_embedded_manifest_and_update_target_bound": true,
+    "all_payload_hashes_verified": true,
+    "native_check_install_uninstall_passed": true,
+    "isolated_source_and_installed_entrypoints_passed": true,
+    "source_inputs_unchanged_during_build_and_acceptance": true,
+    "signed": false
+  },
+  "test_runs": {
+    "aggregation": "Runs are separate and may overlap; counts must not be added into a claimed distinct total.",
+    "affected_worker_final": {
+      "tests": 187,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 187,
+      "seconds": 21.596,
+      "evidence_sha256": "2160b12c504ba8648ae6f9e7b075cb42b2a8851d79d690772847d43aeaa9ba44"
+    },
+    "root_preflight_initial": {
+      "tests": 51,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 50,
+      "seconds": 91.135,
+      "evidence_sha256": "c98d64f0890e0564095a2771b27998475dcb8be25fbf8836b183d751418d88d7"
+    },
+    "root_preflight_targeted_repair": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 1,
+      "seconds": 16.626,
+      "evidence_sha256": "aa60dcbcd98244c4c1bd6e8301741baf4ac6fdff34f9bf3af355a780e16857a0"
+    },
+    "update_and_installer_regression": {
+      "tests": 94,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 94,
+      "seconds": 121.186,
+      "evidence_sha256": "9884e36a3980cdc8db44ab6031ff8c739d3ea50f2115f8fbd9b8756165a14ab1"
+    },
+    "published_018_to_frozen_019_migration": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 5,
+      "seconds": 61.785,
+      "evidence_sha256": "a52129e79441526477a59be844c5d99113cbe7649b6a008ba829342658867838"
+    }
+  },
+  "preserved_failures_and_repairs": [
+    {
+      "case": "historical_task_plan_settlement",
+      "baseline_error": "session_input_kind_unknown",
+      "original_failures_preserved": true,
+      "intermediate_error": "session_input_orphan_grounding_execution",
+      "repair": "Bind retained task-plan state, controls, original dispatches and grounding evidence rather than treating process exit as input settlement."
+    },
+    {
+      "case": "epoch_fixture_setup",
+      "initial": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 4,
+        "skipped": 0,
+        "passed": 0,
+        "seconds": 1.894,
+        "evidence_sha256": "bace5006f9d20d3eee0945f8f1834cdf32979136bc721cee65f9dc00ac8edb1d"
+      },
+      "classification": "test fixture setup failure",
+      "repair": "Keep synthetic fixture process identities isolated and use real current-process identity for installation ledger registration.",
+      "final_coverage": "Included in the affected worker final run."
+    },
+    {
+      "case": "completed_batch_prior_focus_counterexample",
+      "initial": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 0,
+        "seconds": 0.257,
+        "evidence_sha256": "61c51377045e146998f0e796d0d6c8ae2e1b288f6d87efc2cc69464f2dded763"
+      },
+      "initial_error": "session_input_task_plan_api_grounding_receipt_unproven",
+      "repair": "Bind the earlier authenticated focus dispatch within the completed batch, preserving its exact attempt index and receipt.",
+      "final_coverage": "The original counterexample and the terminal-plan cancel-no-op review case pass inside the affected worker final run."
+    },
+    {
+      "case": "bundled_documentation_link",
+      "initial_passed": 50,
+      "initial_failed": 1,
+      "repair": "Include the linked maintained verification document in the execution payload.",
+      "targeted_retest_passed": 1,
+      "initial_output_preserved": true
+    }
+  ],
+  "retained_historical_sessions": [
+    {
+      "case": "normal",
+      "baseline_error": "session_input_kind_unknown",
+      "input_terminal_settlement_verified": true,
+      "worker_catalog_file_count": 77,
+      "worker_catalog_sha256": "9bc6701829cb08581d32533bd3dbf7223840b0e6133ea5ac84abed5e5e9b39c7",
+      "catalog_file_map_before_sha256": "9bc6701829cb08581d32533bd3dbf7223840b0e6133ea5ac84abed5e5e9b39c7",
+      "catalog_file_map_after_sha256": "9bc6701829cb08581d32533bd3dbf7223840b0e6133ea5ac84abed5e5e9b39c7",
+      "migration_full_tree_file_count": 101,
+      "migration_full_tree_before_sha256": "4d0c4502654ec5d0117553d154b9202bd9594a9f0704082d2587ddcc0eba8de6",
+      "migration_full_tree_after_sha256": "4d0c4502654ec5d0117553d154b9202bd9594a9f0704082d2587ddcc0eba8de6",
+      "original_evidence_unchanged": true,
+      "read_only_worker_report_sha256": "ca673ddae5b2f8ab494b020fad0eed2cf09199043bc069feb40adc721f6848ae"
+    },
+    {
+      "case": "cancel",
+      "baseline_error": "session_input_kind_unknown",
+      "input_terminal_settlement_verified": true,
+      "worker_catalog_file_count": 32,
+      "worker_catalog_sha256": "0457d051f3341aea9cebc68ae39c6e5b903de35b6ac5a80a8bd92bb0306cb28f",
+      "catalog_file_map_before_sha256": "0457d051f3341aea9cebc68ae39c6e5b903de35b6ac5a80a8bd92bb0306cb28f",
+      "catalog_file_map_after_sha256": "0457d051f3341aea9cebc68ae39c6e5b903de35b6ac5a80a8bd92bb0306cb28f",
+      "migration_full_tree_file_count": 40,
+      "migration_full_tree_before_sha256": "e468c3254370a099a0e7f31ce19305f271c5a03d3502c9ee75db4c0e48ba06a6",
+      "migration_full_tree_after_sha256": "e468c3254370a099a0e7f31ce19305f271c5a03d3502c9ee75db4c0e48ba06a6",
+      "original_evidence_unchanged": true,
+      "read_only_worker_report_sha256": "0717c372de021fe3b570199627a5a970231e1833201e3643ddad7967452c3318"
+    }
+  ],
+  "migration_acceptance": {
+    "passed": true,
+    "tests": 5,
+    "old_published_018_assets_pinned_by_sha256": true,
+    "old_018_settle_and_apply_refused_before_repair": true,
+    "manual_019_installer_refused_unresolved_ledger": true,
+    "new_verified_payload_cli_uses_old_installation_exclusive_lock": true,
+    "external_settle_registered_sessions": 2,
+    "external_settle_cleared_sessions": 2,
+    "coverage": "registered_sessions_only",
+    "legacy_sessions_proven": false,
+    "original_018_updater_applied_exact_019_target": true,
+    "fixed_installation_health_check_passed": true,
+    "negative_controls_refused": [
+      "active_installation_lease",
+      "unknown_original_input",
+      "changed_original_receipt_binding",
+      "active_original_process"
+    ],
+    "registration_preserved_on_refusals": true,
+    "original_evidence_unchanged": true,
+    "user_data_and_environment_sentinels_unchanged": true,
+    "daily_installation_changed": false,
+    "desktop_used": false,
+    "model_used": false,
+    "network_used": false,
+    "acceptance_report_sha256": "cc84058ba3ed17c5a96beca541ee1ec824bca9c887911fc59aa6116301a40b9a"
+  },
+  "connector_static_preflight": {
+    "version": "0.0.6",
+    "wheel_sha256": "e55b88de422d2a8bfcb0edd39331a4980d5753c25a2ec084b7b2abac2ee8c586",
+    "wheel_bytes": 25761,
+    "catalog_commit": "3c739e1a5c177d585db3ed63868725dae5cadc32",
+    "host_commit": "1840c8e4f646992ddaebea3139c8895f29743a8f",
+    "requirements_sha256": "eca122787362dc7d39b309b931c5e17ce7fb0507f79524589f2978bb018c17e7",
+    "checks": {
+      "catalog_policy": "passed",
+      "human_and_runtime_review": "pending",
+      "package_format": "passed",
+      "target_host": "passed"
+    },
+    "review_status": "not_reviewed",
+    "runtime_tests_run_by_static_checker": false,
+    "preflight_report_sha256": "c0dfbeacb3ab2ec67e653c4c226fa676fd503b6bb61cd1e0f9a07bf01c72814e",
+    "independent_catalog_approval": "pending"
+  },
+  "new_pi_live_acceptance": {
+    "status": "passed_scoped_author_acceptance",
+    "passed": true,
+    "date": "2026-10-27 Pacific/Auckland",
+    "host_commit": "b6616a166925963ad6de4ab0a02f4eef2dccd657",
+    "pi_version": "1.2.0",
+    "connector_version": "0.0.6",
+    "runtime_version": "0.1.9",
+    "host_python": "3.12.14",
+    "runtime_python": "3.12.10",
+    "route": "native ExtensionInstaller -> shipping Electron/Pi Work -> authenticated HTTP MCP -> installed Runtime",
+    "task": "Documents -> Reports -> Up -> Receipts in a task-owned 7-Zip window",
+    "original_plan_starts": 1,
+    "logical_steps_completed": 4,
+    "final_original_receipts_verified": true,
+    "final_bound_image_read_by_original_pi": true,
+    "final_bound_image_independently_inspected_by_author": true,
+    "natural_double_rejection_main_review_triggered": false,
+    "test_refusal_proxy_used": false,
+    "owned_window_and_host_cleanup_verified": true,
+    "fresh_authenticated_initialize_status_delete_passed": true,
+    "fresh_client_delete_status": 200,
+    "original_pi_delete_status_captured": false,
+    "new_session_maintenance_settlement_verified": true,
+    "official_settlement": {
+      "settled": true,
+      "registered_sessions": 1,
+      "cleared_sessions": 1,
+      "coverage": "registered_sessions_only",
+      "legacy_sessions_proven": false
+    },
+    "owned_payload_hashes_unchanged": 700,
+    "test_marker_hashes_unchanged": 2,
+    "provider_recovery_tools_invoked": false,
+    "daily_installation_or_host_settings_changed": false,
+    "http_parent_and_electron_final_exit_codes": {
+      "http_parent": 1,
+      "electron_parent": 1
+    },
+    "parent_shutdown_note": "Test controller termination returned Windows exit 1 after verified Runtime host/window cleanup and HTTP release; not called graceful daemon exit.",
+    "independent_maintainer_acceptance": "pending",
+    "performance_benchmark": false
+  },
+  "publication_checks": {
+    "official_anonymous_download_verification": "not_yet_published_at_artifact_freeze",
+    "immutable_release_verification": "to_be_recorded_in_delivery_and_PR_after_publication",
+    "publisher_signature_verified": false,
+    "trust": "fixed_github_https_and_explicit_exact_sha256_confirmation_unsigned"
+  },
+  "limitations": [
+    "Tests use existing prepared Python dependencies, not fresh-machine setup.",
+    "Historical real sessions are reused read-only; migration tests do not establish new GUI task acceptance.",
+    "No universal task-plan compatibility, autonomous recovery or unattended execution claim.",
+    "No speed, accuracy, model-token or cost benefit is established.",
+    "A verification flag or process death alone never proves input settlement; active, unknown, changed or unsupported evidence remains refused.",
+    "Author publication, static preflight, installed execution and independent catalog approval remain separate outcomes."
+  ]
+}

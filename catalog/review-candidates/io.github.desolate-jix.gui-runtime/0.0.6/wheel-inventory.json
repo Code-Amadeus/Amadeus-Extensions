@@ -1,0 +1,52 @@
+[
+  {
+    "path": "amadeus_agent_gui/__init__.py",
+    "bytes": 106,
+    "sha256": "4f58649569d337b493144355bed934640927b516071b30055afb30fcdf247a25"
+  },
+  {
+    "path": "amadeus_agent_gui/amadeus-extension.json",
+    "bytes": 2597,
+    "sha256": "81536805fea6ed16f40964a091cca9a9b1a865adb6d277da78899d72fdbca7d1"
+  },
+  {
+    "path": "amadeus_agent_gui/skills/gui-execution/SKILL.md",
+    "bytes": 9324,
+    "sha256": "254a1ceaa2e04c296fbd87035536bb5aba6ed6f18c6824c04d9ee3a143939c25"
+  },
+  {
+    "path": "amadeus_agent_gui/skills/gui-execution/references/runtime.md",
+    "bytes": 22188,
+    "sha256": "ad5908a5be02cd78318becab8d43682a348d7d8d4e1fe36ecfdb297537028ad4"
+  },
+  {
+    "path": "amadeus_agent_gui_runtime-0.0.6.dist-info/licenses/LICENSE",
+    "bytes": 743,
+    "sha256": "0f8e85cb17827a6e987074fe13521ac62d736264ed62ab2331122305fb963608"
+  },
+  {
+    "path": "amadeus_agent_gui_runtime-0.0.6.dist-info/METADATA",
+    "bytes": 18314,
+    "sha256": "150a51e7320e17d4f5784d068d3cf643485b02cdb14bcb46c9fa0cf9a289168e"
+  },
+  {
+    "path": "amadeus_agent_gui_runtime-0.0.6.dist-info/WHEEL",
+    "bytes": 91,
+    "sha256": "2b6eb4118ce7cd7b09601406aa623c553c4476265836f0d9c16f5c061f7efcc0"
+  },
+  {
+    "path": "amadeus_agent_gui_runtime-0.0.6.dist-info/entry_points.txt",
+    "bytes": 76,
+    "sha256": "0283eb1d7d60e05afa7ae39816dc50817462b5672a5448e650efeb3752aed226"
+  },
+  {
+    "path": "amadeus_agent_gui_runtime-0.0.6.dist-info/top_level.txt",
+    "bytes": 18,
+    "sha256": "16ed263ba3dc6c8a139e749f9c89687f20d5d849e8ee579e405d3c995a23c58a"
+  },
+  {
+    "path": "amadeus_agent_gui_runtime-0.0.6.dist-info/RECORD",
+    "bytes": 1002,
+    "sha256": "ca9412818749720a9f4bc4c0c026fae5074b7e4c4dcab21a3f76c882685359c1"
+  }
+]
