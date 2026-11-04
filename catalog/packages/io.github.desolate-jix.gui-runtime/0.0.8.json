@@ -1,0 +1,24 @@
+{
+  "publisher": {
+    "evidence": "https://github.com/Desolate-Jix/agent-gui-runtime/releases/tag/amadeus-extension-v0.0.8",
+    "id": "Desolate-Jix",
+    "maintainers": [
+      "Desolate-Jix"
+    ],
+    "package_ids": [
+      "io.github.desolate-jix.gui-runtime"
+    ]
+  },
+  "review": {
+    "date": "2026-11-05",
+    "evidence": "https://github.com/Code-Amadeus/Amadeus-Extensions/pull/11",
+    "policy": "curated-v1",
+    "reviewer": "Lucas1479",
+    "sha256": "2f532faf152faf2e1e3ab3140e1097487689be34d638e4ee86539e06886cbcaf"
+  },
+  "wheel": {
+    "sha256": "2f532faf152faf2e1e3ab3140e1097487689be34d638e4ee86539e06886cbcaf",
+    "url": "https://github.com/Desolate-Jix/agent-gui-runtime/releases/download/amadeus-extension-v0.0.8/amadeus_agent_gui_runtime-0.0.8-py3-none-any.whl"
+  },
+  "withdrawal": null
+}
