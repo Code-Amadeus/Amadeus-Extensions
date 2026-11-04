@@ -1,7 +1,7 @@
-# Curated catalog v1 (experimental, no public store yet)
+# Curated catalog v1 (experimental)
 
 This directory defines distribution facts, not new extension execution rights.
-The sole official index URL will be
+The sole official index URL is
 `https://raw.githubusercontent.com/Code-Amadeus/Amadeus-Extensions/main/catalog/v1/index.json`
 on protected main. There is no signature in v1: repository access,
 branch protection, independent review, maintainer 2FA and least-privilege Actions
@@ -49,8 +49,7 @@ future signatures. Never replace the official index trust root with a mirror.
 `toolchain.json` fixes Host commit, Windows, CPython 3.12.10 and the hash of the
 Host's generated minimal dependency list. Obtain that exact Host checkout; the
 tools reject a different or modified checker. Install its minimal environment
-with `pip --require-hashes`. The Host pin is currently a local experimental commit
-and must be pushed/reviewed before GitHub Actions can retrieve it. No SDK or Host
+with `pip --require-hashes`. The Host pin is publicly retained by the extension-catalog-checker-d1 tag. No SDK or Host
 protocol pin is changed by this catalog work.
 
 1. Commit proposed artifact/review/ownership facts. CI uses protected-base tools

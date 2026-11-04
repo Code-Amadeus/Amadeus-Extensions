@@ -1,10 +1,90 @@
 {
-  "entries": [],
+  "entries": [
+    {
+      "compatibility": {
+        "contributions": [
+          {
+            "contract": "amadeus.mcp-server/v0",
+            "kind": "mcp_server",
+            "role": ""
+          },
+          {
+            "contract": "amadeus.skill/v0",
+            "kind": "skill",
+            "role": ""
+          }
+        ],
+        "delivery": "python-wheel",
+        "dependencies": [],
+        "host_api": ">=0.1,<0.2",
+        "platforms": [
+          "win32"
+        ],
+        "python": "<3.13,>=3.12",
+        "runtime": "none",
+        "sdk": "0.1.0"
+      },
+      "display": {
+        "access": {
+          "os": {
+            "network": [
+              "*"
+            ]
+          },
+          "services": [
+            {
+              "id": "execution",
+              "kind": "mcp_server",
+              "transport": "http",
+              "url": "${config.runtime_url}"
+            }
+          ]
+        },
+        "author": {
+          "name": "Desolate-Jix"
+        },
+        "description": {
+          "en": "Connector to a separately installed and started Windows GUI Runtime. Recommend 0.1.11; 0.1.6 marks the minimum HTTP protocol, not a compatibility range. Check the actual version, authenticated HTTP MCP and review/continue tools. Configure trusted loopback runtime_url and connection_token; bind MCP and Skill to Pi. You deploy and stop Runtime separately. Disabling/uninstalling this connector does not stop/uninstall Runtime or delete its data. External model APIs may charge usage fees.",
+          "zh-CN": "\u8fde\u63a5\u5668\uff1a\u9700\u81ea\u884c\u5355\u72ec\u5b89\u88c5\u3001\u914d\u7f6e\u5e76\u542f\u52a8 Windows GUI Runtime\u3002\u5efa\u8bae\u4f7f\u7528 0.1.11\uff1b0.1.6 \u8868\u793a\u6700\u4f4e HTTP \u534f\u8bae\u8d77\u70b9\uff0c\u4e0d\u4fdd\u8bc1\u6240\u6709\u540e\u7eed\u7248\u672c\u517c\u5bb9\u3002\u987b\u6838\u5bf9\u5b9e\u9645\u7248\u672c\u3001\u9274\u6743 HTTP MCP \u53ca\u5ba1\u6838\uff0f\u7ee7\u7eed\u5de5\u5177\u3002\u586b\u5199\u53ef\u4fe1\u672c\u673a runtime_url \u548c connection_token\uff0c\u5c06 MCP \u4e0e Skill \u7ed1\u5b9a Pi\u3002Runtime \u7531\u7528\u6237\u72ec\u7acb\u90e8\u7f72\u548c\u505c\u6b62\uff1b\u505c\u7528\uff0f\u5378\u8f7d\u672c\u8fde\u63a5\u5668\u4e0d\u4f1a\u505c\u6b62\u3001\u5378\u8f7d Runtime \u6216\u5220\u9664\u5176\u6570\u636e\u3002\u5916\u90e8\u6a21\u578b API \u53ef\u80fd\u6309\u7528\u91cf\u6536\u8d39\u3002"
+        },
+        "display_name": {
+          "en": "Windows GUI Runtime Connector",
+          "zh-CN": "Windows GUI Runtime \u8fde\u63a5\u5668"
+        },
+        "homepage": "https://github.com/Desolate-Jix/agent-gui-runtime/blob/amadeus-extension-v0.0.8/integrations/amadeus/agent-review-instant/README.md",
+        "license": "ISC",
+        "repository": "https://github.com/Desolate-Jix/agent-gui-runtime"
+      },
+      "id": "io.github.desolate-jix.gui-runtime",
+      "publisher": {
+        "evidence": "https://github.com/Desolate-Jix/agent-gui-runtime/releases/tag/amadeus-extension-v0.0.8",
+        "id": "Desolate-Jix",
+        "maintainers": [
+          "Desolate-Jix"
+        ],
+        "package_ids": [
+          "io.github.desolate-jix.gui-runtime"
+        ]
+      },
+      "review": {
+        "date": "2026-11-05",
+        "evidence": "https://github.com/Code-Amadeus/Amadeus-Extensions/pull/11",
+        "policy": "curated-v1",
+        "reviewer": "Lucas1479",
+        "sha256": "2f532faf152faf2e1e3ab3140e1097487689be34d638e4ee86539e06886cbcaf"
+      },
+      "sha256": "2f532faf152faf2e1e3ab3140e1097487689be34d638e4ee86539e06886cbcaf",
+      "size": 27990,
+      "url": "https://github.com/Desolate-Jix/agent-gui-runtime/releases/download/amadeus-extension-v0.0.8/amadeus_agent_gui_runtime-0.0.8-py3-none-any.whl",
+      "version": "0.0.8",
+      "withdrawal": null
+    }
+  ],
   "format": "amadeus.catalog/v1",
-  "generator_commit": "85f49315dd01818748e4079b69bdf67d47eb7170",
+  "generator_commit": "0afb576b2366a455be64e53322abf26259edfede",
   "host_commit": "1840c8e4f646992ddaebea3139c8895f29743a8f",
   "security": [],
-  "sequence": 0,
-  "source_commit": "85f49315dd01818748e4079b69bdf67d47eb7170",
-  "source_time": "2026-10-21T09:03:48+13:00"
+  "sequence": 1,
+  "source_commit": "0afb576b2366a455be64e53322abf26259edfede",
+  "source_time": "2026-11-05T12:49:22+13:00"
 }
