@@ -4,9 +4,14 @@ This directory defines distribution facts, not new extension execution rights.
 The sole official index URL is
 `https://raw.githubusercontent.com/Code-Amadeus/Amadeus-Extensions/main/catalog/v1/index.json`
 on protected main. There is no signature in v1: repository access,
-branch protection, independent review, maintainer 2FA and least-privilege Actions
+branch protection, independent review and least-privilege Actions
 are the trust root. These publication controls must be verified before S3.
 No real package is reviewed or published by the empty sequence-0 bootstrap.
+
+Maintainer two-factor authentication is recommended account protection, not a
+prerequisite for catalog approval, merge or publication. Organization-wide 2FA
+enforcement is not required by the catalog. GitHub's own account requirements
+remain separate.
 
 ## Inputs and review
 

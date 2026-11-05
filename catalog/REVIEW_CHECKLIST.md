@@ -72,8 +72,13 @@ maintainer withdrawal for ordinary retirement, and security decisions for unsafe
 artifacts. Do not relabel copyright removal as a security ban or delete user data.
 
 Before first public release: protect main, require reviewed merges, verify
-maintainer two-factor authentication and least-privilege workflows, and ensure
-submission execution jobs have no publishing credentials. S3 owns that evidence.
+least-privilege workflows, and ensure submission execution jobs have no publishing
+credentials. S3 owns that evidence.
+
+Maintainer two-factor authentication is recommended account protection, not a
+prerequisite for catalog approval, merge or publication. Organization-wide 2FA
+enforcement is not required by the catalog. GitHub's own account requirements
+remain separate.
 
 
 For author preflight, ownership/transfer, review invalidation, PR responsibilities,
