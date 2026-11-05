@@ -1,5 +1,10 @@
 # S0 local verification — 2026-10-21
 
+Policy update (2026-11-05): maintainer 2FA is recommended, not a catalog approval,
+merge or publication prerequisite. The dated observations below preserve the
+former policy as history; the current requirements are in
+[REVIEW_CHECKLIST.md](REVIEW_CHECKLIST.md).
+
 Experimental branch: `codex/extension-community-preview`. Nothing was pushed or
 published. The empty `index.json` is a sequence-0 bootstrap, not a reviewed package
 listing. Its `source_commit` and `generator_commit` identify the actual committed
