@@ -1,0 +1,103 @@
+{
+  "schema": "connector_build_verification.v1",
+  "version": "0.0.9",
+  "source_base_commit": "94edaf68e8bf1901e2af0640de1001f4a7e91338",
+  "scope": "Customer-facing copy and version metadata only; no Runtime code",
+  "build": {
+    "python": "3.12.10",
+    "setuptools": "83.0.0",
+    "wheel": "0.47.0",
+    "source_date_epoch": 1793923200,
+    "reproducible_two_builds": true
+  },
+  "checks": {
+    "wheel_record": "passed",
+    "packaged_resources_match_source": "passed",
+    "manifest_connection_and_permission_contract_unchanged_from_008": true,
+    "skill_changes_are_version_references_only": true,
+    "effective_dependencies": [],
+    "host_contract_tests_passed": 2
+  },
+  "not_run": [
+    "installed 0.0.9 GUI task",
+    "paid model API benchmark"
+  ],
+  "review_status": "not_reviewed",
+  "previous_wheel_sha256": "2f532faf152faf2e1e3ab3140e1097487689be34d638e4ee86539e06886cbcaf",
+  "wheel_members": [
+    "amadeus_agent_gui/__init__.py",
+    "amadeus_agent_gui/amadeus-extension.json",
+    "amadeus_agent_gui/skills/gui-execution/SKILL.md",
+    "amadeus_agent_gui/skills/gui-execution/references/runtime.md",
+    "amadeus_agent_gui_runtime-0.0.9.dist-info/licenses/LICENSE",
+    "amadeus_agent_gui_runtime-0.0.9.dist-info/METADATA",
+    "amadeus_agent_gui_runtime-0.0.9.dist-info/WHEEL",
+    "amadeus_agent_gui_runtime-0.0.9.dist-info/entry_points.txt",
+    "amadeus_agent_gui_runtime-0.0.9.dist-info/top_level.txt",
+    "amadeus_agent_gui_runtime-0.0.9.dist-info/RECORD"
+  ],
+  "source_files": [
+    {
+      "path": ".gitignore",
+      "sha256": "f7b25451197ebb6397c8ec7ca1bd69369152419579a831a67009dea277edc9a9"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "0f8e85cb17827a6e987074fe13521ac62d736264ed62ab2331122305fb963608"
+    },
+    {
+      "path": "README.md",
+      "sha256": "95a3ce93f41e073b1118d79292838ec4ec491ee464fabe6559fab6dfb5eebce8"
+    },
+    {
+      "path": "README.stdio-0.0.2.md",
+      "sha256": "5567cdaa83e9205fa567c72375fd0147ab981cc4e3df1f6c9997907205f9a483"
+    },
+    {
+      "path": "README.stdio-0.0.2.zh-CN.md",
+      "sha256": "a06e622a6e42b578bb43cef2f77356f142b97f1fe98cf0b78439b3a81cdaf195"
+    },
+    {
+      "path": "README.zh-CN.md",
+      "sha256": "6b40a6ca9e0d2a70f7429de3198e5f601c9d3c21a056de5298c23b3070605111"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "b048815918b2815386b8bbe16718215c197299208e12bbaec3e8d00ffb1862b7"
+    },
+    {
+      "path": "src/amadeus_agent_gui/__init__.py",
+      "sha256": "a7709f98c9c8bd6a3263e0bb50c076634b0099a621b1b7b6da93ad7f98c4f250"
+    },
+    {
+      "path": "src/amadeus_agent_gui/amadeus-extension.json",
+      "sha256": "a8e7e5332b4265e8a73219a5aa8ab930b6b813ceefb5b0efec70501b5d0361b3"
+    },
+    {
+      "path": "src/amadeus_agent_gui/skills/gui-execution/SKILL.md",
+      "sha256": "78afa9469a853b662926ad07bc0de3596746b1bcec25e805d5825616a1e33ea3"
+    },
+    {
+      "path": "src/amadeus_agent_gui/skills/gui-execution/references/runtime.md",
+      "sha256": "eaeec99deaa36a2db60d8b7c389d6dc5f0590951ef2c9504ee6cdccb529cf539"
+    },
+    {
+      "path": "tests/test_host_contract.py",
+      "sha256": "3ba500ab6453da2659201fdd1c99e4895268ec0e0c32ade658e02d7709b4600e"
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "amadeus_agent_gui_runtime-0.0.9-py3-none-any.whl",
+      "bytes": 28977,
+      "sha256": "e612dff39d5650e9235eb9a36eb1918b00cc0724fd725aac88bda7f4da5e5a3b"
+    },
+    {
+      "name": "extension-source-0.0.9.zip",
+      "bytes": 54649,
+      "sha256": "a6d5b91b4496aab73aa90154e24c6a9c751ba8dbfde919766daac790ecdf6814"
+    }
+  ],
+  "release_source_commit": "beebb9de51dd5494a376647e3f216836ab8294a3",
+  "source_files_match_release_commit": true
+}
